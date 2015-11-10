@@ -1,4 +1,4 @@
-%% LyX 2.1.0 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[a4paper,twoside,english]{report}
 \usepackage[utf8]{inputenc}
@@ -57,23 +57,11 @@
 
 
 \begin{center}
-{\LARGE{}Handbook of}
-\par\end{center}{\LARGE \par}
-
-\begin{center}
-{\LARGE{}Marine HIL simulation}
-\par\end{center}{\LARGE \par}
-
-\begin{center}
-{\LARGE{}and}
-\par\end{center}{\LARGE \par}
-
-\begin{center}
 {\LARGE{}Marine cybernetics}
 \par\end{center}{\LARGE \par}
 
 \begin{center}
-{\LARGE{}laboratories}
+{\LARGE{}laboratory handbook }
 \par\end{center}{\LARGE \par}
 
 \begin{flushleft}
@@ -308,7 +296,7 @@ interfaces such as sensors, communications, and actuators.
 laboratory}
 
 \begin{figure}
-\centering \includegraphics[width=0.95\textwidth]{setupHIL} \protect\caption{\label{fig: HIL setup}HIL setup}
+\centering \includegraphics[width=0.95\textwidth]{setupHIL} \caption{\label{fig: HIL setup}HIL setup}
 \end{figure}
 
 
@@ -353,7 +341,7 @@ and
 5 & digital buttons (PS, L3, R3, Start, Select)\tabularnewline
  & motion sensing (6 degrees of freedom)\tabularnewline
 \hline 
-\end{tabular}\protect\caption{\label{tab: sixaxis input}Sixaxis input}
+\end{tabular}\caption{\label{tab: sixaxis input}Sixaxis input}
 \end{table}
 
 
@@ -366,10 +354,8 @@ for human operator input. The device communicates over Bluetooth.
 
 The RPi is a credit card-sized single-board computer including Ethernet
 and two USB connections. In the HIL laboratory setup, the unit is
-merely used to transmit the Sixaxis' data to the cRIO%
-\footnote{The cRIO USB port only supports common USB mass-storage devices, thus
-a Bluetooth dongle cannot be connected directly.%
-}.
+merely used to transmit the Sixaxis' data to the cRIO\footnote{The cRIO USB port only supports common USB mass-storage devices, thus
+a Bluetooth dongle cannot be connected directly.}.
 
 
 \subsubsection{cRIO-9024}
@@ -434,13 +420,10 @@ covers the RPi software and setup details.
 Following Figure \ref{fig: HIL setup} from left to right:
 \begin{description}
 \item [{Sixaxis}] transmits its information to the Bluetooth USB dongle
-with which it is previously paired%
-\footnote{One-time pairing procedure described in Appendix \ref{par: Bluetooth-pairing}.%
-}.
+with which it is previously paired\footnote{One-time pairing procedure described in Appendix \ref{par: Bluetooth-pairing}.}.
 \item [{RPi}] receives Sixaxis data through the USB dongle and forwards
-it through its TCP/IP%
-\footnote{All IP addresses are as given in Table \ref{tab: IP addresses}.%
-} server over Ethernet to the cRIO.
+it through its TCP/IP\footnote{All IP addresses are as given in Table \ref{tab: IP addresses}.}
+server over Ethernet to the cRIO.
 \item [{cRIO}] reads Sixaxis data on Ethernet port 2 through its TCP/IP
 client. Simulation data and laptop input is transmitted and received
 on Ethernet port 1 by the VeriStand Engine.
@@ -475,7 +458,7 @@ CSE1\_HIL\_u.out
 \chapter{Marine cybernetics laboratory}
 
 \begin{figure}
-\centering \includegraphics[width=0.95\textwidth]{mc_lab} \protect\caption{\label{fig: Marine cybernetics laboratory basin}Marine cybernetics
+\centering \includegraphics[width=0.95\textwidth]{mc_lab} \caption{\label{fig: Marine cybernetics laboratory basin}Marine cybernetics
 laboratory basin}
 
 
@@ -525,7 +508,7 @@ for more specialized hydrodynamic tests.
 Regular waves & $H<0.25$ & 0.3 - 3.0\tabularnewline
 Irregular waves & \textbf{$H_{s}<0.15$} & 0.6 - 1.5\tabularnewline
 \hline 
-\end{tabular}\protect\caption{\label{tab:Wave generator capacity}Wave generator capacity}
+\end{tabular}\caption{\label{tab:Wave generator capacity}Wave generator capacity}
 \end{table}
 
 
@@ -543,7 +526,7 @@ summarizes the generation capacity.
 \subsection{Cybership Enterprise 1}
 
 \begin{figure}
-\centering \includegraphics[width=0.95\textwidth]{CSE1_2.PNG} \protect\caption{\label{fig: Cybership Enterprise 1}CS Enterprise 1}
+\centering \includegraphics[width=0.95\textwidth]{CSE1_2.PNG} \caption{\label{fig: Cybership Enterprise 1}CS Enterprise 1}
 \end{figure}
 
 
@@ -558,7 +541,7 @@ electronic speed controllers (ESC) and four servos.
 \subsubsection{High-level communication}
 
 \begin{figure}
-\centering \includegraphics[width=0.95\textwidth]{setupCSE1} \protect\caption{\label{fig: CSE1 communication} CSE1 communication}
+\centering \includegraphics[width=0.95\textwidth]{setupCSE1} \caption{\label{fig: CSE1 communication} CSE1 communication}
 \end{figure}
 
 
@@ -585,7 +568,7 @@ their setpoint as PWM signals.
 
 \begin{figure}
 \centering \includegraphics[width=0.8\textwidth]{CSE1_control_system}
-\protect\caption{\label{fig: CSE1 generic control system}CSE1 generic control system}
+\caption{\label{fig: CSE1 generic control system}CSE1 generic control system}
 \end{figure}
 
 
@@ -625,7 +608,7 @@ Gains: user interface\tabularnewline
 
 User implemented controller\tabularnewline
 \hline 
-\end{tabular}\protect\caption{\label{tab: CSE1 control system modes}Generic control modes}
+\end{tabular}\caption{\label{tab: CSE1 control system modes}Generic control modes}
 \end{table}
 
 
@@ -636,7 +619,7 @@ The first three controllers are predefined, while users may implement
 their own controller in the fourth.
 
 \begin{figure}
-\centering \includegraphics[scale=0.45]{CSE1_ctrl_student} \protect\caption{\label{fig: CSE1 ctrl_student.slx}CSE1 \texttt{ctrl\_student.slx}
+\centering \includegraphics[scale=0.45]{CSE1_ctrl_student} \caption{\label{fig: CSE1 ctrl_student.slx}CSE1 \texttt{ctrl\_student.slx}
 including thrust allocation}
 \end{figure}
 
@@ -674,13 +657,11 @@ Complete the following steps to convert your model you created in
 Simulink into a compiled model that runs on RT targets.
 
 Version compatibility is an issue for VeriStand-Simulink interaction.
-Mostly%
-\footnote{It has been experience that MATLAB function blocks are not compatible
+Mostly\footnote{It has been experience that MATLAB function blocks are not compatible
 across versions. This results in build error message ``invalid object
 ID''. The MATLAB function block code must then be copied and pasted
 into a new MATLAB function block from the compatible version Simulink
-Library Browser.%
-} Simulink code may be programmed in any version of the MATLAB, compilation,
+Library Browser.} Simulink code may be programmed in any version of the MATLAB, compilation,
 on the other hand, can only be done in version compatible with the
 intended VeriStand version. See Section \ref{sub: Laptop software}.
 
@@ -691,18 +672,16 @@ intended VeriStand version. See Section \ref{sub: Laptop software}.
 \subsubsection{Input and output}
 
 In order for the model to interact with VeriStand, special input and
-output blocks must be added to the block diagram%
-\footnote{Ordinary input/source and output/sink blocks could be used at the
+output blocks must be added to the block diagram\footnote{Ordinary input/source and output/sink blocks could be used at the
 diagram top level. However, subsystem ports are only available when
-using the VeriStand blocks.%
-}. These are found in the Simulink Library Browser under NI VeriStand
+using the VeriStand blocks.}. These are found in the Simulink Library Browser under NI VeriStand
 Blocks.
 
 
 \subsubsection{Initial conditions}
 
 \begin{figure}[!h]
-\centering \includegraphics[scale=0.45]{simulink_integrator} \protect\caption{Integrator function block parameters}
+\centering \includegraphics[scale=0.45]{simulink_integrator} \caption{Integrator function block parameters}
 
 
 \label{fig: simulink integrator function block parameters} 
@@ -719,7 +698,7 @@ The initial condition source should be external, as in Figure \ref{fig: simulink
 \subsubsection{\label{sub:Real-time-data-logging}Real-time data logging}
 
 \begin{figure}[!h]
-\centering \includegraphics[scale=0.45]{simulink_tofile} \protect\caption{To File block parameters}
+\centering \includegraphics[scale=0.45]{simulink_tofile} \caption{To File block parameters}
 
 
 \label{fig: simulink to file} 
@@ -737,7 +716,7 @@ the Timeseries format.
 \paragraph{Example:}
 
 \begin{figure}[!h]
-\centering \includegraphics[scale=0.45]{simulink_before} \protect\caption{Simulink model for offline simulation}
+\centering \includegraphics[scale=0.45]{simulink_before} \caption{Simulink model for offline simulation}
 
 
 \label{fig: Simulink pendulum model} 
@@ -745,7 +724,7 @@ the Timeseries format.
 
 
 \begin{figure}[!h]
-\centering \includegraphics[scale=0.45]{simulink_after} \protect\caption{Simulink model for adjusted for compilation}
+\centering \includegraphics[scale=0.45]{simulink_after} \caption{Simulink model for adjusted for compilation}
 
 
 \label{fig: simulink pendulum model for compilation} 
@@ -764,17 +743,15 @@ The integrators take these values whenever reset is rising or falling.
 \subsection{\label{sub: Simulink model configuration}Model configuration}
 
 The code generation toolbox compiles the Simulink diagram to an output
-shared library in {*}.out format%
-\footnote{The {*}.out format is for targets running Wind River VxWorks real-time
+shared library in {*}.out format\footnote{The {*}.out format is for targets running Wind River VxWorks real-time
 operating system (RTOS) such as cRIO-9024, while dynamic link libraries
 in {*}.dll format are for targets running IntervalZero Phar Lap ETS
-RTOS such as cRIO-9081.%
-}. Model configuration parameters must be adjusted before generating,
+RTOS such as cRIO-9081.}. Model configuration parameters must be adjusted before generating,
 or building, the code.
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{simulink_settings_solver}
-\protect\caption{Simulink configuration parameters - solver}
+\caption{Simulink configuration parameters - solver}
 
 
 \label{fig: simulink solver} 
@@ -790,14 +767,12 @@ have integrators, choose some differential equation solver such as
 ode3 or ode4. See Figure \ref{fig: simulink solver}. Finally, the
 step size can be set: for a target running at 100 Hz, such as the
 cRIO-9024 default, a 0.01 step size results in the model running in
-simulating 1 second pr. second%
-\footnote{This can also be achieved by use of decimation, as described in Section
-\ref{sub: Veristand System-setup}.%
-}.
+simulating 1 second pr. second\footnote{This can also be achieved by use of decimation, as described in Section
+\ref{sub: Veristand System-setup}.}.
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{simulink_settings_codegeneration}
-\protect\caption{Simulink configuration parameters - target selection}
+\caption{Simulink configuration parameters - target selection}
 
 
 \label{fig: simulink target selection} 
@@ -805,12 +780,11 @@ simulating 1 second pr. second%
 
 
 The correct target file should be selected depending on the target
-device. Select \texttt{NIVeriStand\_VxWorks.tlc} for VxWorks targets%
-\footnote{For PharLap targets, select \texttt{NIVeriStand.tlc}.%
-}, such as cRIO-9024, as in Figure \ref{fig: simulink target selection}.
+device. Select \texttt{NIVeriStand\_VxWorks.tlc} for VxWorks targets\footnote{For PharLap targets, select \texttt{NIVeriStand.tlc}.},
+such as cRIO-9024, as in Figure \ref{fig: simulink target selection}.
 
 \begin{figure}[!h]
-\centering \includegraphics[scale=0.45]{simulink_settings_ni} \protect\caption{Simulink model configuration - NI configuration}
+\centering \includegraphics[scale=0.45]{simulink_settings_ni} \caption{Simulink model configuration - NI configuration}
 
 
 \label{fig: simulink NI configuration} 
@@ -824,7 +798,7 @@ under NI Configuration, as in Figure \ref{fig: simulink NI configuration}.
 \subsection{\label{sub: Simulink model build}Build}
 
 \begin{figure}[!h]
-\centering \includegraphics[scale=0.45]{matlab_command} \protect\caption{MATLAB console}
+\centering \includegraphics[scale=0.45]{matlab_command} \caption{MATLAB console}
 
 
 \label{fig: matlab console} 
@@ -848,7 +822,7 @@ the icon button.
 \section{Simulation configuration}
 
 \begin{figure}
-\centering \includegraphics[scale=0.45]{veristand} \protect\caption{VeriStand start screen}
+\centering \includegraphics[scale=0.45]{veristand} \caption{VeriStand start screen}
 
 
 \label{fig: veristand} 
@@ -866,7 +840,7 @@ To deploy model for the first time, click New NI VeriStand Project.
 Give your new project a suitable name and location. 
 \begin{figure}[h]
 \centering \includegraphics[scale=0.45]{veristand_projectexplorer}
-\protect\caption{VeriStand Project Explorer}
+\caption{VeriStand Project Explorer}
 
 
 \label{fig: veristand project explorer} 
@@ -885,7 +859,7 @@ name{]}.nivssdf.
 \item 
 \begin{figure}[h]
 \centering \includegraphics[scale=0.45]{veristand_systemexplorer_ip}
-\protect\caption{VeriStand - System Explorer - Controller}
+\caption{VeriStand - System Explorer - Controller}
 
 
 \label{fig: veristand system explorer ip} 
@@ -897,7 +871,7 @@ the target rate.
 \item 
 \begin{figure}[h]
 \centering \includegraphics[scale=0.45]{veristand_systemexplorer}
-\protect\caption{VeriStand - System Explorer - Models}
+\caption{VeriStand - System Explorer - Models}
 
 
 \label{fig: veristand system explorer model} 
@@ -905,7 +879,7 @@ the target rate.
  Click Add a Simulation Model, as seen at the top of Figure \ref{fig: veristand system explorer model}.
 \begin{figure}[h]
 \centering \includegraphics[scale=0.45]{veristand_systemexplorer_model}
-\protect\caption{VeriStand - System Explorer Model}
+\caption{VeriStand - System Explorer Model}
 
 
 \label{fig: veristand system explorer model 2} 
@@ -915,13 +889,11 @@ the target rate.
 Select Decimation to make sure the model runs at the intended rate.\\
 Repeat if several models should run simultaneously.
 \item Add custom devices, such as network input, by right clicking the custom
-device pane and choosing the required device%
-\footnote{If the required device is not present, refer to the device driver
-installation instructions in Section \ref{sub: Installing custom device driver}.%
-}. 
+device pane and choosing the required device\footnote{If the required device is not present, refer to the device driver
+installation instructions in Section \ref{sub: Installing custom device driver}.}. 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"veristand custom driver select\string".png}
-\protect\caption{Custom device selection}
+\caption{Custom device selection}
 
 
 \label{fig: veristand system explorer custom device selection-1} 
@@ -935,7 +907,7 @@ icon at the top of the window, to connect signals between custom devices,
 FPGA and models.
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"veristand mapping2\string".png}
-\protect\caption{VeriStand System Configuration Mappings}
+\caption{VeriStand System Configuration Mappings}
 
 
 \label{fig: veristand mappings-1} 
@@ -978,7 +950,7 @@ during simulation, as described in Section \ref{sub:Real-time-data-logging}.
 It is also possible to log via the laptop user interface.
 
 \begin{figure}[h]
-\centering \includegraphics[scale=0.45]{veristand_ws_logging} \protect\caption{Logging Control}
+\centering \includegraphics[scale=0.45]{veristand_ws_logging} \caption{Logging Control}
 
 
 \label{fig: veristand workspace logging control} 
@@ -991,14 +963,14 @@ The control is added as described in Section \ref{sub: Create computer interface
 
 \begin{figure}[h]
 \centering \includegraphics[scale=0.45]{veristand_ws_logging_file}
-\protect\caption{Logging Control file settings}
+\caption{Logging Control file settings}
 
 
 \label{fig: veristand workspace logging file} 
 \end{figure}
 \begin{figure}[h]
 \centering \includegraphics[scale=0.45]{veristand_ws_logging_add_ch}
-\protect\caption{Logging Control add channel}
+\caption{Logging Control add channel}
 
 
 \label{fig: veristand workspace logging channels} 
@@ -1022,7 +994,7 @@ Data logged on the cRIO through To File blocks can be retrieved after
 simulation over FTP with software such as WinSCP.
 
 \begin{figure}[h]
-\centering \includegraphics[scale=0.45]{WinSCP_login} \protect\caption{\label{fig: WinSCP login}WinSCP login}
+\centering \includegraphics[scale=0.45]{WinSCP_login} \caption{\label{fig: WinSCP login}WinSCP login}
 \end{figure}
 
 
@@ -1031,7 +1003,7 @@ To connect to the cRIO, the correct IP must be specified, as in Figure
 and password are blank.
 
 \begin{figure}[h]
-\centering \includegraphics[scale=0.45]{WinSCP} \protect\caption{\label{fig: WinSCP}WinSCP}
+\centering \includegraphics[scale=0.45]{WinSCP} \caption{\label{fig: WinSCP}WinSCP}
 \end{figure}
 
 
@@ -1128,10 +1100,8 @@ Stop before automatic stop at high speeds.
 \section{\label{sec: CSE1 Student controller implementation}Student controller
 implementation}
 \begin{enumerate}
-\item Unzip the CSE1 Veristand Project {\texttt{CSE1.zip}} to \texttt{C:\textbackslash{}CSE1\textbackslash{}}.%
-\footnote{Other paths are possible but require changing all VeriStand project
-paths.%
-}
+\item Unzip the CSE1 Veristand Project {\texttt{CSE1.zip}} to \texttt{C:\textbackslash{}CSE1\textbackslash{}}.\footnote{Other paths are possible but require changing all VeriStand project
+paths.}
 \item Simulink implementation and compilation
 
 \begin{enumerate}
@@ -1151,10 +1121,8 @@ in \texttt{C:\textbackslash{}CSE1\textbackslash{}ctrl\_student\_niVeriStand\_VxW
 \item CSE1 Veristand Project configuration
 
 \begin{enumerate}
-\item Open {\texttt{CSE1.nivsproj}}%
-\footnote{Not \texttt{CSE1.nivssdf}, since not only the system definition should
-be altered.%
-} to access the project.
+\item Open {\texttt{CSE1.nivsproj}}\footnote{Not \texttt{CSE1.nivssdf}, since not only the system definition should
+be altered.} to access the project.
 \item Update {\texttt{ctrl\_student.out}}:
 
 \begin{enumerate}
@@ -1163,7 +1131,7 @@ file \texttt{CSE1.nivssdf}.
 \item 
 \begin{figure}
 \centering \includegraphics[scale=0.45]{CSE1_update_ctrl_studtent}
-\protect\caption{\label{fig: CSE1 simulation models}CSE1 Veristand Project simulation
+\caption{\label{fig: CSE1 simulation models}CSE1 Veristand Project simulation
 models}
 \end{figure}
 Browse the left pane tree, as seen in Figure \ref{fig: CSE1 simulation models},
@@ -1178,7 +1146,7 @@ omega\_VSP1, omega\_VSP2) are already mapped as necessary.
 \item 
 \begin{figure}
 \centering \includegraphics[scale=0.45]{CSE1_student_workspace}
-\protect\caption{\label{fig: CSE1 student_ctrl workspace}CSE1 Veristand Project ctrl\_student
+\caption{\label{fig: CSE1 student_ctrl workspace}CSE1 Veristand Project ctrl\_student
 workspace}
 \end{figure}
 Implement a suitable workspace, as described in Section \ref{sub: Create computer interface},
@@ -1197,10 +1165,8 @@ shows control screen 4 before customization.
 \item \noindent Place the batteries adjacent to the watertight box: main
 battery battery (12 V) astern and secondary battery (6 V) in the bow.
 \item \noindent Connect main battery: first the red wire to the red/positive
-pole, then the black wire to the black/negative pole%
-\footnote{The connection order of the wires should not matter. However, experiences
-favor the this order of connection.%
-}.\\
+pole, then the black wire to the black/negative pole\footnote{The connection order of the wires should not matter. However, experiences
+favor the this order of connection.}.\\
 cRIO LED nr.1 (power) will light up green.
 \item Wait for cRIO and RPi start up.\\
 When complete, the Bluetooth dongle blue LED blinks evenly at approximately
@@ -1216,7 +1182,7 @@ The Wifi bridge Power LED will light up green.
 When connected, the Wifi bridge WLAN green LED turns on.
 \item 
 \begin{figure}[h]
-\centering \includegraphics[scale=0.45]{cRIO_ping} \protect\caption{\label{fig: ping}Ping, successful access to CSE1}
+\centering \includegraphics[scale=0.45]{cRIO_ping} \caption{\label{fig: ping}Ping, successful access to CSE1}
 \end{figure}
 Verify laptop access: ping the CSE1 IP in the command promt, as in
 Figure \ref{fig: ping}. While the round trip times may vary, it is
@@ -1340,7 +1306,7 @@ $X_{uuu}$  & $-3.7870$  & $Y_{vvv}$  & $-64.910$ \tabularnewline
 \end{tabular}
 \par\end{centering}
 
-\protect\caption{\label{tab: CSE1-hydrodynamic}CSE1 hydrodynamic damping parameters}
+\caption{\label{tab: CSE1-hydrodynamic}CSE1 hydrodynamic damping parameters}
 \end{table}
 
 
@@ -1471,7 +1437,7 @@ window)
 \end{enumerate}
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 14.10.14\string".png}
-\protect\caption{NI MAX - Network Settings}
+\caption{NI MAX - Network Settings}
 
 
 \label{fig: network settings} 
@@ -1505,7 +1471,7 @@ and click next. See Figure \ref{fig: NI MAX - Software Update 2}
 \end{enumerate}
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 14.12.35\string".png}
-\protect\caption{NI MAX - Software Update 1}
+\caption{NI MAX - Software Update 1}
 
 
 \label{fig: Software update 1} 
@@ -1514,7 +1480,7 @@ and click next. See Figure \ref{fig: NI MAX - Software Update 2}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 14.12.51\string".png}
-\protect\caption{NI MAX - Software Update 1}
+\caption{NI MAX - Software Update 1}
 
 
 \label{fig: NI MAX - Software Update 2} 
@@ -1523,7 +1489,7 @@ and click next. See Figure \ref{fig: NI MAX - Software Update 2}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 14.13.03\string".png}
-\protect\caption{NI MAX - Software Update 3}
+\caption{NI MAX - Software Update 3}
 
 
 \label{fig: NI MAX - Software Update 1-3} 
@@ -1532,7 +1498,7 @@ and click next. See Figure \ref{fig: NI MAX - Software Update 2}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 14.15.22\string".png}
-\protect\caption{NI MAX - Software Update 4}
+\caption{NI MAX - Software Update 4}
 
 
 \label{fig: NI MAX - Software Update 4} 
@@ -1555,7 +1521,7 @@ reboot.
 \end{enumerate}
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 14.20.27\string".png}
-\protect\caption{NI MAX - NI Veristand Engine installation 1}
+\caption{NI MAX - NI Veristand Engine installation 1}
 
 
 \label{fig: NI Veristand Engine installation 1} 
@@ -1564,14 +1530,14 @@ reboot.
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 14.20.39\string".png}
-\protect\caption{NI MAX - NI Veristand Engine installation 1}
+\caption{NI MAX - NI Veristand Engine installation 1}
 
 
 \label{fig: NI Veristand Engine installation 1-1} 
 \end{figure}
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 14.21.07\string".png}
-\protect\caption{NI MAX - NI Veristand Engine installation 1}
+\caption{NI MAX - NI Veristand Engine installation 1}
 
 
 \label{fig: NI Veristand Engine installation 1-2} 
@@ -1637,7 +1603,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.21.16\string".png}
-\protect\caption{Create Labview FPGA target and XML - 1}
+\caption{Create Labview FPGA target and XML - 1}
 
 
 \label{fig: Create Labview FPGA target and XML-1} 
@@ -1646,7 +1612,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.23.23\string".png}
-\protect\caption{Create Labview FPGA target and XML - 2}
+\caption{Create Labview FPGA target and XML - 2}
 
 
 \label{fig: Create Labview FPGA target and XML-2} 
@@ -1655,7 +1621,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.23.41\string".png}
-\protect\caption{Create Labview FPGA target and XML - 3}
+\caption{Create Labview FPGA target and XML - 3}
 
 
 \label{fig: Create Labview FPGA target and XML-3} 
@@ -1664,7 +1630,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.23.58\string".png}
-\protect\caption{Create Labview FPGA target and XML -4}
+\caption{Create Labview FPGA target and XML -4}
 
 
 \label{fig: Create Labview FPGA target and XML-4} 
@@ -1673,7 +1639,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.24.31\string".png}
-\protect\caption{Create Labview FPGA target and XML - 5}
+\caption{Create Labview FPGA target and XML - 5}
 
 
 \label{fig: Create Labview FPGA target and XML-5} 
@@ -1682,7 +1648,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.24.43\string".png}
-\protect\caption{Create Labview FPGA target and XML - 6}
+\caption{Create Labview FPGA target and XML - 6}
 
 
 \label{fig: Create Labview FPGA target and XML-6} 
@@ -1691,7 +1657,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.25.37\string".png}
-\protect\caption{Create Labview FPGA target and XML - 7}
+\caption{Create Labview FPGA target and XML - 7}
 
 
 \label{fig: Create Labview FPGA target and XML-7} 
@@ -1700,7 +1666,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.25.54\string".png}
-\protect\caption{Create Labview FPGA target and XML - 8}
+\caption{Create Labview FPGA target and XML - 8}
 
 
 \label{fig: Create Labview FPGA target and XML-8} 
@@ -1709,7 +1675,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.28.17\string".png}
-\protect\caption{Create Labview FPGA target and XML -9}
+\caption{Create Labview FPGA target and XML -9}
 
 
 \label{fig: Create Labview FPGA target and XML-9} 
@@ -1718,7 +1684,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.28.41\string".png}
-\protect\caption{Create Labview FPGA target and XML - 10}
+\caption{Create Labview FPGA target and XML - 10}
 
 
 \label{fig: Create Labview FPGA target and XML-10} 
@@ -1727,7 +1693,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[angle=-90,scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.29.04\string".png}
-\protect\caption{Create Labview FPGA target and XML - 11}
+\caption{Create Labview FPGA target and XML - 11}
 
 
 \label{fig: Create Labview FPGA target and XML-11} 
@@ -1736,7 +1702,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[angle=-90,scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 20.07.43\string".png}
-\protect\caption{Create Labview FPGA target and XML - 12}
+\caption{Create Labview FPGA target and XML - 12}
 
 
 \label{fig: Create Labview FPGA target and XML-12} 
@@ -1745,7 +1711,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.52.25\string".png}
-\protect\caption{Create Labview FPGA target and XML - 13}
+\caption{Create Labview FPGA target and XML - 13}
 
 
 \label{fig: Create Labview FPGA target and XML-13} 
@@ -1754,7 +1720,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.53.01\string".png}
-\protect\caption{Create Labview FPGA target and XML - 14}
+\caption{Create Labview FPGA target and XML - 14}
 
 
 \label{fig: Create Labview FPGA target and XML-14} 
@@ -1763,7 +1729,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 19.53.25\string".png}
-\protect\caption{Create Labview FPGA target and XML - 15}
+\caption{Create Labview FPGA target and XML - 15}
 
 
 \label{fig: Create Labview FPGA target and XML-15} 
@@ -1772,7 +1738,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-16 20.01.32\string".png}
-\protect\caption{Create Labview FPGA target and XML - 16}
+\caption{Create Labview FPGA target and XML - 16}
 
 
 \label{fig: Create Labview FPGA target and XML-16} 
@@ -1781,7 +1747,7 @@ Documentation: \url{https://decibel.ni.com/content/docs/DOC-13815}
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"Screenshots/Screenshot 2015-01-17 13.59.31\string".png}
-\protect\caption{Create Labview FPGA target and XML - 17}
+\caption{Create Labview FPGA target and XML - 17}
 
 
 \label{fig: Create Labview FPGA target and XML-17} 
@@ -1808,7 +1774,7 @@ as seen in figure \ref{fig: fpga1}.
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{fpga1}
 
-\protect\caption{FPGA1}
+\caption{FPGA1}
 
 
 \label{fig: fpga1}
@@ -1823,7 +1789,7 @@ really being used are the FPGA bitfiles.
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{fpga2}
 
-\protect\caption{FPGA2}
+\caption{FPGA2}
 
 
 \label{fig: fpga2}
@@ -1838,7 +1804,7 @@ Figure\ref{fig: veristand mappings}.
 \begin{figure}
 \includegraphics[scale=0.45]{fpga3}
 
-\protect\caption{FPGA3}
+\caption{FPGA3}
 
 
 \label{fig: fpga3}
@@ -1912,7 +1878,7 @@ The directory should now contain something like Figure \ref{fig: custom device f
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"custom devices folder\string".png}
-\protect\caption{Custom device folder}
+\caption{Custom device folder}
 
 
 \label{fig: custom device folder} 
@@ -1924,7 +1890,7 @@ in the system explorer, which is found as seen in Figure \ref{fig: veristand lau
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"veristand launch system explorer\string".png}
-\protect\caption{VeriStand launch system explorer}
+\caption{VeriStand launch system explorer}
 
 
 \label{fig: veristand launch system explorer} 
@@ -1939,7 +1905,7 @@ placement of the custom device folder from step 1 is wrong.
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"veristand custom driver select\string".png}
-\protect\caption{Custom device selection}
+\caption{Custom device selection}
 
 
 \label{fig: custom device selection} 
@@ -1953,7 +1919,7 @@ in this case it is joystick axis.
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"veristand mapping\string".png}
-\protect\caption{VeriStand}
+\caption{VeriStand}
 
 
 \label{fig: veristand confirmation} 
@@ -1966,7 +1932,7 @@ by the arrow in Figure \ref{fig: veristand confirmation}).
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"veristand mapping2\string".png}
-\protect\caption{VeriStand System Configuration Mappings}
+\caption{VeriStand System Configuration Mappings}
 
 
 \label{fig: veristand mappings} 
@@ -1995,24 +1961,19 @@ possible from an OSX or Linux computer.
 
 \subsubsection{Download operating system and utilities}
 
-Download and extract the newest Raspbian%
-\footnote{raspberrypi.org/downloads%
-} operating system (OS) image.
+Download and extract the newest Raspbian\footnote{raspberrypi.org/downloads}
+operating system (OS) image.
 
 Necessary utilities for the setup are
 \begin{itemize}
-\item Win32 Disk Imager%
-\footnote{sourceforge.net/projects/win32diskimager%
-} to write the OS image to the RPi SD card
-\item Advanced IP scanner%
-\footnote{by Famatech, advanced-ip-scanner.com%
-} to find the RPi address on the network 
-\item Putty terminal emulator%
-\footnote{www.chiark.greenend.org.uk/\textasciitilde{}sgtatham/putty/download.html%
-} for SSH connection
-\item WinSCP%
-\footnote{by Martin Prikryl, winscp.net/eng/download.php%
-} for file transfer
+\item Win32 Disk Imager\footnote{sourceforge.net/projects/win32diskimager}
+to write the OS image to the RPi SD card
+\item Advanced IP scanner\footnote{by Famatech, advanced-ip-scanner.com}
+to find the RPi address on the network 
+\item Putty terminal emulator\footnote{www.chiark.greenend.org.uk/\textasciitilde{}sgtatham/putty/download.html}
+for SSH connection
+\item WinSCP\footnote{by Martin Prikryl, winscp.net/eng/download.php} for
+file transfer
 \end{itemize}
 \begin{table}[h!]
 \begin{centering}
@@ -2025,7 +1986,7 @@ Advanced IP scanner & nmap\tabularnewline
 Putty & ssh\tabularnewline
 WinSCP & sftp\tabularnewline
 \bottomrule
-\end{tabular}\protect\caption{RPi installation and setup utilities}
+\end{tabular}\caption{RPi installation and setup utilities}
 
 \par\end{centering}
 
@@ -2041,7 +2002,7 @@ Since the .iso file is raw, it needs to be written to the SD card
 in way that makes it bootable. Win32 Disk Imager does this.
 
 \begin{figure}[h!]
-\centering \includegraphics[scale=0.45]{Rpi_DiskImager} \protect\caption{Disk Imager}
+\centering \includegraphics[scale=0.45]{Rpi_DiskImager} \caption{Disk Imager}
 
 
 \label{fig: Disk Imager} 
@@ -2063,7 +2024,7 @@ RPi can be accessed through the network, i.e. without having to directly
 connect a monitor and keyboard.
 
 \begin{figure}[h!]
-\centering \includegraphics[scale=0.45]{advancedIPscanner} \protect\caption{Advanced IP Scanner}
+\centering \includegraphics[scale=0.45]{advancedIPscanner} \caption{Advanced IP Scanner}
 
 
 \label{fig: Advanced IP Scanner} 
@@ -2077,7 +2038,7 @@ it is fixed (\textit{Raspberry Pi Foundation}). The name is typically
 \emph{raspberrypi}. See Figure \ref{fig: Advanced IP Scanner}.
 
 \begin{figure}[h!]
-\centering \includegraphics[scale=0.45]{Rpi_remote_access1} \protect\caption{Putty settings}
+\centering \includegraphics[scale=0.45]{Rpi_remote_access1} \caption{Putty settings}
 
 
 \label{fig: Putty settings} 
@@ -2088,7 +2049,7 @@ Once the IP is known, it is specified in the Putty settings, as in
 Figure \ref{fig: Putty settings}, and a connection can be opened.
 
 \begin{figure}[h!]
-\centering \includegraphics[scale=0.45]{Rpi_remote_access2} \protect\caption{SSH connection}
+\centering \includegraphics[scale=0.45]{Rpi_remote_access2} \caption{SSH connection}
 
 
 \label{fig: SSH connection} 
@@ -2103,7 +2064,7 @@ login.
 \subsubsection{Finalize configuration}
 
 \begin{figure}[h!]
-\centering \includegraphics[scale=0.45]{Rpi_finalize_install} \protect\caption{RPi configuration tool}
+\centering \includegraphics[scale=0.45]{Rpi_finalize_install} \caption{RPi configuration tool}
 \label{fig: RPi configuration tool} 
 \end{figure}
 
@@ -2175,7 +2136,7 @@ To download and install, type
 The process takes a few minutes.
 
 \begin{figure}[h!]
-\centering \includegraphics[scale=0.45]{rpi_hciconfig} \protect\caption{Bluetooth configuration tool}
+\centering \includegraphics[scale=0.45]{rpi_hciconfig} \caption{Bluetooth configuration tool}
 \label{fig: RPi hciconfig} 
 \end{figure}
 To confirm the installation, use the \texttt{hciconfig} command to
@@ -2190,10 +2151,9 @@ Most experienced errors were due to typos.
 \subsubsection{\label{par: Bluetooth-pairing}Bluetooth pairing}
 
 Sixaxis does not support the standard Bluetooth paring prcedure, instead,
-pairing is done over USB. The \texttt{sixpair} command-line utility%
-\footnote{by Pabr Technologies, www.pabr.org%
-} searches USB buses for Sixaxis devices and tells them to connect
-to a new Bluetooth master.
+pairing is done over USB. The \texttt{sixpair} command-line utility\footnote{by Pabr Technologies, www.pabr.org}
+searches USB buses for Sixaxis devices and tells them to connect to
+a new Bluetooth master.
 
 Download and compile the program by the following commands:
 
@@ -2218,9 +2178,8 @@ The Sixaxis USB cable may now be disconnected.
 
 \subsubsection{Joystick manager system service}
 
-\texttt{QtSixA}%
-\footnote{the Sixaxis Joystick Manager by falkTX, qtsixa.sourceforge.net%
-} reads the Sixaxis signals and makes them available to other programs.
+\texttt{QtSixA}\footnote{the Sixaxis Joystick Manager by falkTX, qtsixa.sourceforge.net}
+reads the Sixaxis signals and makes them available to other programs.
 This program needs to run automatically whenever the RPi is booted.
 
 To download the program, type
@@ -2276,7 +2235,7 @@ program
 \begin{verbatim}./jscont\end{verbatim}
 
 \begin{figure}[h!]
-\centering \includegraphics[scale=0.45]{RPi_jscont} \protect\caption{Joystick signal server test}
+\centering \includegraphics[scale=0.45]{RPi_jscont} \caption{Joystick signal server test}
 \label{fig: RPi joystick server} 
 \end{figure}
 
@@ -2310,9 +2269,7 @@ RPi should now be sending joystick signals at start-up.
 \section{\label{sub: Laptop software}Laptop}
 
 Compatability between software is very important, See NI VeriStand
-Version Compatibility KnowlegeBase%
-\footnote{\url{http://digital.ni.com/public.nsf/allkb/2AE33E926BF2CDF2862579880079D751}%
-}.
+Version Compatibility KnowlegeBase\footnote{\url{http://digital.ni.com/public.nsf/allkb/2AE33E926BF2CDF2862579880079D751}}.
 
 
 \subsubsection{Order of installation}
@@ -2332,9 +2289,7 @@ Version Compatibility KnowlegeBase%
 \item VxWorks:
 
 \begin{enumerate}
-\item WindRiver GNU Toolchain%
-\footnote{\url{ftp://ftp.ni.com/pub/devzone/epd/gccdist_vxworks6.3_gcc3.4.4.zip}%
-}
+\item WindRiver GNU Toolchain\footnote{\url{ftp://ftp.ni.com/pub/devzone/epd/gccdist_vxworks6.3_gcc3.4.4.zip}}
 \item Real-Time Workshop software
 \end{enumerate}
 \item PharLap:
@@ -2367,7 +2322,7 @@ Hystersis on motors
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{\string"CSE1 control software\string".jpg}
-\protect\caption{CSE1 component communication}
+\caption{CSE1 component communication}
 
 
 \label{fig: software module communication-1} 
@@ -2375,7 +2330,7 @@ Hystersis on motors
 
 
 \begin{figure}[h!]
-\centering \includegraphics[width=0.95\textwidth]{innmat_CSE1} \protect\caption{CSE1 - Hardware \label{fig: CSE1 hardware} }
+\centering \includegraphics[width=0.95\textwidth]{innmat_CSE1} \caption{CSE1 - Hardware \label{fig: CSE1 hardware} }
 \end{figure}
 
 
@@ -2392,7 +2347,7 @@ Hystersis on motors
 	\node (kinetics) [blokk, right=of thrust_configuration] {\tiny Kinetics};
 	\node (kinematics) [blokk, right=of kinetics] {\tiny Kinematics};
 	
-\end{tikzpicture} \protect\caption{CSE1 diagram }
+\end{tikzpicture} \caption{CSE1 diagram }
 \end{figure}
 
 
@@ -2414,7 +2369,7 @@ Antall, posisjon, aktivert med pwm.
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.7\textwidth]{\string"CSE1 actuators2\string".jpg}};
 \end{tikzpicture}\caption{Control input}\label{fig: Thruster configuration control input}\end{subfigure}
 
-\protect\caption{Thruster configuration}
+\caption{Thruster configuration}
 \end{figure}
 
 
@@ -2433,7 +2388,7 @@ pwm5 & servo2\tabularnewline
 pwm6 & servo3\tabularnewline
 pwm7 & servo4\tabularnewline
 \bottomrule
-\end{tabular}\protect\caption{CSE1 cRIO digital output}
+\end{tabular}\caption{CSE1 cRIO digital output}
 
 \par\end{centering}
 
@@ -2468,7 +2423,7 @@ AI1 & Unknown\tabularnewline
 AI2 & Unknown\tabularnewline
 AI3 & 12V Battery\tabularnewline
 \bottomrule
-\end{tabular}\protect\caption{CSE1 cRIO analog input}
+\end{tabular}\caption{CSE1 cRIO analog input}
 
 \par\end{centering}
 
@@ -2485,7 +2440,7 @@ AI3 & 12V Battery\tabularnewline
 
 \begin{figure}[!h]
 \centering \includegraphics[width=1\textwidth]{CSE1_software_modules}
-\protect\caption{CSE1 control software modules}
+\caption{CSE1 control software modules}
 
 
 \label{fig: CSE1 control software} 
@@ -2527,7 +2482,7 @@ Provides manual thruster control.
 
 \begin{figure}[!h]
 \centering \includegraphics[width=0.5\textwidth]{\string"Sixaxis coordinate system\string".jpg}
-\protect\caption{Sixaxis coordinate system}
+\caption{Sixaxis coordinate system}
 
 
 \label{fig: sixaxis coordinate system} 
@@ -2679,7 +2634,7 @@ $-\pi\leq$ & alpha\_VSP1 & $\leq\pi$\tabularnewline
 $-\pi\leq$ & alpha\_VSP2 & $\leq\pi$\tabularnewline
 $-1\leq$ & omega\_VSP1 & $\leq1$\tabularnewline
 $-1\leq$ & omega\_VSP2 & $\leq1$\tabularnewline
-\end{tabular}\protect\caption{\label{tab: CSE1 control input ranges}Control input ranges}
+\end{tabular}\caption{\label{tab: CSE1 control input ranges}Control input ranges}
  
 \end{table}
 
@@ -2715,7 +2670,7 @@ W & 5.25 & 5.75 & 4.15 & 4.85\tabularnewline
 NW & 4.60 & 5.65 & 4.20 & 4.30\tabularnewline
 \midrule
 Origo & 4.90 & 4.82 & 4.83 & 4.52\tabularnewline
-\end{tabular}\protect\caption{Servo pwm ranges}
+\end{tabular}\caption{Servo pwm ranges}
 
 \par\end{centering}
 
@@ -2745,7 +2700,7 @@ Foreslått metode
 \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.7\textwidth]{\string"CSE1 servo settings 3\string".jpg}};
 \end{tikzpicture}\caption{Second extrapolation}\label{fig: Servo second extrapolation}\end{subfigure}
 
-\protect\caption{Servo, rod position tuning}
+\caption{Servo, rod position tuning}
 \end{figure}
 
 
@@ -2768,7 +2723,7 @@ $\text{\text{pwm}}_{\text{servo2}}$ & pwm5\tabularnewline
 $\text{\text{pwm}}_{\text{servo3}}$ & pwm6\tabularnewline
 $\text{\text{pwm}}_{\text{servo4}}$ & pwm7\tabularnewline
 \bottomrule
-\end{tabular}\protect\caption{PWM connections}
+\end{tabular}\caption{PWM connections}
 
 \par\end{centering}
 
@@ -2786,7 +2741,7 @@ $\text{\text{pwm}}_{\text{servo4}}$ & pwm7\tabularnewline
 calibration
 
 \begin{figure}[!h]
-\centering \includegraphics[scale=0.45]{qualisys_CSE1_frame} \protect\caption{Matlab console}
+\centering \includegraphics[scale=0.45]{qualisys_CSE1_frame} \caption{Matlab console}
 
 
 \label{fig: matlab console-1-1} 
@@ -2803,7 +2758,7 @@ calibration
 
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{qualisys_waiting_to_connect.JPG}
-\protect\caption{Matlab console}
+\caption{Matlab console}
 
 
 \label{fig: matlab console-1} 
@@ -2818,7 +2773,7 @@ leverer med 50Hz på nettet
 \begin{figure}[!h]
 \centering \includegraphics[scale=0.45]{NIMAX_install}
 
-\protect\caption{FPGA2}
+\caption{FPGA2}
 
 
 \label{fig: fpga2-1}
@@ -2871,7 +2826,7 @@ MClab\tabularnewline
 \midrule 
 Subnet mask & 255.255.255.0 & for all\tabularnewline
 \bottomrule
-\end{tabular}\protect\caption{IP addresses}
+\end{tabular}\caption{IP addresses}
 \label{tab: IP addresses} 
 \end{table}
 
@@ -2979,7 +2934,7 @@ cRIO  & National Instruments\tabularnewline
 VSP & Thrusters were ordere at \url{www.cornwallmodelboats.co.uk/acatalog/voith_schottel.html}.
 Per 2014, availability is variable.\tabularnewline
 \bottomrule
-\end{tabular}\protect\caption{Suppliers}
+\end{tabular}\caption{Suppliers}
 
 \par\end{centering}
 
