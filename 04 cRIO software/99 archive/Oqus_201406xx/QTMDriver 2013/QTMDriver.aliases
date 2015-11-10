@@ -1,0 +1,6 @@
+[My Computer]
+My Computer = "192.168.0.250"
+
+[NI-cRIO9074-HIL-Lab2]
+NI-cRIO9074-HIL-Lab2 = "192.168.0.77"
+
