@@ -10,12 +10,26 @@
 \usepackage{placeins}
 \usepackage{parskip}
 
+
+
 \usepackage{subcaption}
 \usepackage{tikz}
 
 
 % for tables: \toprule, \midrule, \bottomrule
 \usepackage{array}% for tables: \bfseries
+
+\usepackage{amssymb}
+
+
+\usepackage{graphicx}
+
+\usepackage{booktabs}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+\usepackage{pdflscape}
+\usepackage{bbding}
+\usepackage{pifont}
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -217,9 +231,8 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-This handbook is a comprehensive reference for the marine hardware-in-the-loop
- (HIL) and marine cybernetics laboratories.
- The laboratories are used in teaching and research on development and real-time
+This handbook is a comprehensive reference for the marine cybernetics laboratory.
+ The laboratory is used in teaching and research on development and real-time
  testing of marine control systems.
 \end_layout
 
@@ -242,18 +255,6 @@ reference "part: Theory"
 Part 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "part: Laboratory equipment"
-
-\end_inset
-
- describes the laboratory facilities and equipment.
- A general overview of hardware and software.
-\end_layout
-
-\begin_layout Standard
-Part 
-\begin_inset CommandInset ref
-LatexCommand ref
 reference "part: Laboratory user guide"
 
 \end_inset
@@ -261,8 +262,11 @@ reference "part: Laboratory user guide"
  is a user guide intended for students of the course.
  Step-by-step instructions for development and deployment of programs to
  the real-time controller are given.
- Lower level details, intended for laboratory assistants and customized
- use, are given in Part 
+\end_layout
+
+\begin_layout Standard
+Lower level details, intended for laboratory assistants and customized use,
+ are given in Part 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "part: Equipment setup and configuration"
@@ -270,17 +274,6 @@ reference "part: Equipment setup and configuration"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Part 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "part: Lab exercises"
-
-\end_inset
-
- holds the exercise texts for TMR4243 Marine Control Systems II.
 \end_layout
 
 \begin_layout Standard
@@ -492,106 +485,767 @@ name "part: Theory"
 
 \end_inset
 
-Theory
+Introduction
 \end_layout
 
 \begin_layout Chapter
-Realtime
+Marine cybernetics laboratory
 \end_layout
 
 \begin_layout Standard
-Real-time testing involves using a real-time OS as part of a test system.
- The most common requirements driving the need for a real-time test system
- are to achieve greater reliability and performance than is possible using
- a general-purpose OS.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename mc_lab.png
+	width 95text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Marine cybernetics laboratory basin-1"
+
+\end_inset
+
+Marine cybernetics laboratory basin
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "towing-1"
+
+\end_inset
+
  
 \end_layout
 
-\begin_layout Standard
-http://www.ni.com/white-paper/3938/en/
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-http://www.ni.com/white-paper/14238/en/
+The laboratory is equipped for experimental testing of marine control systems
+ and hydrodynamic tests.
+ It consists of a wave basin with an advanced instrumentation package and
+ a towing carriage.
+ The basin, depicted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Marine cybernetics laboratory basin-1"
+
+\end_inset
+
+, has dimensions 40m x 6.45m x 1.5m (LxBxD).
 \end_layout
 
 \begin_layout Standard
-http://www.ni.com/white-paper/13068/en/
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+http://www.ntnu.no/imt/lab/cybernetics
+\end_layout
+
+\begin_layout Plain Layout
+The Marine Cybernetics Laboratory is the newest test basin at the Marine
+ Technology Centre.
+ It is located in what was originally a storage tank for ship models made
+ of paraffin wax.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+As the name indicates, the facility is especially suited for tests of marine
+ control systems, due to the relatively small size and advanced instrumentation
+ package.
+ It is also suitable for more specialised hydrodynamic tests, mainly due
+ to the advanced towing carriage , which has capability for precise movement
+ of models in 6 degrees of freedom.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+The MCLab is operated by the Department of Marine Technology, and has been
+ a Marie Curie EU Training Site (2002-2008).
+ It is mainly used by Master and PhD-students, but it is also available
+ for MARINTEK and external users.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+The software in use was developed using rapid prototyping techniques and
+ automatic code generation under Matlab/Simulink and Opal.
+ The target PC onboard the vessel runs the QNX real-time operating system
+ while experimental results are presented in real-time on a host PC using
+ Labview.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{Sakset rett fra nettsiden http://www.ntnu.edu/imt/marine-cybernetics-lab}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Fixed Equipment
+\end_layout
+
+\begin_layout Subsection
+Qualisys motion capture system
+\end_layout
+
+\begin_layout Standard
+Qualisys provides 6 degrees of freedom data tracking.
+ The system has millimeter precision, works in real time and is configured
+ to 50Hz.
+\end_layout
+
+\begin_layout Standard
+The positioning system consists of three Oqus high speed infrared cameras
+ registering infrared reflectors placed on the vessel.
+ Peer-to-peer (P2P) networking is used to transmit camera data to a dedicated
+ computer running Qualisys Track Manager (QTM) software.
+ QTM performs triangulation and broadcasts the vessel position over the
+ HIL-lab network.
+\end_layout
+
+\begin_layout Subsection
+Towing carriage
+\end_layout
+
+\begin_layout Standard
+The carriage runs at speeds up to 2m/s.
+ It also has capability for precise movement of models in 6 degrees of freedom
+ and is thus suitable for more specialized hydrodynamic tests.
+\end_layout
+
+\begin_layout Subsection
+Wave generator
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Height [m]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Period T [s]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Regular waves
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H<0.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.3 - 3.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Irregular waves
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Formula $H_{s}<0.15$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.6 - 1.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Wave generator capacity-1"
+
+\end_inset
+
+Wave generator capacity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The single paddle wave generator is controlled by a dedicated computer.
+ Available spectrum are first order Stoke, JONSWAP, Pierson-Moskowitz, Bretschne
+ider, ISSC and ITTC.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Wave generator capacity-1"
+
+\end_inset
+
+ summarizes the generation capacity.
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Vessels
+\end_layout
+
+\begin_layout Standard
+Both suface and underwater vessels.
+\end_layout
+
+\begin_layout Standard
+The Cyber Ship class, with ship prefix CS consists of ....
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+CS Inocean Cat I Arctic Drillship
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+CS Enterprise I
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename CSE1_2.PNG
+	width 95text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Cybership Enterprise 1"
+
+\end_inset
+
+CS Enterprise I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The CSE1, depicted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Cybership Enterprise 1"
+
+\end_inset
+
+, hva bruker vi den til?
+\end_layout
+
+\begin_layout Subsubsection
+Hull
+\end_layout
+
+\begin_layout Standard
+tug boat model.
+\end_layout
+
+\begin_layout Subsubsection
+Actuators
+\end_layout
+
+\begin_layout Standard
+The ship is fitted with two Voith Schneider propellers (VSP) astern and
+ a bow thruster (BT).
+\end_layout
+
+\begin_layout Subsubsection
+Control system
+\end_layout
+
+\begin_layout Standard
+The on-board control system consists of
 \end_layout
 
 \begin_layout Itemize
-Forklaring av hva realtime betyr i HW og SW
+a National Instruments compact reconfigurable input/output (cRIO) embedded
+ controller,
 \end_layout
 
-\begin_layout Chapter
-HIL
+\begin_layout Itemize
+a Raspberry Pi (RPi) single-board computerand,
+\end_layout
+
+\begin_layout Itemize
+three electronic speed controllers (ESC), and
+\end_layout
+
+\begin_layout Itemize
+four servos.
 \end_layout
 
 \begin_layout Standard
-In general, Hardware-In-the-Loop simulation is a method that can be used
- to test complex real-time control and monitoring systems.
+The operator interface is by laptop and through a Sony Sixaxis wireless
+ gamepad for PlayStation 3.
+\end_layout
+
+\begin_layout Paragraph
+High-level communication
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename setupCSE1.jpg
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: CSE1 communication"
+
+\end_inset
+
+d
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename CSE1 signal.png
+	height 40pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: CSE1 power-1"
+
+\end_inset
+
+d
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Following Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: CSE1 communication"
+
+\end_inset
+
+ from left to right:
+\end_layout
+
+\begin_layout Description
+Sixaxis transmits its information to the RPi Bluetooth USB dongle with which
+ it is previously paired
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+One-time pairing procedure described in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "par: Bluetooth-pairing"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+RPi receives Sixaxis data through the USB dongle and forwards it through
+ its TCP/IP
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+All IP addresses are as given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: IP addresses"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ server over Ethernet to the cRIO.
+\end_layout
+
+\begin_layout Description
+cRIO reads QTM broadcast positioning data through the Wi-Fi bridge on Ethernet
+ port 1, Sixaxis data on Ethernet port 2.
+ Online data and laptop input is transmitted and received on Ethernet port
+ 1 by the VeriStand Engine.
+\end_layout
+
+\begin_layout Description
+Laptop reads simulation data and sends input to the cRIO over Ethernet.
+\end_layout
+
+\begin_layout Paragraph
+Low-level communication
+\end_layout
+
+\begin_layout Standard
+The BT and VSP motor speeds are controlled by ESC.
+ The ESC receive their setpoints as a pulse-width modulated (PWM) signals
+ from the cRIO digital output module.
+\end_layout
+
+\begin_layout Standard
+The VSP blade pitches are controlled by servos.
+ The servos also receive their setpoint as PWM signals.
+\end_layout
+
+\begin_layout Subsubsection
+Power
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename CSE1 power.png
+	height 40pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: CSE1 power"
+
+\end_inset
+
+d
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+hg
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+CS Saucer
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+fdfd
+\end_layout
+
+\begin_layout Standard
+fdfdfd
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+ROV Neptunus
+\end_layout
+
+\begin_layout Standard
+.fdfd
+\end_layout
+
+\begin_layout Standard
+fdfdfdfdfd
+\end_layout
+
+\begin_layout Standard
+fdfdfd
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Control system development philosophy
+\end_layout
+
+\begin_layout Standard
+test complex real-time control and monitoring systems.
  Such systems are becoming more complex and rely on more advanced integrated
  functionality of software-based real-time functions, and many separately
  designed control and monitoring systems need to cooperate on performing
  common tasks.
  Consequently, the control system software code becomes more complex, and
  may be hard to verify by running regular software simulations.
- With testing by HIL simulation, the control system is run on its intended
- hardware, but instead of controlling the real process, it is controlling
- a simulated process in a simulated environment.
- The control and monitoring system will, however, see no difference between
- the real process and the simulated process.
-\end_layout
-
-\begin_layout Standard
-Through HIL testing, the Marine HIL-Lab aims for by students and researchers
- to qualify their experimental setups in other laboratories before their
- assigned laboratory time is started.
- This will aid in making experimental work more efficient by reducing debugging
- time, improve tuning of parameters and test scenarios, and thereby maximizing
- the outcome of the experimental work.
-\end_layout
-
-\begin_layout Standard
-Smogeli, Fremtidens verifikasjon av kontrollsystemer for Skip og offshorefartøy
-\end_layout
-
-\begin_layout Standard
-DNV, Hardware in the Loop Testing (HIL)
-\end_layout
-
-\begin_layout Standard
-Johansen, Sørensen, Experiences with HIL Simulator Testing of Power Management
- Systems
-\end_layout
-
-\begin_layout Standard
-Smogeli, Introduction to third- party HIL testing
-\end_layout
-
-\begin_layout Standard
-Johansen, Fossen, Vik, Hardware-in-the-loop Testing of DP systems
-\end_layout
-
-\begin_layout Standard
-Pivano, Experiences from seven years of DP software testing
-\end_layout
-
-\begin_layout Standard
-DNV, Rules for Classification of Ships (Part 6, Ch 22)
-\end_layout
-
-\begin_layout Standard
-Ambrosovskaya, Approach for Advanced Testing of DP Control System
-\end_layout
-
-\begin_layout Standard
-Selvam, System Verification Helps Validate Complex Integrated Systems
-\end_layout
-
-\begin_layout Standard
-A.
- Veksler prøveforelesning:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -599,12 +1253,856 @@ Increased complexity marine vessels increases the need for testing and verificat
 ion.
 \end_layout
 
-\begin_layout Itemize
-A reasonably new approach to this is Hardware-In-the-Loop testing, or HIL.
+\begin_layout Standard
+Verification and validation techniques applied throughout the development
+ process enable you to find errors before they can derail your project.
+ Most system design errors are introduced in the original specification,
+ but aren't found until the test phase.
+ When engineering teams use models to perform virtual testing early in the
+ project, they eliminate problems and reduce development time by as much
+ as 50%.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Development Steps
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{lcccc}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+toprule%
+\end_layout
+
+\begin_layout Plain Layout
+
+DOF      & Controller & Plant   & Iteration time     & Flexibility 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+otoprule
+\end_layout
+
+\begin_layout Plain Layout
+
+MIL      & 
+\backslash
+ding{51} & Extremely short          &           &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+SIL      & 
+\backslash
+ding{51} &           &           &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+PIL      &           &           & 
+\backslash
+ding{51} &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+HIL   &           &           &           & 
+\backslash
+ding{51}  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Scale &           &           &           & 
+\backslash
+ding{51}  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Full scale   & 
+\backslash
+ding{51} & 
+\backslash
+ding{51} &           &    Low        
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bottomrule
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Development steps overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Most of these terms are used in the context of control systems development
+ which means that typically you are building control software to interact
+ with a mechatronic system.
+ Typically, these are referred to as the 
+\begin_inset Quotes eld
+\end_inset
+
+controller
+\begin_inset Quotes erd
+\end_inset
+
+ and the 
+\begin_inset Quotes eld
+\end_inset
+
+plant
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+qualify their experimental setups in other laboratories before their assigned
+ laboratory time is started.
+ This will aid in making experimental work more efficient by reducing debugging
+ time, improve tuning of parameters and test scenarios, and thereby maximizing
+ the outcome of the experimental work.
+\end_layout
+
+\begin_layout Subsection
+Model-in-the-Loop
+\end_layout
+
+\begin_layout Subsubsection
+Principle
+\end_layout
+
+\begin_layout Standard
+Model of the controller interconnected with a physical model of the plant,
+ interconnected in a control development environment, such as MATLAB Simulink.
+\end_layout
+
+\begin_layout Subsubsection
+Aim
+\end_layout
+
+\begin_layout Standard
+Develop control strategies 
+\end_layout
+
+\begin_layout Subsubsection
+Iteration time
+\end_layout
+
+\begin_layout Standard
+Extremely short, small changes are immediately implemented and tested.
+\end_layout
+
+\begin_layout Subsubsection
+Cost
+\end_layout
+
+\begin_layout Standard
+Low
+\end_layout
+
+\begin_layout Subsection
+Software-in-the-Loop
+\end_layout
+
+\begin_layout Standard
+Controller coded in final langugae, such as C or C++, and connected to plant
+ model in a control development environment.
+\end_layout
+
+\begin_layout Subsubsection
+Aim
+\end_layout
+
+\begin_layout Standard
+Test of coding system.
+ Reveal coding failures.
+\end_layout
+
+\begin_layout Subsubsection
+Iteration time
+\end_layout
+
+\begin_layout Standard
+Slightly longer than MIL.
+\end_layout
+
+\begin_layout Subsection
+Processor-in-the-Loop
+\end_layout
+
+\begin_layout Subsubsection
+Principle
+\end_layout
+
+\begin_layout Standard
+Controller deployed to a representative microprocessor, connected to the
+ plant simulation via high speed bus, such as JTAG.
+ The plant must be synchronized with the controller.
+\end_layout
+
+\begin_layout Subsubsection
+Aim
+\end_layout
+
+\begin_layout Standard
+expose problems with execution in the embedded environment.
+ For instance, does your control loop fit within the execution time available
+ on the embedded processor.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Iteration time
+\end_layout
+
+\begin_layout Standard
+higher, regenerate and deploy code for each run
+\end_layout
+
+\begin_layout Subsection
+Hardware-in-the-Loop
+\end_layout
+
+\begin_layout Subsubsection
+Principle
+\end_layout
+
+\begin_layout Standard
+Controller fully installed into the intended final hardware, connected through
+ the plant only through the proper IO.
+ The plant simulator must run on a real-time computer emulating the IO of
+ a real process.
+\end_layout
+
+\begin_layout Subsubsection
+Aim
+\end_layout
+
+\begin_layout Standard
+Perform regulation, security and failure tests without risk 
+\end_layout
+
+\begin_layout Standard
+Investigate the interaction between several ECUs and transmission control
+ units (TCUs) 
+\end_layout
+
+\begin_layout Standard
+Ensure a high level of robustness and quality.
+ 
+\end_layout
+
+\begin_layout Subsection
+Scale test
+\end_layout
+
+\begin_layout Subsection
+Full scale
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Control modes
+\end_layout
+
+\begin_layout Standard
+Five control modes:
 \end_layout
 
 \begin_layout Itemize
-Widely used in the automotive industry
+Stop all actuators
+\end_layout
+
+\begin_layout Enumerate
+Individual actuator control
+\end_layout
+
+\begin_layout Enumerate
+Generalized force control
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Body frame
+\end_layout
+
+\begin_layout Enumerate
+Inertial frame
+\end_layout
+
+\begin_layout Enumerate
+User frame
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Regulation
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Pose (3 DOF)
+\end_layout
+
+\begin_layout Enumerate
+Heading
+\end_layout
+
+\begin_layout Enumerate
+Depth
+\end_layout
+
+\begin_layout Enumerate
+Roll/pitch
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Automatic/operations
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset space \quad{}
+\end_inset
+
+Path following, guidance, etc
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Individual actuator control
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ctrl_u.png
+	scale 35
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Individual actuator control"
+
+\end_inset
+
+Individual actuator control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Inputs are 
+\end_layout
+
+\begin_layout Subsection
+Generalized force control
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ctrl_tau.png
+	scale 35
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Generalized force control"
+
+\end_inset
+
+Generalized force control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau=\left[\begin{array}{c}
+X\\
+Y\\
+Z\\
+K\\
+M\\
+N
+\end{array}\right]
+\]
+
+\end_inset
+
+For the surface craft typically 3 DOF 
+\begin_inset Formula 
+\[
+\tau=\left[\begin{array}{c}
+X\\
+Y\\
+N
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TA
+\end_layout
+
+\begin_layout Subsubsection
+Body frame
+\end_layout
+
+\begin_layout Subsubsection
+Inertial frame
+\end_layout
+
+\begin_layout Subsubsection
+User frame
+\end_layout
+
+\begin_layout Subsection
+Regulation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ctrl_setpoint.png
+	scale 35
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Generalized force control-1"
+
+\end_inset
+
+Generalized force control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{lcccc}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+toprule%
+\end_layout
+
+\begin_layout Plain Layout
+
+DOF      & Stationkeeping & Heading   & Depth     & Roll/Pitch 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+otoprule
+\end_layout
+
+\begin_layout Plain Layout
+
+$x$      & 
+\backslash
+ding{51} &           &           &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$y$      & 
+\backslash
+ding{51} &           &           &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$z$      &           &           & 
+\backslash
+ding{51} &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+phi$   &           &           &           & 
+\backslash
+ding{51}  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+theta$ &           &           &           & 
+\backslash
+ding{51}  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+$
+\backslash
+psi$   & 
+\backslash
+ding{51} & 
+\backslash
+ding{51} &           &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bottomrule
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Automatic/operations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ctrl_operations.png
+	scale 35
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Generalized force control-1-1"
+
+\end_inset
+
+Generalized force control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Smogeli, Fremtidens verifikasjon av kontrollsystemer for Skip og offshorefartøy
+\end_layout
+
+\begin_layout Plain Layout
+DNV, Hardware in the Loop Testing (HIL)
+\end_layout
+
+\begin_layout Plain Layout
+Johansen, Sørensen, Experiences with HIL Simulator Testing of Power Management
+ Systems
+\end_layout
+
+\begin_layout Plain Layout
+Smogeli, Introduction to third- party HIL testing
+\end_layout
+
+\begin_layout Plain Layout
+Johansen, Fossen, Vik, Hardware-in-the-loop Testing of DP systems
+\end_layout
+
+\begin_layout Plain Layout
+Pivano, Experiences from seven years of DP software testing
+\end_layout
+
+\begin_layout Plain Layout
+DNV, Rules for Classification of Ships (Part 6, Ch 22)
+\end_layout
+
+\begin_layout Plain Layout
+Ambrosovskaya, Approach for Advanced Testing of DP Control System
+\end_layout
+
+\begin_layout Plain Layout
+Selvam, System Verification Helps Validate Complex Integrated Systems
+\end_layout
+
+\begin_layout Plain Layout
+A.
+ Veksler prøveforelesning:
 \end_layout
 
 \begin_layout Itemize
@@ -678,7 +2176,7 @@ As with all software testing, it typically executes only a fraction of the
 
 \end_deeper
 \end_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 Asgeir
 \end_layout
 
@@ -704,16 +2202,41 @@ Simulator responds to output from the controllers as the dynamic system
 Software (core SW and/or configuration) errors are exposed.
 \end_layout
 
+\begin_layout Section
+Realtime
+\end_layout
+
+\begin_layout Plain Layout
+Real-time testing involves using a real-time OS as part of a test system.
+ The most common requirements driving the need for a real-time test system
+ are to achieve greater reliability and performance than is possible using
+ a general-purpose OS.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+http://www.ni.com/white-paper/3938/en/
+\end_layout
+
+\begin_layout Plain Layout
+http://www.ni.com/white-paper/14238/en/
+\end_layout
+
+\begin_layout Plain Layout
+http://www.ni.com/white-paper/13068/en/
+\end_layout
+
+\begin_layout Itemize
+Forklaring av hva realtime betyr i HW og SW
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Real-time computing
-\end_layout
-
-\begin_layout Section
-SIL
-\end_layout
-
-\begin_layout Section
-Model-in-the-loop
 \end_layout
 
 \begin_layout Subsection
@@ -746,6 +2269,10 @@ http://www.marinecybernetics.com/solutions-services/drill-hil-testing
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -772,7 +2299,7 @@ name "sec: Marine HIL simulation laboratory"
 Marine HIL simulation laboratory
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -821,7 +2348,7 @@ HIL setup
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The laboratory is suitable for implementation, qualification and comprehensive
  testing of
 \end_layout
@@ -851,7 +2378,7 @@ experimental setups before proceeding to other laboratories (such as model
 Equipment
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The laboratory consists of three equivalent portable setups, as illustrated
  in Figure 
 \begin_inset CommandInset ref
@@ -887,7 +2414,7 @@ Hardware
 Sixaxis wireless gamepad
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float table
 wide false
 sideways false
@@ -1075,7 +2602,7 @@ Sixaxis input
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The Sixaxis is a widespread gamepad.
  It transmits a broad range of input, listed in Table 
 \begin_inset CommandInset ref
@@ -1092,7 +2619,7 @@ reference "tab: sixaxis input"
 Raspberry Pi
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The RPi is a credit card-sized single-board computer including Ethernet
  and two USB connections.
  In the HIL laboratory setup, the unit is merely used to transmit the Sixaxis'
@@ -1114,7 +2641,7 @@ The cRIO USB port only supports common USB mass-storage devices, thus a
 cRIO-9024
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The cRIO is a compact reconfigurable input/output embedded real-time control
  and acquisition device, including two Ethernet ports.
  The unit also holds a field-programmable gate array (FPGA) chassis.
@@ -1126,7 +2653,7 @@ The cRIO is a compact reconfigurable input/output embedded real-time control
 Laptop
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A generic personal computer is used to configure and upload applications
  to the cRIO.
  The same computer is used for graphical user interfacing during simulations.
@@ -1140,7 +2667,7 @@ Software
 Laptop
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The main software used for the HIL laboratory are:
 \end_layout
 
@@ -1210,7 +2737,7 @@ ftp network utility, or similarly WinSCP, to transfer data log files from
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
@@ -1247,7 +2774,7 @@ LabVIEW - Real time module
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1262,7 +2789,7 @@ reference "sub: Laptop software"
 Sixaxis, Raspberry Pi and cRIO-9024
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The Sixaxis, RPi and cRIO are configured for generic use according to Part
  
 \begin_inset CommandInset ref
@@ -1274,7 +2801,7 @@ reference "part: Laboratory user guide"
  and the ordinary user may thus disregard the involved software.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The Sixaxis runs out-of-the-box firmware.
  Appendix 
 \begin_inset CommandInset ref
@@ -1304,7 +2831,7 @@ name "sub: HIL lab Communication"
 Communication
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Following Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1369,7 +2896,7 @@ cRIO reads Sixaxis data on Ethernet port 2 through its TCP/IP client.
 Laptop reads simulation data and sends input to the cRIO over Ethernet.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -1384,7 +2911,7 @@ Simulation models
 Cybership Enterprise 1
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 eta
 \end_layout
 
@@ -1392,11 +2919,11 @@ eta
 Forces and moment input
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 CSE1_HIL_tau.out
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Input:
 \end_layout
 
@@ -1404,8 +2931,34 @@ Input:
 Control input
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 CSE1_HIL_u.out
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+\begin_inset CommandInset label
+LatexCommand label
+name "part: Laboratory user guide"
+
+\end_inset
+
+Laboratory user guide
+\end_layout
+
+\begin_layout Chapter
+Qualisys motion capture system
 \end_layout
 
 \begin_layout Standard
@@ -1416,7 +2969,7 @@ CSE1_HIL_u.out
 \end_layout
 
 \begin_layout Chapter
-Marine cybernetics laboratory
+Towing carriage
 \end_layout
 
 \begin_layout Standard
@@ -1440,8 +2993,8 @@ centering
 
  
 \begin_inset Graphics
-	filename mc_lab.png
-	width 95text%
+	filename towing01.png
+	width 80text%
 
 \end_inset
 
@@ -1451,26 +3004,17 @@ centering
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig: Marine cybernetics laboratory basin"
+name "fig: Towing 01"
 
 \end_inset
 
-Marine cybernetics laboratory basin
+Towing wagon in the MC-lab.
+ Control of the wagon is done using the computer marked in red.
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "towing"
-
-\end_inset
-
- 
 \end_layout
 
 \end_inset
@@ -1479,18 +3023,337 @@ name "towing"
 \end_layout
 
 \begin_layout Standard
-The laboratory is equipped for experimental testing of marine control systems
- and hydrodynamic tests.
- It consists of a wave basin with an advanced instrumentation package and
- a towing carriage.
- The basin, depicted in Figure 
+In figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig: Marine cybernetics laboratory basin"
+reference "fig: Towing 01"
 
 \end_inset
 
-, has dimensions 40m x 6.45m x 1.5m (LxBxD).
+, a picture of the towing wagon is presented.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing02.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Towing 02"
+
+\end_inset
+
+Computer to operate the towing wagon
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Control of the wagon is done on board; see the red circle in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Towing 01"
+
+\end_inset
+
+.
+ For our purposes, to perform towing tests of CS Enterprise 1, only a certain
+ computer commands are used.
+ Further, in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Towing 02"
+
+\end_inset
+
+, a close up of the computer is shown.
+ An explanation of the different commands, used for our purposes, is presented
+ below.
+\end_layout
+
+\begin_layout Section
+Movement of towing wagon
+\end_layout
+
+\begin_layout Standard
+The towing wagon can be moved approximately 20 meters in total.
+ The end is located closest to the MC-laboratory.
+\end_layout
+
+\begin_layout Itemize
+Move forwards: Press the button marked as move forwards (see figure 2).
+\end_layout
+
+\begin_layout Itemize
+Move backwards: Press the button marked move backwards.
+\end_layout
+
+\begin_layout Itemize
+Stop: If forwards, press backwards button.
+\end_layout
+
+\begin_layout Standard
+If backwards, press forwards button.
+ In both forwards and backwards direction, the velocity can be set between
+ 0 m/s and 2 m/s.
+ In addition, the acceleration can be changed between 0 and 0.5 m/s2.
+ How aggressive the wagon is stopping can be regulated to a value between
+ 0 % and 100 %, where 100 % is the most aggressive.
+\end_layout
+
+\begin_layout Standard
+Moreover, it is possible to limit the distance covered by the wagon.
+ Consequently, it can be stopped before it reaches the end of the basin.
+ This is necessary for example when the wagon has a high velocity.
+ The limit can be set between 0 mm and 20 000 mm.
+\end_layout
+
+\begin_layout Section
+Typical settings
+\end_layout
+
+\begin_layout Standard
+For a typical towing run, the wagon has a velocity in forwards and backwards
+ between 0 m/s and 1 m/s, depending on the towed object.
+ The acceleration is set to 0.3 m/s2.
+ The stopping smoothness is set to 30 %.
+ Finally, the distance for the wagon to cover is between 0 mm and 19 000
+ mm.
+\end_layout
+
+\begin_layout Section
+Note
+\end_layout
+
+\begin_layout Standard
+When the wagon is moving, no one is allowed to move on the sides of the
+ basin.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Wave generator
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+CS Inocean Cat I Arctic Drillship
+\end_layout
+
+\begin_layout Section
+Mathematical model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+CS Enterprise I
+\end_layout
+
+\begin_layout Section
+Mathematical model
+\end_layout
+
+\begin_layout Standard
+The proposed control design model is
+\begin_inset Formula 
+\begin{eqnarray}
+\dot{\eta} & = & R\left(\psi\right)\nu\label{eq: CSE1 kinematics}\\
+\dot{\nu} & = & M^{-1}\left(-C\left(\nu\right)\nu-D\left(\nu\right)\nu+\tau\right)\label{eq: CSE1 kinetics}
+\end{eqnarray}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Itemize
+the pose and velocity vectors are
+\begin_inset Formula 
+\[
+\eta=\left[\begin{array}{c}
+x\\
+y\\
+\psi
+\end{array}\right]\in\mathbb{R}^{3}\text{, and }\nu=\left[\begin{array}{c}
+u\\
+v\\
+r
+\end{array}\right]\in\mathbb{R}^{3},
+\]
+
+\end_inset
+
+respectively.
+ 
+\begin_inset Formula $\left(x,y\right)$
+\end_inset
+
+ is the position and 
+\begin_inset Formula $\psi$
+\end_inset
+
+ the yaw angle or heading in the marine cybernetics (MC) basin frame.
+ 
+\begin_inset Formula $\left(u,v\right)$
+\end_inset
+
+ are the surge and sway velocities in the CSE1 vessel frame, and 
+\begin_inset Formula $r$
+\end_inset
+
+ is the yaw rate.
+\end_layout
+
+\begin_layout Itemize
+the thrust force and moment vector is
+\begin_inset Formula 
+\[
+\tau=\left[\begin{array}{c}
+X\\
+Y\\
+N
+\end{array}\right]\in\mathbb{R}^{3},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\left(X,Y\right)$
+\end_inset
+
+ is the surge and sway force vector, and 
+\begin_inset Formula $N$
+\end_inset
+
+ is the yaw moment.
+\end_layout
+
+\begin_layout Itemize
+the three degrees of freedom (3 DOF) rotation matrix is
+\begin_inset Formula 
+\[
+R\left(\psi\right)=\left[\begin{array}{ccc}
+\cos\psi & -\sin\psi & 0\\
+\sin\psi & \cos\psi & 0\\
+0 & 0 & 1
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+the vessel inertia matrix is
+\begin_inset Formula 
+\[
+M=\left[\begin{array}{ccc}
+m-X_{\dot{u}} & 0 & 0\\
+0 & m-Y_{\dot{v}} & mx_{g}-Y_{\dot{r}}\\
+0 & mx_{g}-Y_{\dot{r}} & I_{z}-N_{\dot{r}}
+\end{array}\right]=M^{\top}>0.
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+the coriolis and centripetal matrix is
+\begin_inset Formula 
+\[
+C\left(\nu\right)=\left[\begin{array}{ccc}
+0 & -mr & Y_{\dot{v}}v+\left(Y_{\dot{r}}-mx_{g}\right)r\\
+mr & 0 & -X_{\dot{u}}u\\
+-Y_{\dot{v}}v-\left(Y_{\dot{r}}-mx_{g}\right)r & X_{\dot{u}}u & 0
+\end{array}\right]=-C^{\top}\left(\nu\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+the damping matrix is
+\begin_inset Formula 
+\[
+D\left(\nu\right)=\left[\begin{array}{ccc}
+d_{11}\left(u\right) & 0 & 0\\
+0 & d_{22}\left(v,r\right) & d_{23}\left(v,r\right)\\
+0 & d_{32}\left(v,r\right) & d_{33}\left(v,r\right)
+\end{array}\right],
+\]
+
+\end_inset
+
+where the damping components are 
+\begin_inset Formula 
+\begin{eqnarray}
+d_{11}\left(u\right) & = & -X_{u}-X_{\left\vert u\right\vert u}\left\vert u\right\vert -X_{uuu}u^{2}\label{Eq:d11}\\
+d_{22}\left(v,r\right) & = & -Y_{v}-Y_{\left\vert v\right\vert v}\left\vert v\right\vert -Y_{vvv}v^{2}-Y_{\left\vert r\right\vert v}\left\vert r\right\vert \label{Eq:d22}\\
+d_{23}\left(v,r\right) & = & -Y_{r}-Y_{\left\vert v\right\vert r}\left\vert v\right\vert -Y_{\left\vert r\right\vert r}\left\vert r\right\vert -Y_{rrr}r^{2}\label{Eq:d23}\\
+d_{32}\left(v,r\right) & = & -N_{v}-N_{\left\vert v\right\vert v}\left\vert v\right\vert -N_{vvv}v^{2}-N_{\left\vert r\right\vert v}\left\vert r\right\vert \label{Eq:d32}\\
+d_{33}\left(v,r\right) & = & -N_{r}-N_{\left\vert v\right\vert r}\left\vert v\right\vert -N_{\left\vert r\right\vert r}\left\vert r\right\vert -N_{rrr}r^{2}\label{Eq:d33}
+\end{eqnarray}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1498,51 +3361,22 @@ reference "fig: Marine cybernetics laboratory basin"
 status open
 
 \begin_layout Plain Layout
-http://www.ntnu.no/imt/lab/cybernetics
-\end_layout
+On component form, the three kinetic equations from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq: CSE1 kinetics"
 
-\begin_layout Plain Layout
-The Marine Cybernetics Laboratory is the newest test basin at the Marine
- Technology Centre.
- It is located in what was originally a storage tank for ship models made
- of paraffin wax.
- 
-\end_layout
+\end_inset
 
-\begin_layout Plain Layout
-As the name indicates, the facility is especially suited for tests of marine
- control systems, due to the relatively small size and advanced instrumentation
- package.
- It is also suitable for more specialised hydrodynamic tests, mainly due
- to the advanced towing carriage , which has capability for precise movement
- of models in 6 degrees of freedom.
- 
-\end_layout
-
-\begin_layout Plain Layout
-The MCLab is operated by the Department of Marine Technology, and has been
- a Marie Curie EU Training Site (2002-2008).
- It is mainly used by Master and PhD-students, but it is also available
- for MARINTEK and external users.
- 
-\end_layout
-
-\begin_layout Plain Layout
-The software in use was developed using rapid prototyping techniques and
- automatic code generation under Matlab/Simulink and Opal.
- The target PC onboard the vessel runs the QNX real-time operating system
- while experimental results are presented in real-time on a host PC using
- Labview.
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-todo{Sakset rett fra nettsiden http://www.ntnu.edu/imt/marine-cybernetics-lab}
-\end_layout
+ are
+\begin_inset Formula 
+\begin{eqnarray}
+X & = & \left(m-X_{\dot{u}}\right)\dot{u}-\left(m-Y_{\dot{v}}\right)vr+\left(Y_{\dot{r}}-mx_{g}\right)r^{2}+d_{11}\left(u\right)u\label{Eq:Tu}\\
+Y & = & \left(m-Y_{\dot{v}}\right)\dot{v}+\left(mx_{g}-Y_{\dot{r}}\right)\dot{r}+\left(m-X_{\dot{u}}\right)ur\\
+ &  & +d_{22}\left(v,r\right)v+d_{23}\left(v,r\right)r\label{Eq:Tv}\\
+N & = & \left(mx_{g}-Y_{\dot{r}}\right)\dot{v}+\left(I_{z}-N_{\dot{r}}\right)\dot{r}+\left(X_{\dot{u}}-Y_{\dot{v}}\right)uv-\left(Y_{\dot{r}}-mx_{g}\right)ur\\
+ &  & +d_{32}\left(v,r\right)v+d_{33}\left(v,r\right)r\label{Eq:Tr}
+\end{eqnarray}
 
 \end_inset
 
@@ -1552,43 +3386,6 @@ todo{Sakset rett fra nettsiden http://www.ntnu.edu/imt/marine-cybernetics-lab}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Equipment
-\end_layout
-
-\begin_layout Subsection
-Qualisys motion capture system
-\end_layout
-
-\begin_layout Standard
-Qualisys provides 6 degrees of freedom data tracking.
- The system has millimeter precision, works in real time and is configured
- to 50Hz.
-\end_layout
-
-\begin_layout Standard
-The positioning system consists of three Oqus high speed infrared cameras
- registering infrared reflectors placed on the vessel.
- Peer-to-peer (P2P) networking is used to transmit camera data to a dedicated
- computer running Qualisys Track Manager (QTM) software.
- QTM performs triangulation and broadcasts the vessel position over the
- HIL-lab network.
-\end_layout
-
-\begin_layout Subsection
-Towing carriage
-\end_layout
-
-\begin_layout Standard
-The carriage runs at speeds up to 2m/s.
- It also has capability for precise movement of models in 6 degrees of freedom
- and is thus suitable for more specialized hydrodynamic tests.
-\end_layout
-
-\begin_layout Subsection
-Wave generator
 \end_layout
 
 \begin_layout Standard
@@ -1600,13 +3397,23 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
 <row>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rigid body
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1615,86 +3422,258 @@ status open
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Height [m]
+Added mass
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Period T [s]
+
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Regular waves
+Parameter
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $H<0.25$
-\end_inset
-
-
+Value
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.3 - 3.0
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Irregular waves
+\begin_inset Formula $m$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\series bold
-\begin_inset Formula $H_{s}<0.15$
+\begin_inset Formula $14.79$
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.6 - 1.5
+\begin_inset Formula $X_{\dot{u}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $I_{z}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.76$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{\dot{v}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-10$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{g}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0375$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{\dot{r}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y_{g}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{\dot{r}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1$
+\end_inset
+
+ 
 \end_layout
 
 \end_inset
@@ -1705,16 +3684,19 @@ Irregular waves
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Wave generator capacity"
+name "tab: CSE1-rigid-body"
 
 \end_inset
 
-Wave generator capacity
+CSE1 rigid body and added mass parameters
 \end_layout
 
 \end_inset
@@ -1728,17 +3710,1341 @@ Wave generator capacity
 \end_layout
 
 \begin_layout Standard
-The single paddle wave generator is controlled by a dedicated computer.
- Available spectrum are first order Stoke, JONSWAP, Pierson-Moskowitz, Bretschne
-ider, ISSC and ITTC.
- Table 
+The rigid body inertia and hydrodynamic added mass parameters are given
+ in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Wave generator capacity"
+reference "tab: CSE1-rigid-body"
 
 \end_inset
 
- summarizes the generation capacity.
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hydro surge
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hydro sway
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hydro yaw
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Parameter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Value
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Parameter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Value
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Parameter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Value
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{u}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.4543$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{v}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-3.083$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{v}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4.1117\cdot10^{-4}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{r}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-7.25$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{r}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.9$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab: CSE1 damping parameters 1"
+
+\end_inset
+
+CSE1 damping parameters
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="6">
+<features rotate="0" booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="right" valignment="top">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hydro surge
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hydro sway
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hydro yaw
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Parameter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Value
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Parameter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Value
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Parameter
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Value
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{u}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.6555$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{v}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.33$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{v}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{uu}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3545$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{vv}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2.776$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{vv}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.2088$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{uuu}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-3.787$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{vvv}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-64.91$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{vvv}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{v}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{r}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-7.25$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{r}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1.9$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{vv}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2.443$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{rr}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-3.45$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{rr}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.75$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $X_{vvv}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{rrr}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{rrr}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{rv}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.805$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{rv}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.130$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $.$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Y_{vr}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.845$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N_{vr}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.080$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab: CSE1 damping parameters 2"
+
+\end_inset
+
+CSE1 damping parameters
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The hydrodynamic damping parameters are given in Tables 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: CSE1 damping parameters 1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: CSE1 damping parameters 2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The model is valid for low-speed.
 \end_layout
 
 \begin_layout Standard
@@ -1749,11 +5055,18 @@ reference "tab:Wave generator capacity"
 \end_layout
 
 \begin_layout Section
-Vessels
+Model-in-the-loop simulation
 \end_layout
 
-\begin_layout Subsection
-Cybership Enterprise 1
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Processor-in-the-Loop simulation
 \end_layout
 
 \begin_layout Standard
@@ -1777,8 +5090,8 @@ centering
 
  
 \begin_inset Graphics
-	filename CSE1_2.PNG
-	width 95text%
+	filename CSE1_ctrl_student.jpg
+	scale 45
 
 \end_inset
 
@@ -1788,11 +5101,15 @@ centering
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig: Cybership Enterprise 1"
+name "fig: CSE1 ctrl_student.slx"
 
 \end_inset
 
-CS Enterprise 1
+CSE1 
+\family typewriter
+ctrl_student.slx
+\family default
+ including thrust allocation
 \end_layout
 
 \end_inset
@@ -1806,94 +5123,22 @@ CS Enterprise 1
 \end_layout
 
 \begin_layout Standard
-CSE1, depicted in Figure 
+Implementation of the student controller is done in the 
+\family typewriter
+ctrl_student.slx
+\family default
+ Simulink template, depicted in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig: Cybership Enterprise 1"
+reference "fig: CSE1 ctrl_student.slx"
 
 \end_inset
 
-, is a model ship fitted with two Voith Schneider propellers (VSP) astern
- and a bow thruster (BT).
- Its on-board control system consists of a RPi and a cRIO, as in the HIL
- laboratory setup described in Chapter 
+.
+ Detailed implementation steps are given in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec: Marine HIL simulation laboratory"
-
-\end_inset
-
-, in addition to three electronic speed controllers (ESC) and four servos.
-\end_layout
-
-\begin_layout Subsubsection
-High-level communication
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename setupCSE1.jpg
-	width 95text%
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: CSE1 communication"
-
-\end_inset
-
- CSE1 communication
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The communication is similar to the description of Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: HIL lab Communication"
-
-\end_inset
-
-, with the exception of the wired Ethernet link between the cRIO and the
- laptop.
- For CSE1 this link instead passes through a Wi-Fi bridge to a wireless
- router to the laptop, as seen in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: CSE1 communication"
+reference "sec: CSE1 Student controller implementation"
 
 \end_inset
 
@@ -1901,29 +5146,402 @@ reference "fig: CSE1 communication"
 \end_layout
 
 \begin_layout Standard
-Broadcast QTM positioning data is retrieved through the same wireless network.
+The generic control system consists of several Simulink modules, the details
+ of which are given in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: CSE1 Control software"
+
+\end_inset
+
+, a FPGA driver, described in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Create-FPGA-target"
+
+\end_inset
+
+, and two custom device drivers.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Basin testing
+\end_layout
+
+\begin_layout Subsection
+Safety - hazards and measures
 \end_layout
 
 \begin_layout Subsubsection
-Low-level communication
+Personnel injury
+\end_layout
+
+\begin_layout Paragraph
+Drowning
 \end_layout
 
 \begin_layout Standard
-The BT and VSP motor speeds are controlled by ESC.
- The ESC receive their setpoints as a pulse-width modulated (PWM) signals
- from the cRIO digital output module.
+It is required to have two or more persons present when using the basin.
+\end_layout
+
+\begin_layout Paragraph
+Electric shock
 \end_layout
 
 \begin_layout Standard
-The VSP blade pitches are controlled by servos.
- The servos also receive their setpoint as PWM signals.
+The towing catenary should not be approached or touched.
+\end_layout
+
+\begin_layout Paragraph
+Carriage collision
+\end_layout
+
+\begin_layout Standard
+It is forbidden to run the towing carriage when there are people alongside
+ the basin.
+\end_layout
+
+\begin_layout Paragraph
+Thruster blade cuts
+\end_layout
+
+\begin_layout Standard
+CSE1 must stay in the water as long as actuators are active.
+ Before removing the vessel from the water, the control system must be stopped
+ and the VeriStand project undeployed.
 \end_layout
 
 \begin_layout Subsubsection
-Control system
+Material damage
+\end_layout
+
+\begin_layout Paragraph
+Cybership Enterprise 1
+\end_layout
+
+\begin_layout Subparagraph
+Water damage
 \end_layout
 
 \begin_layout Standard
+CSE1 is not waterproof and has excessive thrust capability which can inflict
+ large roll angles.
+ The risk of water on deck is reduced through thrust limitation and HIL
+ testing before application of new control algorithms.
+ 
+\end_layout
+
+\begin_layout Subparagraph
+Propeller dry running
+\end_layout
+
+\begin_layout Standard
+BT must only be run in water.
+ Before removing the vessel from the water, the control system must be stopped
+ and the VeriStand project undeployed.
+\end_layout
+
+\begin_layout Subparagraph
+Loss of laptop control 
+\end_layout
+
+\begin_layout Standard
+Wireless network instability may result in loss of connection between the
+ laptop user interface and the cRIO.
+ In this event, fall back to manual thruster control, by pushing 
+\begin_inset Graphics
+	filename sixaxis_triangle.png
+	scale 40
+
+\end_inset
+
+ on the Sixaxis.
+\end_layout
+
+\begin_layout Subparagraph
+Loss of position measurement
+\end_layout
+
+\begin_layout Standard
+-
+\end_layout
+
+\begin_layout Subparagraph
+Total loss of control
+\end_layout
+
+\begin_layout Standard
+Pull the vessel with a boat hook.
+ Keep the CSE1 in water while disconnecting batteries.
+\end_layout
+
+\begin_layout Paragraph
+Towing carriage
+\end_layout
+
+\begin_layout Standard
+Stop before automatic stop at high speeds.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sec: CSE1 Student controller implementation"
+
+\end_inset
+
+Student controller implementation
+\end_layout
+
+\begin_layout Enumerate
+Unzip the CSE1 Veristand Project 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+CSE1.zip
+\family default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ to 
+\family typewriter
+C:
+\backslash
+CSE1
+\backslash
+
+\family default
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Other paths are possible but require changing all VeriStand project paths.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Simulink implementation and compilation
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Update 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+ctrl_student.slx
+\family default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ according to your controller design.
+ Additional input and output, resets and data logging may be added, as described
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Simulink modeling"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Do not alter the predefined input and output: x, y, psi, u_BT, u_VSP1, u_VSP2,
+ alpha_VSP1, alpha_VSP2, omega_VSP1 and omega_VSP2.
+\end_layout
+
+\begin_layout Enumerate
+Select a suitable solver, as described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Simulink model configuration"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+The remaining configuration, such as target selection is preselected in
+ the file.
+\end_layout
+
+\begin_layout Enumerate
+Compile the model as described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Simulink model build"
+
+\end_inset
+
+.
+ The MATLAB current folder should be 
+\family typewriter
+C:
+\backslash
+CSE1
+\backslash
+
+\family default
+, in order to ensure that the resulting 
+\family typewriter
+.out
+\family default
+ file is created in 
+\family typewriter
+C:
+\backslash
+CSE1
+\backslash
+ctrl_student_niVeriStand_VxWorks_rtw
+\family default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+CSE1 Veristand Project configuration
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Open 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+CSE1.nivsproj
+\family default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Not 
+\family typewriter
+CSE1.nivssdf
+\family default
+, since not only the system definition should be altered.
+\end_layout
+
+\end_inset
+
+ to access the project.
+\end_layout
+
+\begin_layout Enumerate
+Update 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+ctrl_student.out
+\family default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Open the System Explorer by double-clicking the system definition file 
+\family typewriter
+CSE1.nivssdf
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
 \begin_inset Float figure
 wide false
 sideways false
@@ -1944,8 +5562,8 @@ centering
 
  
 \begin_inset Graphics
-	filename CSE1_control_system.jpg
-	width 80text%
+	filename CSE1_update_ctrl_studtent.jpg
+	scale 45
 
 \end_inset
 
@@ -1955,11 +5573,11 @@ centering
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig: CSE1 generic control system"
+name "fig: CSE1 simulation models"
 
 \end_inset
 
-CSE1 generic control system
+CSE1 Veristand Project simulation models
 \end_layout
 
 \end_inset
@@ -1969,7 +5587,360 @@ CSE1 generic control system
 
 \end_inset
 
+Browse the left pane tree, as seen in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: CSE1 simulation models"
 
+\end_inset
+
+, and select ctrl_student.
+ Refresh by pushing the 
+\begin_inset Graphics
+	filename veristand_refresh.jpg
+	scale 80
+
+\end_inset
+
+ icon.
+\end_layout
+
+\begin_layout Enumerate
+If necessary, add mappings.
+\begin_inset Newline newline
+\end_inset
+
+Do not change the existing mappings.
+ Position input (x, y, psi) and controller output (u_BT, u_VSP1, u_VSP2,
+ alpha_VSP1, alpha_VSP2, omega_VSP1, omega_VSP2) are already mapped as necessary.
+\end_layout
+
+\begin_layout Enumerate
+Save and close to return to the Project Explorer.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename CSE1_student_workspace.jpg
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: CSE1 student_ctrl workspace"
+
+\end_inset
+
+CSE1 Veristand Project ctrl_student workspace
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Implement a suitable workspace, as described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Create computer interface"
+
+\end_inset
+
+, for your controller in control screen 4: ctrl_student.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: CSE1 student_ctrl workspace"
+
+\end_inset
+
+ shows control screen 4 before customization.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ship launching procedure - before sailing
+\end_layout
+
+\begin_layout Subsubsection
+Power up and connection
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+Place the batteries adjacent to the watertight box: main battery battery
+ (12 V) astern and secondary battery (6 V) in the bow.
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+Connect main battery: first the red wire to the red/positive pole, then
+ the black wire to the black/negative pole
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The connection order of the wires should not matter.
+ However, experiences favor the this order of connection.
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+cRIO LED nr.1 (power) will light up green.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\noindent
+Red blinking LEDs on each VSP motor controller.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Wait for cRIO and RPi start up.
+\begin_inset Newline newline
+\end_inset
+
+When complete, the Bluetooth dongle blue LED blinks evenly at approximately
+ 1 Hz.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Turn on Sixaxis by pushing the PS3 button.
+\begin_inset Newline newline
+\end_inset
+
+When succesfully connected, the Bluetooth dongle blue LED is almost constantly
+ lit and the Sixaxis' red LEDs 1, 2, 3, and 4 blink at approximately 2 Hz.
+\end_layout
+
+\begin_layout Enumerate
+Connect the seconday battery: red wire to the red/positive pole, then the
+ black wire to the black/negative pole.
+\begin_inset Newline newline
+\end_inset
+
+The Wifi bridge Power LED will light up green.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Red LED on purple motor control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Wait for WiFi connection to HILlab network.
+\begin_inset Newline newline
+\end_inset
+
+When connected, the Wifi bridge WLAN green LED turns on.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename cRIO_ping.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: ping"
+
+\end_inset
+
+Ping, successful access to CSE1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Verify laptop access: ping the CSE1 IP in the command promt, as in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: ping"
+
+\end_inset
+
+.
+ While the round trip times may vary, it is essential to have 0% loss.
+\end_layout
+
+\begin_layout Enumerate
+Gently place the vessel in the basin, avoiding any water splashes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Paragraph
+Troubleshooting
+\end_layout
+
+\begin_layout Enumerate
+Check Laptop is connected to wireless network “HILlab”, if not connect to
+ it “HILlab”
+\end_layout
+
+\begin_layout Enumerate
+Check ACT/LiNK” port 1 are showing activity e.g.
+ are lit, blinking, if not check ethernet cable is connected to “ACT/LiNK”
+ port 1 and to the “D-Link Wireless Bridge” if not connect to those Battery
+ gives power to “CompactRIO” and “D-Link”, lights/indicators are lit/blinking
+ if not check wiring
+\end_layout
+
+\begin_layout Enumerate
+Check battery voltages, “Main battery” should be 10 Volt or more, maximum
+ around 13 Volt, regular 11 to 12 Volt, low 10 Volt “Servo battery” should
+ be in 5 Volt or more, max around 6.4 Volt, regular around 6 Volt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Positioning system
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Deploy control system
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Veristand osv
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A diagram representation of CSE1's control system is given in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: CSE1 generic control system"
+
+\end_inset
+
+.
+ The first three controllers are predefined, while users may implement their
+ own controller in the fourth.
 \end_layout
 
 \begin_layout Standard
@@ -2193,15 +6164,7 @@ Generic control modes
 \end_layout
 
 \begin_layout Standard
-A diagram representation of CSE1's control system is given in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: CSE1 generic control system"
-
-\end_inset
-
-.
- The vessel can switch among four control modes, summarized in Table 
+The vessel can switch among four control modes, summarized in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab: CSE1 control system modes"
@@ -2209,103 +6172,7 @@ reference "tab: CSE1 control system modes"
 \end_inset
 
 .
- The first three controllers are predefined, while users may implement their
- own controller in the fourth.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
  
-\begin_inset Graphics
-	filename CSE1_ctrl_student.jpg
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: CSE1 ctrl_student.slx"
-
-\end_inset
-
-CSE1 
-\family typewriter
-ctrl_student.slx
-\family default
- including thrust allocation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Implementation of the student controller is done in the 
-\family typewriter
-ctrl_student.slx
-\family default
- Simulink template, depicted in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: CSE1 ctrl_student.slx"
-
-\end_inset
-
-.
- Detailed implementation steps are given in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec: CSE1 Student controller implementation"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The generic control system consists of several Simulink modules, the details
- of which are given in Appendix 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: CSE1 Control software"
-
-\end_inset
-
-, a FPGA driver, described in Appendix 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Create-FPGA-target"
-
-\end_inset
-
-, and two custom device drivers.
 \end_layout
 
 \begin_layout Standard
@@ -2316,26 +6183,71 @@ reference "sub:Create-FPGA-target"
 \end_layout
 
 \begin_layout Subsection
-Cybership 3
+Ship docking procedure - after sailing
 \end_layout
 
 \begin_layout Standard
--
+Undeploy the running project to disable all actuators.
+\end_layout
+
+\begin_layout Standard
+Lift out of water avoiding water on rail.
+\end_layout
+
+\begin_layout Standard
+Put CSE1 in its stand.
+ The vessel should not be left on the water for extensive periods, i.e.
+ overnight.
+\end_layout
+
+\begin_layout Standard
+Remove and put used batteries to charge.
+ Load fresh batteries in vessel.
+\end_layout
+
+\begin_layout Standard
+Connect the Sixaxis gamepad to the laptop for charging.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
+\begin_layout Section
+Troubleshooting
+\end_layout
+
 \begin_layout Plain Layout
-\begin_inset Newpage clearpage
+typiske feil
+\end_layout
+
+\begin_layout Plain Layout
+batteri
+\end_layout
+
+\begin_layout Plain Layout
+nettverk
+\end_layout
+
+\begin_layout Plain Layout
+Sixaxis will sometimes only charge through PC USB-port.
+ Not RPi nor USB charger.
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsubsection
-Cybership Saucer (CSS)
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+FloatBarrier
 \end_layout
 
 \end_inset
@@ -2350,18 +6262,38 @@ Cybership Saucer (CSS)
 
 \end_layout
 
-\begin_layout Part
-\begin_inset CommandInset label
-LatexCommand label
-name "part: Laboratory user guide"
+\begin_layout Chapter
+CS Saucer
+\end_layout
 
+\begin_layout Standard
+k
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
-Laboratory user guide
+
 \end_layout
 
 \begin_layout Chapter
-HIL simulation and testing
+ROV Neptunus
+\end_layout
+
+\begin_layout Standard
+k
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Simulation and control with cRIO
 \end_layout
 
 \begin_layout Section
@@ -4256,846 +8188,11 @@ istandmerge/model_from_lv/
 
 \end_layout
 
-\begin_layout Chapter
-CSE1 model scale testing
-\end_layout
-
-\begin_layout Section
-Safety - hazards and measures
-\end_layout
-
-\begin_layout Subsection
-Personnel injury
-\end_layout
-
-\begin_layout Subsubsection
-Drowning
-\end_layout
-
-\begin_layout Standard
-It is required to have two or more persons present when using the basin.
-\end_layout
-
-\begin_layout Subsubsection
-Electric shock
-\end_layout
-
-\begin_layout Standard
-The towing catenary should not be approached or touched.
-\end_layout
-
-\begin_layout Subsubsection
-Carriage collision
-\end_layout
-
-\begin_layout Standard
-It is forbidden to run the towing carriage when there are people alongside
- the basin.
-\end_layout
-
-\begin_layout Subsubsection
-Thruster blade cuts
-\end_layout
-
-\begin_layout Standard
-CSE1 must stay in the water as long as actuators are active.
- Before removing the vessel from the water, the control system must be stopped
- and the VeriStand project undeployed.
-\end_layout
-
-\begin_layout Subsection
-Material damage
-\end_layout
-
-\begin_layout Subsubsection
-Cybership Enterprise 1
-\end_layout
-
-\begin_layout Paragraph
-Water damage
-\end_layout
-
-\begin_layout Standard
-CSE1 is not waterproof and has excessive thrust capability which can inflict
- large roll angles.
- The risk of water on deck is reduced through thrust limitation and HIL
- testing before application of new control algorithms.
- 
-\end_layout
-
-\begin_layout Paragraph
-Propeller dry running
-\end_layout
-
-\begin_layout Standard
-BT must only be run in water.
- Before removing the vessel from the water, the control system must be stopped
- and the VeriStand project undeployed.
-\end_layout
-
-\begin_layout Paragraph
-Loss of laptop control 
-\end_layout
-
-\begin_layout Standard
-Wireless network instability may result in loss of connection between the
- laptop user interface and the cRIO.
- In this event, fall back to manual thruster control, by pushing 
-\begin_inset Graphics
-	filename sixaxis_triangle.png
-	scale 40
-
-\end_inset
-
- on the Sixaxis.
-\end_layout
-
-\begin_layout Paragraph
-Loss of position measurement
-\end_layout
-
-\begin_layout Standard
--
-\end_layout
-
-\begin_layout Paragraph
-Total loss of control
-\end_layout
-
-\begin_layout Standard
-Pull the vessel with a boat hook.
- Keep the CSE1 in water while disconnecting batteries.
-\end_layout
-
-\begin_layout Subsubsection
-Towing carriage
-\end_layout
-
-\begin_layout Standard
-Stop before automatic stop at high speeds.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec: CSE1 Student controller implementation"
-
-\end_inset
-
-Student controller implementation
-\end_layout
-
-\begin_layout Enumerate
-Unzip the CSE1 Veristand Project 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\family typewriter
-CSE1.zip
-\family default
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- to 
-\family typewriter
-C:
-\backslash
-CSE1
-\backslash
-
-\family default
-.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Other paths are possible but require changing all VeriStand project paths.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Simulink implementation and compilation
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Update 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\family typewriter
-ctrl_student.slx
-\family default
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- according to your controller design.
- Additional input and output, resets and data logging may be added, as described
- in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Simulink modeling"
-
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-Do not alter the predefined input and output: x, y, psi, u_BT, u_VSP1, u_VSP2,
- alpha_VSP1, alpha_VSP2, omega_VSP1 and omega_VSP2.
-\end_layout
-
-\begin_layout Enumerate
-Select a suitable solver, as described in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Simulink model configuration"
-
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-The remaining configuration, such as target selection is preselected in
- the file.
-\end_layout
-
-\begin_layout Enumerate
-Compile the model as described in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Simulink model build"
-
-\end_inset
-
-.
- The MATLAB current folder should be 
-\family typewriter
-C:
-\backslash
-CSE1
-\backslash
-
-\family default
-, in order to ensure that the resulting 
-\family typewriter
-.out
-\family default
- file is created in 
-\family typewriter
-C:
-\backslash
-CSE1
-\backslash
-ctrl_student_niVeriStand_VxWorks_rtw
-\family default
-.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-CSE1 Veristand Project configuration
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Open 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\family typewriter
-CSE1.nivsproj
-\family default
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Not 
-\family typewriter
-CSE1.nivssdf
-\family default
-, since not only the system definition should be altered.
-\end_layout
-
-\end_inset
-
- to access the project.
-\end_layout
-
-\begin_layout Enumerate
-Update 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-
-\family typewriter
-ctrl_student.out
-\family default
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Open the System Explorer by double-clicking the system definition file 
-\family typewriter
-CSE1.nivssdf
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename CSE1_update_ctrl_studtent.jpg
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: CSE1 simulation models"
-
-\end_inset
-
-CSE1 Veristand Project simulation models
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Browse the left pane tree, as seen in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: CSE1 simulation models"
-
-\end_inset
-
-, and select ctrl_student.
- Refresh by pushing the 
-\begin_inset Graphics
-	filename veristand_refresh.jpg
-	scale 80
-
-\end_inset
-
- icon.
-\end_layout
-
-\begin_layout Enumerate
-If necessary, add mappings.
-\begin_inset Newline newline
-\end_inset
-
-Do not change the existing mappings.
- Position input (x, y, psi) and controller output (u_BT, u_VSP1, u_VSP2,
- alpha_VSP1, alpha_VSP2, omega_VSP1, omega_VSP2) are already mapped as necessary.
-\end_layout
-
-\begin_layout Enumerate
-Save and close to return to the Project Explorer.
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename CSE1_student_workspace.jpg
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: CSE1 student_ctrl workspace"
-
-\end_inset
-
-CSE1 Veristand Project ctrl_student workspace
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Implement a suitable workspace, as described in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Create computer interface"
-
-\end_inset
-
-, for your controller in control screen 4: ctrl_student.
- Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: CSE1 student_ctrl workspace"
-
-\end_inset
-
- shows control screen 4 before customization.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Ship launching procedure - before sailing
-\end_layout
-
-\begin_layout Subsection
-Power up and connection
-\end_layout
-
-\begin_layout Enumerate
-\noindent
-Place the batteries adjacent to the watertight box: main battery battery
- (12 V) astern and secondary battery (6 V) in the bow.
-\end_layout
-
-\begin_layout Enumerate
-\noindent
-Connect main battery: first the red wire to the red/positive pole, then
- the black wire to the black/negative pole
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-The connection order of the wires should not matter.
- However, experiences favor the this order of connection.
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-cRIO LED nr.1 (power) will light up green.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\noindent
-Red blinking LEDs on each VSP motor controller.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Wait for cRIO and RPi start up.
-\begin_inset Newline newline
-\end_inset
-
-When complete, the Bluetooth dongle blue LED blinks evenly at approximately
- 1 Hz.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Turn on Sixaxis by pushing the PS3 button.
-\begin_inset Newline newline
-\end_inset
-
-When succesfully connected, the Bluetooth dongle blue LED is almost constantly
- lit and the Sixaxis' red LEDs 1, 2, 3, and 4 blink at approximately 2 Hz.
-\end_layout
-
-\begin_layout Enumerate
-Connect the seconday battery: red wire to the red/positive pole, then the
- black wire to the black/negative pole.
-\begin_inset Newline newline
-\end_inset
-
-The Wifi bridge Power LED will light up green.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Red LED on purple motor control
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Wait for WiFi connection to HILlab network.
-\begin_inset Newline newline
-\end_inset
-
-When connected, the Wifi bridge WLAN green LED turns on.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename cRIO_ping.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: ping"
-
-\end_inset
-
-Ping, successful access to CSE1
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Verify laptop access: ping the CSE1 IP in the command promt, as in Figure
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: ping"
-
-\end_inset
-
-.
- While the round trip times may vary, it is essential to have 0% loss.
-\end_layout
-
-\begin_layout Enumerate
-Gently place the vessel in the basin, avoiding any water splashes.
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
-\begin_layout Paragraph
-Troubleshooting
-\end_layout
-
-\begin_layout Enumerate
-Check Laptop is connected to wireless network “HILlab”, if not connect to
- it “HILlab”
-\end_layout
-
-\begin_layout Enumerate
-Check ACT/LiNK” port 1 are showing activity e.g.
- are lit, blinking, if not check ethernet cable is connected to “ACT/LiNK”
- port 1 and to the “D-Link Wireless Bridge” if not connect to those Battery
- gives power to “CompactRIO” and “D-Link”, lights/indicators are lit/blinking
- if not check wiring
-\end_layout
-
-\begin_layout Enumerate
-Check battery voltages, “Main battery” should be 10 Volt or more, maximum
- around 13 Volt, regular 11 to 12 Volt, low 10 Volt “Servo battery” should
- be in 5 Volt or more, max around 6.4 Volt, regular around 6 Volt
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Positioning system
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Deploy control system
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
 \begin_layout Plain Layout
-
-
-\backslash
-todo{
-\end_layout
-
-\end_inset
-
-Veristand osv
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Ship docking procedure - after sailing
-\end_layout
-
-\begin_layout Standard
-Undeploy the running project to disable all actuators.
-\end_layout
-
-\begin_layout Standard
-Lift out of water avoiding water on rail.
-\end_layout
-
-\begin_layout Standard
-Put CSE1 in its stand.
- The vessel should not be left on the water for extensive periods, i.e.
- overnight.
-\end_layout
-
-\begin_layout Standard
-Remove and put used batteries to charge.
- Load fresh batteries in vessel.
-\end_layout
-
-\begin_layout Standard
-Connect the Sixaxis gamepad to the laptop for charging.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Section
-Troubleshooting
-\end_layout
-
-\begin_layout Plain Layout
-typiske feil
-\end_layout
-
-\begin_layout Plain Layout
-batteri
-\end_layout
-
-\begin_layout Plain Layout
-nettverk
-\end_layout
-
-\begin_layout Plain Layout
-Sixaxis will sometimes only charge through PC USB-port.
- Not RPi nor USB charger.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-FloatBarrier
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -5112,7 +8209,7 @@ name "part: Lab exercises"
 TMR4243 exercises and expected results
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 General report requirements.
 \end_layout
 
@@ -5120,35 +8217,35 @@ General report requirements.
 Pendulum lab
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Adjust Simulink model for VeriStand.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Deploy
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Create suitable workspace
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Actuate fan manually.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Simulate to get same results as Simulink.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Export data
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Try with handed out model (surprises).
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -5164,7 +8261,7 @@ FloatBarrier
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Newpage newpage
 \end_inset
 
@@ -5175,7 +8272,7 @@ FloatBarrier
 Internal dynamics lab
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -5191,7 +8288,7 @@ FloatBarrier
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Newpage newpage
 \end_inset
 
@@ -5206,7 +8303,7 @@ Estimation lab
 Objective
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Teste konseptet, tau inputt,
 \end_layout
 
@@ -5214,11 +8311,11 @@ Teste konseptet, tau inputt,
 Theory and simulation
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Pure sway and surge dampings
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 d_{\text{pure surge}}=d_{11}u\label{eq: pure surge damping}
@@ -5229,7 +8326,7 @@ d_{\text{pure surge}}=d_{11}u\label{eq: pure surge damping}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 d_{\text{pure sway}}=d_{22}v\label{eq: pure sway damping}
@@ -5316,7 +8413,7 @@ reference "tab: CSE1-hydrodynamic"
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Float table
 wide false
 sideways false
@@ -5589,7 +8686,7 @@ reference "eq: CSE1 HIL d_22"
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
 X=-X_{u}u-X_{uu}u^{2}-X_{uuu}u^{3}
@@ -5614,7 +8711,7 @@ Motion control
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 switche mellom sway og surge fixed, alltid rotasjon fixed
 \end_layout
 
@@ -5632,7 +8729,7 @@ X_{\left|u\right|u}
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 design reasonable towing input
 \end_layout
 
@@ -5677,7 +8774,7 @@ Motion control
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 discrete and switcing controller
 \end_layout
 
@@ -5715,11 +8812,11 @@ Specific report requirements
 Model scale testing
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 HIL
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -5735,7 +8832,7 @@ FloatBarrier
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Newpage newpage
 \end_inset
 
@@ -5746,7 +8843,7 @@ FloatBarrier
 The maneuvering lab
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Note Note
 status open
 
@@ -5835,7 +8932,7 @@ Fault-diagnosis and fault tolerant control (failure-mode detection, fault
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -5851,6 +8948,11 @@ FloatBarrier
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -5859,14 +8961,13 @@ FloatBarrier
 \end_layout
 
 \begin_layout Part
-\start_of_appendix
 \begin_inset CommandInset label
 LatexCommand label
 name "part: Equipment setup and configuration"
 
 \end_inset
 
-Equipment setup and configuration
+Laboratory Staff Guide
 \end_layout
 
 \begin_layout Chapter
@@ -13603,6 +16704,7 @@ name "fig: fpga2-1"
 \end_layout
 
 \begin_layout Part
+\start_of_appendix
 Miscellaneous 
 \end_layout
 
