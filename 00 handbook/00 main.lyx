@@ -248,7 +248,7 @@ reference "part: Theory"
 
 \end_inset
 
- explains the concepts and motivations for real-time and HIL testing.
+ explains the concepts and motivations for the stepwise controller development.
 \end_layout
 
 \begin_layout Standard
@@ -259,7 +259,7 @@ reference "part: Laboratory user guide"
 
 \end_inset
 
- is a user guide intended for students of the course.
+ is a user guide intended for users of the laboratory.
  Step-by-step instructions for development and deployment of programs to
  the real-time controller are given.
 \end_layout
@@ -328,8 +328,19 @@ description "compact reconfigurable input/output real-time embedded industrial c
 \begin_layout Standard
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
+symbol "CS"
+description "cyber ship"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
 symbol "CSE1"
-description "Cybership Enterprise 1"
+description "CS Enterprise I"
 
 \end_inset
 
@@ -340,7 +351,7 @@ description "Cybership Enterprise 1"
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "CSS"
-description "Cybership Saucer"
+description "CS Saucer"
 
 \end_inset
 
@@ -394,8 +405,19 @@ description "hardware-in-the-loop"
 \begin_layout Standard
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "MC"
-description "marine cybernetics"
+symbol "IO"
+description "input/output"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "MC Lab"
+description "marine cybernetics laboratory"
 
 \end_inset
 
@@ -827,11 +849,51 @@ Vessels
 \end_layout
 
 \begin_layout Standard
-Both suface and underwater vessels.
+Both surface and underwater vessels.
 \end_layout
 
 \begin_layout Standard
-The Cyber Ship class, with ship prefix CS consists of ....
+The cyber ship class, with ship prefix CS, consists of 6 vessels:
+\end_layout
+
+\begin_layout Itemize
+CS Inocean Cat I Arctic Drillship,
+\end_layout
+
+\begin_layout Itemize
+CS Saucer,
+\end_layout
+
+\begin_layout Itemize
+CS Enterprise I,
+\end_layout
+
+\begin_layout Itemize
+Cybership III,
+\end_layout
+
+\begin_layout Itemize
+Cybership II, and
+\end_layout
+
+\begin_layout Itemize
+Cybership I.
+\end_layout
+
+\begin_layout Standard
+Also, there lab holds an underwater craft,
+\end_layout
+
+\begin_layout Itemize
+ROV Neptunus,
+\end_layout
+
+\begin_layout Standard
+and a semi submersible drilling rig
+\end_layout
+
+\begin_layout Itemize
+CyberRig.
 \end_layout
 
 \begin_layout Standard
@@ -843,6 +905,110 @@ The Cyber Ship class, with ship prefix CS consists of ....
 
 \begin_layout Subsection
 CS Inocean Cat I Arctic Drillship
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Jon
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+CS Saucer
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Klipp og lim Tor
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+ROV Neptunus
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Klipp og lim Jostein et.
+ al
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -913,7 +1079,31 @@ reference "fig: Cybership Enterprise 1"
 
 \end_inset
 
-, hva bruker vi den til?
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+hva bruker vi den til
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -947,7 +1137,7 @@ a National Instruments compact reconfigurable input/output (cRIO) embedded
 \end_layout
 
 \begin_layout Itemize
-a Raspberry Pi (RPi) single-board computerand,
+a Raspberry Pi (RPi) single-board computer,
 \end_layout
 
 \begin_layout Itemize
@@ -959,8 +1149,15 @@ four servos.
 \end_layout
 
 \begin_layout Standard
-The operator interface is by laptop and through a Sony Sixaxis wireless
- gamepad for PlayStation 3.
+The operator interfaces the system by
+\end_layout
+
+\begin_layout Itemize
+laptop, and
+\end_layout
+
+\begin_layout Itemize
+a Sony Sixaxis wireless gamepad for PlayStation 3.
 \end_layout
 
 \begin_layout Paragraph
@@ -994,7 +1191,7 @@ name "fig: CSE1 communication"
 
 \end_inset
 
-d
+CSE1 communication diagram
 \end_layout
 
 \end_inset
@@ -1034,11 +1231,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig: CSE1 power-1"
+name "fig: CSE1 signal"
 
 \end_inset
 
-d
+CSE1 signal paths
 \end_layout
 
 \end_inset
@@ -1163,7 +1360,7 @@ name "fig: CSE1 power"
 
 \end_inset
 
-d
+CSE1 power system
 \end_layout
 
 \end_inset
@@ -1177,53 +1374,14 @@ d
 \end_layout
 
 \begin_layout Standard
-hg
-\end_layout
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: CSE1 power"
 
-\begin_layout Standard
-\begin_inset Newpage clearpage
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsection
-CS Saucer
-\end_layout
-
-\begin_layout Standard
 .
-\end_layout
-
-\begin_layout Standard
-fdfd
-\end_layout
-
-\begin_layout Standard
-fdfdfd
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-ROV Neptunus
-\end_layout
-
-\begin_layout Standard
-.fdfd
-\end_layout
-
-\begin_layout Standard
-fdfdfdfdfd
-\end_layout
-
-\begin_layout Standard
-fdfdfd
 \end_layout
 
 \begin_layout Standard
@@ -1238,825 +1396,26 @@ Control system development philosophy
 \end_layout
 
 \begin_layout Standard
-test complex real-time control and monitoring systems.
- Such systems are becoming more complex and rely on more advanced integrated
- functionality of software-based real-time functions, and many separately
- designed control and monitoring systems need to cooperate on performing
- common tasks.
- Consequently, the control system software code becomes more complex, and
- may be hard to verify by running regular software simulations.
- 
-\end_layout
-
-\begin_layout Itemize
-Increased complexity marine vessels increases the need for testing and verificat
-ion.
+As the complexity of marine vessels and operations grows, the need for thorough
+ testing and verification of the vessel real-time control and monitoring
+ systems increases.
+ More advanced integrated functionality relies on many separately designed
+ control and monitoring systems to cooperate on performing common tasks.
+ Regular software simulations cannot cover all aspects of this complexity.
 \end_layout
 
 \begin_layout Standard
-Verification and validation techniques applied throughout the development
- process enable you to find errors before they can derail your project.
- Most system design errors are introduced in the original specification,
- but aren't found until the test phase.
- When engineering teams use models to perform virtual testing early in the
- project, they eliminate problems and reduce development time by as much
- as 50%.
+Through steps-wise verification and validation at different levels of fidelity,
+ errors can be discovered at earlier stages thus lowering the total development
+ cost.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Development Steps
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{lcccc}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-toprule%
-\end_layout
-
-\begin_layout Plain Layout
-
-DOF      & Controller & Plant   & Iteration time     & Flexibility 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-otoprule
-\end_layout
-
-\begin_layout Plain Layout
-
-MIL      & 
-\backslash
-ding{51} & Extremely short          &           &            
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-SIL      & 
-\backslash
-ding{51} &           &           &            
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-PIL      &           &           & 
-\backslash
-ding{51} &            
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-HIL   &           &           &           & 
-\backslash
-ding{51}  
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Scale &           &           &           & 
-\backslash
-ding{51}  
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-Full scale   & 
-\backslash
-ding{51} & 
-\backslash
-ding{51} &           &    Low        
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-bottomrule
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Development steps overview
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Most of these terms are used in the context of control systems development
- which means that typically you are building control software to interact
- with a mechatronic system.
- Typically, these are referred to as the 
-\begin_inset Quotes eld
-\end_inset
-
-controller
-\begin_inset Quotes erd
-\end_inset
-
- and the 
-\begin_inset Quotes eld
-\end_inset
-
-plant
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-qualify their experimental setups in other laboratories before their assigned
- laboratory time is started.
- This will aid in making experimental work more efficient by reducing debugging
- time, improve tuning of parameters and test scenarios, and thereby maximizing
- the outcome of the experimental work.
-\end_layout
-
-\begin_layout Subsection
-Model-in-the-Loop
-\end_layout
-
-\begin_layout Subsubsection
-Principle
-\end_layout
-
-\begin_layout Standard
-Model of the controller interconnected with a physical model of the plant,
- interconnected in a control development environment, such as MATLAB Simulink.
-\end_layout
-
-\begin_layout Subsubsection
-Aim
-\end_layout
-
-\begin_layout Standard
-Develop control strategies 
-\end_layout
-
-\begin_layout Subsubsection
-Iteration time
-\end_layout
-
-\begin_layout Standard
-Extremely short, small changes are immediately implemented and tested.
-\end_layout
-
-\begin_layout Subsubsection
-Cost
-\end_layout
-
-\begin_layout Standard
-Low
-\end_layout
-
-\begin_layout Subsection
-Software-in-the-Loop
-\end_layout
-
-\begin_layout Standard
-Controller coded in final langugae, such as C or C++, and connected to plant
- model in a control development environment.
-\end_layout
-
-\begin_layout Subsubsection
-Aim
-\end_layout
-
-\begin_layout Standard
-Test of coding system.
- Reveal coding failures.
-\end_layout
-
-\begin_layout Subsubsection
-Iteration time
-\end_layout
-
-\begin_layout Standard
-Slightly longer than MIL.
-\end_layout
-
-\begin_layout Subsection
-Processor-in-the-Loop
-\end_layout
-
-\begin_layout Subsubsection
-Principle
-\end_layout
-
-\begin_layout Standard
-Controller deployed to a representative microprocessor, connected to the
- plant simulation via high speed bus, such as JTAG.
- The plant must be synchronized with the controller.
-\end_layout
-
-\begin_layout Subsubsection
-Aim
-\end_layout
-
-\begin_layout Standard
-expose problems with execution in the embedded environment.
- For instance, does your control loop fit within the execution time available
- on the embedded processor.
- 
-\end_layout
-
-\begin_layout Subsubsection
-Iteration time
-\end_layout
-
-\begin_layout Standard
-higher, regenerate and deploy code for each run
-\end_layout
-
-\begin_layout Subsection
-Hardware-in-the-Loop
-\end_layout
-
-\begin_layout Subsubsection
-Principle
-\end_layout
-
-\begin_layout Standard
-Controller fully installed into the intended final hardware, connected through
- the plant only through the proper IO.
- The plant simulator must run on a real-time computer emulating the IO of
- a real process.
-\end_layout
-
-\begin_layout Subsubsection
-Aim
-\end_layout
-
-\begin_layout Standard
-Perform regulation, security and failure tests without risk 
-\end_layout
-
-\begin_layout Standard
-Investigate the interaction between several ECUs and transmission control
- units (TCUs) 
-\end_layout
-
-\begin_layout Standard
-Ensure a high level of robustness and quality.
- 
-\end_layout
-
-\begin_layout Subsection
-Scale test
-\end_layout
-
-\begin_layout Subsection
-Full scale
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Control modes
-\end_layout
-
-\begin_layout Standard
-Five control modes:
-\end_layout
-
-\begin_layout Itemize
-Stop all actuators
-\end_layout
-
-\begin_layout Enumerate
-Individual actuator control
-\end_layout
-
-\begin_layout Enumerate
-Generalized force control
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Body frame
-\end_layout
-
-\begin_layout Enumerate
-Inertial frame
-\end_layout
-
-\begin_layout Enumerate
-User frame
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Regulation
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Pose (3 DOF)
-\end_layout
-
-\begin_layout Enumerate
-Heading
-\end_layout
-
-\begin_layout Enumerate
-Depth
-\end_layout
-
-\begin_layout Enumerate
-Roll/pitch
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Automatic/operations
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset space \quad{}
-\end_inset
-
-Path following, guidance, etc
-\end_layout
-
-\end_deeper
-\begin_layout Subsection
-Individual actuator control
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename ctrl_u.png
-	scale 35
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Individual actuator control"
-
-\end_inset
-
-Individual actuator control
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Inputs are 
-\end_layout
-
-\begin_layout Subsection
-Generalized force control
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename ctrl_tau.png
-	scale 35
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Generalized force control"
-
-\end_inset
-
-Generalized force control
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\tau=\left[\begin{array}{c}
-X\\
-Y\\
-Z\\
-K\\
-M\\
-N
-\end{array}\right]
-\]
-
-\end_inset
-
-For the surface craft typically 3 DOF 
-\begin_inset Formula 
-\[
-\tau=\left[\begin{array}{c}
-X\\
-Y\\
-N
-\end{array}\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-TA
-\end_layout
-
-\begin_layout Subsubsection
-Body frame
-\end_layout
-
-\begin_layout Subsubsection
-Inertial frame
-\end_layout
-
-\begin_layout Subsubsection
-User frame
-\end_layout
-
-\begin_layout Subsection
-Regulation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename ctrl_setpoint.png
-	scale 35
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Generalized force control-1"
-
-\end_inset
-
-Generalized force control
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{tabular}{lcccc}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-toprule%
-\end_layout
-
-\begin_layout Plain Layout
-
-DOF      & Stationkeeping & Heading   & Depth     & Roll/Pitch 
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-otoprule
-\end_layout
-
-\begin_layout Plain Layout
-
-$x$      & 
-\backslash
-ding{51} &           &           &            
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$y$      & 
-\backslash
-ding{51} &           &           &            
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$z$      &           &           & 
-\backslash
-ding{51} &            
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-phi$   &           &           &           & 
-\backslash
-ding{51}  
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-theta$ &           &           &           & 
-\backslash
-ding{51}  
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-$
-\backslash
-psi$   & 
-\backslash
-ding{51} & 
-\backslash
-ding{51} &           &            
-\backslash
-
-\backslash
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-bottomrule
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{tabular}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Automatic/operations
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename ctrl_operations.png
-	scale 35
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Generalized force control-1-1"
-
-\end_inset
-
-Generalized force control
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+In the case of the MC lab, users qualify their experimental setups before
+ the assigned laboratory time.
+ This reduces debugging time, improves tuning of parameters and test scenarios,
+ thereby increasing efficiency and maximizing the outcome of the experimental
+ work.
 \end_layout
 
 \begin_layout Standard
@@ -2235,6 +1594,1280 @@ Forklaring av hva realtime betyr i HW og SW
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Development Steps
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{lcccc}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+toprule%
+\end_layout
+
+\begin_layout Plain Layout
+
+DOF      & Controller & Plant   & Iteration time     & Flexibility 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+otoprule
+\end_layout
+
+\begin_layout Plain Layout
+
+MIL      & 
+\backslash
+ding{51} & Extremely short          &           &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+SIL      & 
+\backslash
+ding{51} &           &           &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+PIL      &           &           & 
+\backslash
+ding{51} &            
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+HIL   &           &           &           & 
+\backslash
+ding{51}  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Scale &           &           &           & 
+\backslash
+ding{51}  
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Full scale   & 
+\backslash
+ding{51} & 
+\backslash
+ding{51} &           &    Low        
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bottomrule
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Development steps overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Marine cybernetics deals with control engineering for the vessel mechatronic
+ systems which again interact with the environment.
+ In this text, 
+\begin_inset Quotes eld
+\end_inset
+
+the controller
+\begin_inset Quotes erd
+\end_inset
+
+ refers to the designed control software and 
+\begin_inset Quotes eld
+\end_inset
+
+the plant
+\begin_inset Quotes erd
+\end_inset
+
+ to the combination of the mechatronic system and the environment.
+\end_layout
+
+\begin_layout Subsection
+Model-in-the-Loop
+\end_layout
+
+\begin_layout Subsubsection
+Principle
+\end_layout
+
+\begin_layout Standard
+A model of the controller interconnected with a physical model of the plant,
+ in a control development environment, such as MATLAB Simulink.
+\end_layout
+
+\begin_layout Subsubsection
+Aim
+\end_layout
+
+\begin_layout Standard
+Develop control strategies .
+ Test principles.
+\end_layout
+
+\begin_layout Subsubsection
+Iteration time
+\end_layout
+
+\begin_layout Standard
+Extremely short, small changes are immediately implemented and tested.
+\end_layout
+
+\begin_layout Subsubsection
+Cost
+\end_layout
+
+\begin_layout Standard
+Low
+\end_layout
+
+\begin_layout Subsection
+Software-in-the-Loop
+\end_layout
+
+\begin_layout Standard
+The controller is coded in the final language, such as C or C++, and connected
+ to the plant model in a control development environment.
+\end_layout
+
+\begin_layout Subsubsection
+Aim
+\end_layout
+
+\begin_layout Standard
+Test of coding system.
+ Reveal coding failures.
+\end_layout
+
+\begin_layout Subsubsection
+Iteration time
+\end_layout
+
+\begin_layout Standard
+Slightly longer than MIL.
+\end_layout
+
+\begin_layout Subsection
+Processor-in-the-Loop
+\end_layout
+
+\begin_layout Subsubsection
+Principle
+\end_layout
+
+\begin_layout Standard
+The controller is deployed to a representative microprocessor, connected
+ to the plant simulation via high speed bus, such as JTAG.
+ The plant must be synchronized with the controller.
+\end_layout
+
+\begin_layout Subsubsection
+Aim
+\end_layout
+
+\begin_layout Standard
+Expose problems with execution in the embedded environment, such as insufficient
+ computing resources on the embedded processor.
+\end_layout
+
+\begin_layout Subsubsection
+Iteration time
+\end_layout
+
+\begin_layout Standard
+higher, regenerate and deploy code for each run
+\end_layout
+
+\begin_layout Subsection
+Hardware-in-the-Loop
+\end_layout
+
+\begin_layout Subsubsection
+Principle
+\end_layout
+
+\begin_layout Standard
+Controller fully installed into the intended final hardware, connected through
+ the plant only through the proper IO.
+ The plant simulator must run on a real-time computer emulating the IO of
+ a real process.
+\end_layout
+
+\begin_layout Subsubsection
+Aim
+\end_layout
+
+\begin_layout Standard
+Perform regulation, security and failure tests without risk.
+\end_layout
+
+\begin_layout Standard
+Investigate the interaction between subsystems.
+\end_layout
+
+\begin_layout Standard
+Ensure a high level of robustness and quality.
+\end_layout
+
+\begin_layout Subsection
+Scale test
+\end_layout
+
+\begin_layout Subsection
+Full scale
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Control Modes
+\end_layout
+
+\begin_layout Standard
+It is favorable to allow for five main control modes:
+\end_layout
+
+\begin_layout Itemize
+Stop all actuators
+\end_layout
+
+\begin_layout Enumerate
+Individual actuator control
+\end_layout
+
+\begin_layout Enumerate
+Generalized force control
+\end_layout
+
+\begin_layout Enumerate
+Regulation
+\end_layout
+
+\begin_layout Enumerate
+Operations
+\end_layout
+
+\begin_layout Standard
+In addition, sub-modes allow more functionality.
+ 
+\end_layout
+
+\begin_layout Subsection
+Individual actuator control
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ctrl_u.png
+	scale 35
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Individual actuator control"
+
+\end_inset
+
+Individual actuator control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The most basic mode allows controlling each thruster separately.
+ Inputs are typically normalized force 
+\begin_inset Formula $u=\left[-1,1\right]$
+\end_inset
+
+, angle 
+\begin_inset Formula $\alpha=\left[-\pi,\pi\right]$
+\end_inset
+
+, and sometimes normalized rotational speed 
+\begin_inset Formula $\omega=\left[-1,1\right]$
+\end_inset
+
+.
+ The software computes the corresponding physical signal, for instance a
+ pulse width manipulated (PWM) signal as illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Individual actuator control"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The user interface may be through gamepad, computer, tablet, etc.
+\end_layout
+
+\begin_layout Standard
+Implementation details are discussed in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Direct-Thruster-Control"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Generalized force control
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ctrl_tau.png
+	scale 35
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Generalized force control"
+
+\end_inset
+
+Generalized force control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thrust allocation allows input of the desired generalized force, as seen
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Generalized force control"
+
+\end_inset
+
+.
+ For six degrees of freedom (6 DOF) control the input is 
+\begin_inset Formula 
+\[
+\tau=\left[\begin{array}{c}
+X\\
+Y\\
+Z\\
+K\\
+M\\
+N
+\end{array}\right].
+\]
+
+\end_inset
+
+For surface craft, 3 DOF are typically considered: 
+\begin_inset Formula 
+\[
+\tau=\left[\begin{array}{c}
+X\\
+Y\\
+N
+\end{array}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The user interface may be through gamepad, computer, tablet, etc.
+ The appropriate reference frame depends on the application.
+\end_layout
+
+\begin_layout Subsubsection
+Body frame
+\end_layout
+
+\begin_layout Standard
+Most commonly, the desired thrust is given in the vessel-fixed body frame.
+ This is the intuitive setup for an on-board operator.
+\end_layout
+
+\begin_layout Standard
+Implementation details are discussed in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Direct-Body-relative-motion"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Inertial frame
+\end_layout
+
+\begin_layout Standard
+For remote operation, it may be suitable to input the force with regard
+ to the inertial frame, rather than the vessel orientation.
+\end_layout
+
+\begin_layout Standard
+Implementation details are discussed in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Direct-NED-relative-motion"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+User frame
+\end_layout
+
+\begin_layout Standard
+When the operator has eye contact with the vessel, it may be suitable to
+ specify the force with respect to the line of sight between the operator
+ and craft.
+ 
+\end_layout
+
+\begin_layout Standard
+Implementation details are discussed in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Direct-User-relative-motion"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Regulation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ctrl_setpoint.png
+	scale 35
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Regulation"
+
+\end_inset
+
+Regulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\phi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\psi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stationkeeping
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ding{51}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ding{51}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ding{51}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heading
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ding{51}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depth
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ding{51}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Roll/Pitch
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ding{51}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ding{51}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Regulation-modes"
+
+\end_inset
+
+A selection of regulation modes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Maintaining a given value in one or several DOFs under the influence of
+ disturbances is the basic automatic control mode.
+ The given value is called setpoint, as illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Regulation"
+
+\end_inset
+
+.
+ Typical sub-modes are listed in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Regulation-modes"
+
+\end_inset
+
+.
+ Reference filters for changing setpoints may or may not be included.
+\end_layout
+
+\begin_layout Standard
+The user interface typically allows inputting the setpoint value directly,
+ for instance on a computer or tablet.
+ Alternatively, the setpoint may be translated through gamepad.
+\end_layout
+
+\begin_layout Standard
+Further details are discussed in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Auto-Control"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Marine-Operations-Control-1"
+
+\end_inset
+
+Marine Operations Control
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ctrl_operations.png
+	scale 35
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Marine Operations Control"
+
+\end_inset
+
+Marine Operations Control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The more complex control modes, typically combined from several of the different
+ submodes, give automatic functions that are important for different marine
+ operations.
+ Input varies depending on the operation.
+ It may be maps or waypoints, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Marine Operations Control"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Further details are discussed in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Marine-Operations-Control"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
 \begin_layout Chapter
 Real-time computing
 \end_layout
@@ -2243,7 +2876,7 @@ Real-time computing
 Hybrid simulation
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Another advantage of HIL testing is that scenarios that may be difficult
  to test experimentally (either due to the risk involved in the test, due
  to the need for a special state of the environment, or due to inadequate
@@ -2253,6 +2886,11 @@ Another advantage of HIL testing is that scenarios that may be difficult
  test setups, where part of the experimental setup is real and part is simulated
 , and these parts are interconnected through real-time interfaces such as
  sensors, communications, and actuators.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3173,6 +3811,34 @@ When the wagon is moving, no one is allowed to move on the sides of the
 
 \begin_layout Chapter
 Wave generator
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Kanskje kan Astrid skrive om grunnleggende bruk, og om hvordan hun hacker
+ bølgeserier
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -17031,6 +17697,1398 @@ FloatBarrier
 \end_inset
 
 
+\end_layout
+
+\begin_layout Chapter
+ROV control modes
+\end_layout
+
+\begin_layout Section
+ROV dynamics
+\end_layout
+
+\begin_layout Subsection
+6 DOF model
+\end_layout
+
+\begin_layout Standard
+We let the 6 DOF position/angle vector be 
+\begin_inset Formula $\eta=\text{col}(p,\Theta)$
+\end_inset
+
+, where 
+\begin_inset Formula $p=\text{col}(x,y,z)$
+\end_inset
+
+ and 
+\begin_inset Formula $\Theta=\text{col}(\phi,\theta,\psi)$
+\end_inset
+
+, and the corresponding body-fixed velocity vector 
+\begin_inset Formula $\nu=\text{col}(u,v,r,p,q,r)$
+\end_inset
+
+.
+ The ROV kinematic model is then
+\begin_inset Formula 
+\begin{equation}
+\dot{\eta}=J(\Theta)\nu.
+\end{equation}
+
+\end_inset
+
+The kinetic control model is given 
+\begin_inset space \space{}
+\end_inset
+
+by 
+\begin_inset Formula 
+\begin{equation}
+M\dot{\nu}+C(\nu)\nu+D(\nu)\nu+g(\eta)=\tau+J(\Theta)^{-1}b(t),\label{Eq_6DOFdyn}
+\end{equation}
+
+\end_inset
+
+where, in particular, 
+\begin_inset Formula $M=M_{rb}+M_{a}$
+\end_inset
+
+ is the system inertia matrix, 
+\begin_inset Formula $g(\eta)$
+\end_inset
+
+ is the restoring vector, and 
+\begin_inset Formula $b(t)$
+\end_inset
+
+ is an external slowly varying bias vector.
+ The thrust load vector is 
+\begin_inset Formula 
+\begin{equation}
+\tau=\left[\begin{array}{c}
+\mathcal{F}\\
+\mathcal{M}
+\end{array}\right],\qquad\mathcal{F}=\left[\begin{array}{c}
+X\\
+Y\\
+Z
+\end{array}\right]\left[\text{N}\right],\qquad\mathcal{M}=\left[\begin{array}{c}
+K\\
+M\\
+N
+\end{array}\right]\left[\text{Nm}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+According to Fossen, if we assume starboard-port symmetry with 
+\begin_inset Formula $y_{g}=I_{xy}=I_{yz}=I_{zx}=0,$
+\end_inset
+
+ then 
+\begin_inset Formula $M$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{equation}
+M=\left[\begin{array}{cccccc}
+m-X_{\dot{u}} & 0 & -X_{\dot{w}} & 0 & mz_{g}-X_{\dot{q}} & 0\\
+0 & m-Y_{\dot{v}} & 0 & -mz_{g}-Y_{\dot{p}} & 0 & mx_{g}-Y_{\dot{r}}\\
+-X_{\dot{w}} & 0 & m-Z_{\dot{w}} & 0 & -mx_{g}-Z_{\dot{q}} & 0\\
+0 & -mz_{g}-Y_{\dot{p}} & 0 & I_{x}-K_{\dot{p}} & 0 & -I_{zx}-K_{\dot{r}}\\
+mz_{g}-X_{\dot{q}} & 0 & -mx_{g}-Z_{\dot{q}} & 0 & I_{y}-M_{\dot{q}} & 0\\
+0 & mx_{g}-Y_{\dot{r}} & 0 & -I_{zx}-K_{\dot{r}} & 0 & I_{z}-N_{\dot{r}}
+\end{array}\right].\label{Eq_M66}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Expressions for the Coriolis and centripetal matrix 
+\begin_inset Formula $C(\nu)$
+\end_inset
+
+, and damping matrix 
+\begin_inset Formula $D(\nu)$
+\end_inset
+
+, and restoring loads 
+\begin_inset Formula $g(\eta)$
+\end_inset
+
+ can be found in Fossen.
+\end_layout
+
+\begin_layout Subsection
+Thruster configuration
+\end_layout
+
+\begin_layout Standard
+The thruster configuration for an ROV is given by a set of lever arms from
+ the vessel origin (VO) to each individual thruster.
+ For a single thruster, let the thrust vector it produces in the body frame,
+ and its location in the body frame, be
+\begin_inset Formula 
+\begin{equation}
+f=\left[\begin{array}{c}
+f_{x}\\
+f_{y}\\
+f_{z}
+\end{array}\right],\qquad l=\left[\begin{array}{c}
+l_{x}\\
+l_{y}\\
+l_{z}
+\end{array}\right],
+\end{equation}
+
+\end_inset
+
+respectively.
+ Then the corresponding thrust loads become 
+\begin_inset Formula 
+\begin{equation}
+\tau=\left[\begin{array}{c}
+f\\
+l\times f
+\end{array}\right]=\left[\begin{array}{c}
+f_{x}\\
+f_{y}\\
+f_{z}\\
+l_{y}f_{z}-l_{z}f_{y}\\
+l_{z}f_{x}-l_{x}f_{z}\\
+l_{x}f_{y}-l_{y}f_{x}
+\end{array}\right].
+\end{equation}
+
+\end_inset
+
+For a thruster producing thrust 
+\begin_inset Formula $T$
+\end_inset
+
+ in pure surge direction becomes 
+\begin_inset Formula $f=\text{col}(T,0,0)$
+\end_inset
+
+, pure sway becomes 
+\begin_inset Formula $f=\text{col}(0,T,0)$
+\end_inset
+
+, and pure heave becomes 
+\begin_inset Formula $f=\text{col}(0,0,T)$
+\end_inset
+
+.
+ For an azimuth thruster producing thrust in surge-sway at an angle 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ becomes 
+\begin_inset Formula $f=\text{col}(T\cos\alpha,T\sin\alpha,0)$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $m$
+\end_inset
+
+ thrusters, each with an orientation 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+, we get the total generalized thrust loads 
+\begin_inset Formula 
+\begin{equation}
+\tau=\sum_{i=1}^{m}\tau_{i}=\sum_{i=1}^{m}\left[\begin{array}{c}
+f_{i}\\
+l_{i}\times f_{i}
+\end{array}\right]=B(\alpha)Ku
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $B(\alpha)$
+\end_inset
+
+ is the thruster configuration matrix with 
+\begin_inset Formula $\alpha=\text{col}(\alpha_{1},\ldots,\alpha_{m})$
+\end_inset
+
+, 
+\begin_inset Formula $K=\text{diag}(k_{1},\ldots,k_{m})$
+\end_inset
+
+ is a matrix of scaling gains, and 
+\begin_inset Formula $u=\text{col}(T_{1},\ldots,T_{m})$
+\end_inset
+
+ is the individual thruster forces (possibly normalized using the scaling
+ in 
+\begin_inset Formula $K$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+Example: Minerva
+\end_layout
+
+\begin_layout Standard
+For ROV Minerva the thruster configuration is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Fig_MinervaThrusters"
+
+\end_inset
+
+ (where 
+\begin_inset Formula $f_{p}$
+\end_inset
+
+ should point in the opposite direction).
+ 
+\begin_inset Float figure
+placement ptbh
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Minerva_1.jpg
+	width 40text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Thruster configuration for ROV Minerva.
+ The thrust force 
+\begin_inset Formula $f_{p}$
+\end_inset
+
+ should point in opposite direction.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "Fig_MinervaThrusters"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Considering only the thrusters for the 3DOF horizontal motion, the thruster
+ configuration is:
+\end_layout
+
+\begin_layout Itemize
+T1: Aft starboard thruster.
+\end_layout
+
+\begin_layout Itemize
+T2: Aft port thruster.
+\end_layout
+
+\begin_layout Itemize
+T3: Bow thruster, lateral thrust in potitive y-direction.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h!
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Thruster
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Location [m]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Azimuth [
+\begin_inset Formula $\textdegree$
+\end_inset
+
+]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Saturation [RPM]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Saturation [N]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Thr1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $l_{1}=(-0.57,0.24)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\alpha_{2}=10\textdegree$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1450
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $[T_{1,\min},T_{1,\max}]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Thr2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $l_{2}=(-0.57,-0.24)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\alpha_{3}=-10\textdegree$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1450
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $[T_{2,\min},T_{2,\max}]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Thr3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $l_{3}=(0.166,0)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\alpha_{1}=90\textdegree$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+1450
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $[T_{3,\min},T_{3,\max}]$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROV Minerva thruster data
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab: ROV Minerva thruster data"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These thrusters data is given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: ROV Minerva thruster data"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+With the generalized force/moment vector 
+\begin_inset Formula $\tau:=\text{col}(\tau_{u},\tau_{v},\tau_{r})$
+\end_inset
+
+, and 
+\begin_inset Formula $u=\text{col}(T_{1},T_{2},T_{3})$
+\end_inset
+
+ being the thrust force [N] from each thruster, this gives the following
+ configuration 
+\begin_inset Formula 
+\begin{align}
+\tau & =B(\alpha)u\\
+B(\alpha) & =\left[\begin{array}{ccc}
+\cos\alpha_{1} & \cos\alpha_{2} & \cos\alpha_{3}\\
+\sin\alpha_{1} & \sin\alpha_{2} & \sin\alpha_{3}\\
+l_{1x}\sin\alpha_{1}-l_{1y}\cos\alpha_{1} & l_{2x}\sin\alpha_{2}-l_{2y}\cos\alpha_{2} & l_{3x}\sin\alpha_{3}-l_{3y}\cos\alpha_{3}
+\end{array}\right]\nonumber \\
+ & =\left[\begin{array}{ccc}
+0 & \cos\alpha_{2} & \cos\alpha_{3}\\
+1 & \sin\alpha_{2} & \sin\alpha_{3}\\
+l_{1x} & l_{2x}\sin\alpha_{2}-l_{2y}\cos\alpha_{2} & l_{3x}\sin\alpha_{3}-l_{3y}\cos\alpha_{3}
+\end{array}\right].\nonumber 
+\end{align}
+
+\end_inset
+
+The commanded thrust for 
+\begin_inset Formula $(T_{1},T_{2},T_{3})$
+\end_inset
+
+, based a commanded generalized thrust load vector 
+\begin_inset Formula $\tau_{c}$
+\end_inset
+
+, is then calculated by a 
+\series bold
+thrust allocation
+\series default
+ algorithm.
+\end_layout
+
+\begin_layout Section
+ROV control modes
+\end_layout
+
+\begin_layout Standard
+We have discussed control modes for an ROV.
+ We typically have different input devices:
+\end_layout
+
+\begin_layout Itemize
+Keyboard
+\end_layout
+
+\begin_layout Itemize
+Joystick
+\end_layout
+
+\begin_layout Itemize
+Touchscreen 
+\end_layout
+
+\begin_layout Standard
+Each of these can be set up to control the ROV in a number of control modes.The
+ proposed modes, open for debate, is the following:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Direct Thruster Control:
+\series default
+ Direct command of individual thrusters.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Direct Motion Control:
+\series default
+ Direct command of ROV motions, distinguishing between:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Direct Body-relative motion:
+\series default
+ Direct command of motion relative to Body reference frame.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Direct NED-relative motion:
+\series default
+ Direct control of motion relative to NED
+\begin_inset space \space{}
+\end_inset
+
+reference frame.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Direct User-relative motion:
+\series default
+ Direct control of motion relative to User
+\begin_inset space \space{}
+\end_inset
+
+reference frame.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Auto Control:
+\series default
+ Automatic control modes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+AutoPos:
+\series default
+ Automatic control of 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AutoDepth:
+\series default
+ Automatic control of 
+\begin_inset Formula $(z)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+AutoHead:
+\series default
+ Automatic control of 
+\begin_inset Formula $(\psi)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+CompRollPitch:
+\series default
+ Automatic compensation control of 
+\begin_inset Formula $(\phi,\theta)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Indirect Motion Control:
+\series default
+ Instantaneously command a guidance filter and use feedback to automatically
+ control the ROV correspondingly.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Marine Operations Control:
+\series default
+ More complex modes specific for various marine operations of the ROV, such
+ as:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Waypoint tracking control
+\end_layout
+
+\begin_layout Itemize
+Path-following
+\end_layout
+
+\begin_layout Itemize
+...
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Typically in a motion control system it is possible to combine several of
+ these modes, such that one can for instance use 
+\emph on
+Direct Motion Control
+\emph default
+ in horizontal position, while using AutoHead and AutoDepth.
+ Other modes may not be possible to combine, since they may be in conflict.
+ For instance, one should not combine the submodes 
+\emph on
+Direct Body-relative Motion Control
+\emph default
+
+\begin_inset space \space{}
+\end_inset
+
+with 
+\emph on
+Direct NED-relative Motion Control
+\emph default
+
+\begin_inset space \space{}
+\end_inset
+
+since these may come in conflict.
+\begin_inset space \space{}
+\end_inset
+
+The user should therefore be given a mode 
+\emph on
+Direct Motion Control
+\emph default
+
+\begin_inset space \space{}
+\end_inset
+
+and a switch to select Body-, NED-, or User-relative submodes.
+\begin_inset space \space{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Direct-Thruster-Control"
+
+\end_inset
+
+Direct Thruster Control
+\end_layout
+
+\begin_layout Standard
+Use the input device to directly command the individual thrust vector 
+\begin_inset Formula 
+\[
+u=\text{col}\left(T_{1},T_{2},\ldots,T_{m}\right)=u_{cmd}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Direct Body Motion Control
+\end_layout
+
+\begin_layout Standard
+Direct Motion Control uses thrust allocation to enable the user to command
+ motions of the fully actuated vehicle without need to consider individual
+ thruster setting.
+ Motions can be commanded relative to body-frame, NED-frame, or user-frame.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Direct-Body-relative-motion"
+
+\end_inset
+
+Direct Body-relative motion
+\end_layout
+
+\begin_layout Standard
+Use the input device to command the generalized 
+\series bold
+body-relative
+\series default
+ thrust vector 
+\begin_inset Formula 
+\begin{equation}
+\tau=\text{col}\left(\mathcal{F},\mathcal{M}\right)=\tau_{cmd}.
+\end{equation}
+
+\end_inset
+
+Then use thrust allocation to calculate the corresponding individual commanded
+ thrust vector, e.g.
+ 
+\begin_inset Formula 
+\begin{equation}
+u_{cmd}=B(\alpha)^{\dagger}\tau_{cmd}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Direct-NED-relative-motion"
+
+\end_inset
+
+Direct NED-relative motion
+\end_layout
+
+\begin_layout Standard
+Use the input device to command the generalized 
+\series bold
+NED-relative
+\series default
+ thrust vector 
+\begin_inset Formula $\tau_{cmd}^{NED}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Assuming we have the orientation vector 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ for the vehicle available, we use the NED-Body transformation to calculate
+ the corresponding body-fixed thrust vector, i.e.
+ 
+\begin_inset Formula 
+\begin{equation}
+\tau_{cmd}^{Body}=J(\Theta)^{-1}\tau_{cmd}^{NED}.
+\end{equation}
+
+\end_inset
+
+Finally we allocate this thrust vector to the invidual thrusters, e.g.
+ 
+\begin_inset Formula 
+\begin{equation}
+u_{cmd}=B(\alpha)^{\dagger}\tau_{cmd}^{Body}=B(\alpha)^{\dagger}J(\Theta)^{-1}\tau_{cmd}^{NED}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Direct-User-relative-motion"
+
+\end_inset
+
+Direct User-relative motion
+\end_layout
+
+\begin_layout Standard
+Use the input device to command the generalized 
+\series bold
+User-relative
+\series default
+ thrust vector 
+\begin_inset Formula $\tau_{cmd}^{User}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Assuming we have the orientation vector 
+\begin_inset Formula $\Theta_{User}$
+\end_inset
+
+ for the user relative to the NED-frame, we then calculate 
+\begin_inset Formula 
+\begin{equation}
+\tau_{cmd}^{NED}=J(\Theta_{User})\tau_{cmd}^{User}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, with the orientation vector 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ for the vehicle available, we use the NED-Body transformation to calculate
+ the corresponding body-fixed thrust vector, i.e.
+ 
+\begin_inset Formula 
+\begin{equation}
+\tau_{cmd}^{Body}=J(\Theta)^{-1}\tau_{cmd}^{NED}=J(\Theta)^{-1}J(\Theta_{User})\tau_{cmd}^{User}.
+\end{equation}
+
+\end_inset
+
+Finally we allocate this thrust vector to the invidual thrusters, e.g.
+ 
+\begin_inset Formula 
+\begin{equation}
+u_{cmd}=B(\alpha)^{\dagger}\tau_{cmd}^{Body}=B(\alpha)^{\dagger}J(\Theta)^{-1}J(\Theta_{User})\tau_{cmd}^{User}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Auto-Control"
+
+\end_inset
+
+Auto Control
+\end_layout
+
+\begin_layout Standard
+The automatic feedback control modes are proposed as:
+\end_layout
+
+\begin_layout Enumerate
+AutoPos: Automatic control of 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+AutoDepth: Automatic control of 
+\begin_inset Formula $(z)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+AutoHead: Automatic control of 
+\begin_inset Formula $(\psi)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+CompRollPitch: Automatic control of 
+\begin_inset Formula $(\phi,\theta)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+These submodes are self-explanatory.
+ To be detailed in the student projects.
+\end_layout
+
+\begin_layout Subsection
+Indirect Motion Control
+\end_layout
+
+\begin_layout Standard
+The idea is that the input devices are used to instantaneously command positions
+/velocities/accelerations, feed these through a reference filter or a guidance
+ algorithm, and then use feedback to automatically control the ROV corresponding
+ly.
+\end_layout
+
+\begin_layout Standard
+Here we can be creative and try different options.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Marine-Operations-Control"
+
+\end_inset
+
+Marine Operations Control
+\end_layout
+
+\begin_layout Standard
+These are a set of more complex control modes, typically combined from several
+ of the different submodes, to give automatic functions that are important
+ for different marine operations of the ROV.
+ An example is Path Following, where a sophisicated path-generation algorithms
+ and a guidance filter is combined with automatic control of 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+, 
+\begin_inset Formula $(z)$
+\end_inset
+
+, and 
+\begin_inset Formula $(\psi)$
+\end_inset
+
+, possibly while compensating 
+\begin_inset Formula $(\phi,\theta)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
