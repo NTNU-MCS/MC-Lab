@@ -6932,8 +6932,527 @@ FloatBarrier
 CS Saucer
 \end_layout
 
+\begin_layout Section
+Required Software
+\end_layout
+
 \begin_layout Standard
-k
+NI LabVIEW software required to run the project 
+\begin_inset Quotes eld
+\end_inset
+
+CyberShip Saucer
+\begin_inset Quotes erd
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+LabVIEW 2014
+\end_layout
+
+\begin_layout Enumerate
+LabVIEW 2014 myRIO Toolkit
+\end_layout
+
+\begin_layout Enumerate
+LabVIEW 2014 Real-Time Module
+\end_layout
+
+\begin_layout Enumerate
+LabVIEW Control Design and Simulation Module
+\end_layout
+
+\begin_layout Section
+Deployment
+\end_layout
+
+\begin_layout Standard
+When the power source is connected and the Wi indicator lights up, the vessel
+ is ready to deploy.
+\end_layout
+
+\begin_layout Itemize
+Run the host application 
+\begin_inset Quotes eld
+\end_inset
+
+mainHost.vi
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Deploy the target application 
+\begin_inset Quotes eld
+\end_inset
+
+main.vi
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The vessel is now operational.
+\end_layout
+
+\begin_layout Section
+NI Dashboard Manual Control
+\end_layout
+
+\begin_layout Standard
+The CS Saucer can be controlled directly from an Android or a iOS device
+ with the NI Dashboard app.
+\end_layout
+
+\begin_layout Section
+Manual Thruster Control
+\end_layout
+
+\begin_layout Itemize
+Make sure that your device is connected to the local are network with a
+ static ip adress.
+\end_layout
+
+\begin_layout Itemize
+Create a new Dashboard with six slide controls, these will be the six control
+ inputs 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Congure the scale of the slide controls so that 
+\begin_inset Formula $u\in\left[-1,1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha\in\left[-114,114\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tap a control to connect it to its corresponding shared variable node on
+ the myRIO.
+ The ip adress for the myRIO-Saucer is: 192:168:0:99.
+\end_layout
+
+\begin_layout Itemize
+The shared variable nodes for the manual thruster control are located in
+ the library 
+\begin_inset Quotes eld
+\end_inset
+
+libctrlMaualThruster
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Be careful to only use the variables with the label 
+\begin_inset Quotes eld
+\end_inset
+
+DSH
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Start the dashboard.
+\end_layout
+
+\begin_layout Section
+Manual Force Control
+\end_layout
+
+\begin_layout Itemize
+Make sure that your device is connected to the local are network with a
+ static ip adress.
+\end_layout
+
+\begin_layout Itemize
+Create a new Dashboard with three slide controls, this will be the commanded
+ force vector 
+\begin_inset Formula $\tau=\left[X,Y,N\right]^{\top}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Congure the scale of the slide controls so that 
+\begin_inset Formula $X=\left[-9;9\right]$
+\end_inset
+
+, 
+\begin_inset Formula $Y=\left[-9;9\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $N=\left[-4;4\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tap a control to connect it to its corresponding shared variable node on
+ the myRIO.
+ The ip adress for the myRIO-Saucer is: 192:168:0:99.
+\end_layout
+
+\begin_layout Itemize
+The shared variable nodes for the manual force control are located in the
+ library 
+\begin_inset Quotes eld
+\end_inset
+
+libctrlMaualForce
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Be careful to only use the variables with the label 
+\begin_inset Quotes eld
+\end_inset
+
+DSH
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Start the dashboard.
+\end_layout
+
+\begin_layout Section
+Data logging
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename Saucer_mapnetworkdrive.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Saucer map network"
+
+\end_inset
+
+Map network drive to the NI myRIO.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename Saucer_credentials.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Saucer credentials"
+
+\end_inset
+
+Login credentials on the myRIO-Saucer.
+ The password is blank.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename saucer_logfiles.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Saucer log files"
+
+\end_inset
+
+The log les are saved in the tmp folder on the myRIO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Continuous data logging has been implemented in the main target application.
+ On initialization, a 
+\begin_inset Quotes eld
+\end_inset
+
+.csv
+\begin_inset Quotes erd
+\end_inset
+
+ le is created for each of the control modes.
+ The log le for a control mode will only be populated when that particular
+ control mode is active.
+ Each log le is created with a control mode identier and a time stamp, e.g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+dp114700
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The log le format 
+\begin_inset Quotes eld
+\end_inset
+
+.csv
+\begin_inset Quotes erd
+\end_inset
+
+ (comma separated values) is highly compatible with MATLAB and enables easy
+ import and post processing of the data in MATLAB.
+ The import code in the script is easily created using MATLAB's import le
+ wizard which generates code for le import for a specic le.
+\end_layout
+
+\begin_layout Standard
+The log les on the myRIO are stored in the 
+\begin_inset Quotes eld
+\end_inset
+
+les/tmp
+\begin_inset Quotes erd
+\end_inset
+
+ folder which is a temporary folder that is cleared on reboot.
+ Saving the log les in this directory ensures that the target does not use
+ all of its storage memory to store old log les.
+ A log le can be easily exported from the target by using the 
+\begin_inset Quotes eld
+\end_inset
+
+Map network drive
+\begin_inset Quotes erd
+\end_inset
+
+ feature in Windows.
+ Simply map to the static ip of the target as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Saucer map network"
+
+\end_inset
+
+.
+ Remember to check the 
+\begin_inset Quotes eld
+\end_inset
+
+Connect using dierent credentials
+\begin_inset Quotes erd
+\end_inset
+
+ box.
+ When prompted for a password, type in 
+\begin_inset Quotes eld
+\end_inset
+
+admin
+\begin_inset Quotes erd
+\end_inset
+
+ as the user and leave the password blank as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Saucer credentials"
+
+\end_inset
+
+.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+les/tmp
+\begin_inset Quotes erd
+\end_inset
+
+ directory of the target is now available in the windows le explorer as
+ seen in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Saucer log files"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Charging the Traxxas LiPo Battery
+\end_layout
+
+\begin_layout Standard
+Connect both the balancing plug and the main power plug to the charger before
+ starting a charge.
+ Then place the battery in the ame resistant bag.
+ Ensure that the charger is set to LiPo mode before pressing start.
+ The charging indicator will turn green when the battery is fully charged.
+\end_layout
+
+\begin_layout Standard
+Discharging the battery lower than 9V can destroy it or lead to reduced
+ capacity and performance.
+ It is therefore recommended that the battery should be charged when reaching
+ a voltage of 11.1.
+ The voltage of the battery can be measured with a voltmeter on the balancing
+ plug.
+ Using the ground wire in the balancing plug, the voltage of each of the
+ cells can be measured from three remaining wires in the plug.
+ If the LiPo battery is discharged below 9V it will not charge in LiPo mode.
+ It is therefor wise to stay well above this limit.
+ Should this happen, the battery can be charged in 
+\begin_inset Quotes eld
+\end_inset
+
+NIMh
+\begin_inset Quotes erd
+\end_inset
+
+ mode for maximum 10 seconds.
+ This has proved to be eective for getting the voltage above 9V and able
+ to charge in LiPo mode again.
+ However it should be stressed that this measure be used with extremea caution
+ and only as a last resort.
 \end_layout
 
 \begin_layout Standard
@@ -14069,7 +14588,17 @@ Veristand
 
 \begin_deeper
 \begin_layout Enumerate
-Including NI VeriStand Model Framework!
+Including NI VeriStand Model Framework! This does not follow in the standard
+ (full) install.
+ Need to select 
+\begin_inset Quotes eld
+\end_inset
+
+install with costomization
+\begin_inset Quotes erd
+\end_inset
+
+ and then select it.
 \end_layout
 
 \end_deeper
