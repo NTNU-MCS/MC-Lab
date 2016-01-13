@@ -518,7 +518,7 @@ Marine cybernetics laboratory
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -586,6 +586,10 @@ reference "fig: Marine cybernetics laboratory basin-1"
 \end_inset
 
 , has dimensions 40m x 6.45m x 1.5m (LxBxD).
+\end_layout
+
+\begin_layout Standard
+The laboratory gives tangible results that solidifies theoretical work.
 \end_layout
 
 \begin_layout Standard
@@ -673,7 +677,7 @@ The positioning system consists of three Oqus high speed infrared cameras
  Peer-to-peer (P2P) networking is used to transmit camera data to a dedicated
  computer running Qualisys Track Manager (QTM) software.
  QTM performs triangulation and broadcasts the vessel position over the
- HIL-lab network.
+ wireless network.
 \end_layout
 
 \begin_layout Subsection
@@ -838,6 +842,17 @@ reference "tab:Wave generator capacity-1"
 \end_inset
 
  summarizes the generation capacity.
+\end_layout
+
+\begin_layout Subsection
+Current generator
+\end_layout
+
+\begin_layout Standard
+Not available as of spring 2015.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -849,7 +864,7 @@ Vessels
 \end_layout
 
 \begin_layout Standard
-Both surface and underwater vessels.
+Several both surface and underwater vessels are used in the MC Lab.
 \end_layout
 
 \begin_layout Standard
@@ -881,7 +896,7 @@ Cybership I.
 \end_layout
 
 \begin_layout Standard
-Also, there lab holds an underwater craft,
+Also, there laboratory holds an underwater craft,
 \end_layout
 
 \begin_layout Itemize
@@ -920,7 +935,7 @@ todo{
 
 \end_inset
 
-Jon
+Add material from Jon
 \begin_inset ERT
 status open
 
@@ -946,30 +961,179 @@ CS Saucer
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Float figure
+wide false
+sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
 
 
 \backslash
-todo{
+centering
 \end_layout
 
 \end_inset
 
-Klipp og lim Tor
-\begin_inset ERT
+ 
+\begin_inset Graphics
+	filename CSSaucer.png
+	width 95text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: CS Saucer"
+
+\end_inset
+
+CS Saucer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+CS Saucer is a fully actuated and highly controllable vessel with a spherically
+ shaped hull, much like a flying saucer.
+ It is designed to be light weight, agile and very responsive.
+ The CS Saucer adds possibilities for rapid response and motion in surge
+ and sway, something that is difficult to obtain with a traditional ship
+ hull.
+ 
+\end_layout
+
+\begin_layout Standard
+The non conventional shape of the hull of such a marine vessel opens the
+ possibilities for original projects in control theory and hydrodynamics,
+ as well as serving as a platform where student can get experience with
+ the practical aspects of control systems implementation
+\end_layout
+
+\begin_layout Subsubsection
+Hull
+\end_layout
+
+\begin_layout Standard
+The hull is constructed from three millimeter MDF sheeting, milled Divinycell
+ foam and a woven carbon with epoxy.
+ This results in a rigid hull with low draft.
+ The vessel has a detachable lid made of Plexiglas which is secured to the
+ top of the vessel with four butterfly screws.
+\end_layout
+
+\begin_layout Subsubsection
+Control system
+\end_layout
+
+\begin_layout Standard
+The embedded controller myRIO from National Instruments is used to control
+ the vessel.
+ The myRIO with its default FPGA personality is capable of driving 8 PWM
+ signals simultaneously, in addition to multiple digital and analog connections.
+ 
+\end_layout
+
+\begin_layout Standard
+Marine 30 Electronic Speed Controllers (ESC) are used to control the DC
+ motors driving the thruster propellers.
+\end_layout
+
+\begin_layout Subsubsection
+Actuators
+\end_layout
+
+\begin_layout Standard
+The vessel is fitted with three Graupner Schottel drive unit II azimuth
+ thrusters.
+ Torpedo 800 brushed DC motors drive the propeller.
+ Graupner DS8311 servo motors are used to control the angle of the thrusters.
+\end_layout
+
+\begin_layout Subsubsection
+Power
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
 
-}
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename CSSaucer_power.png
+	width 95text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: CS Saucer power"
+
+\end_inset
+
+CS Saucer power system
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The system is powered by a three cell 11.1V Lithium Polymer battery, as seen
+ in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: CS Saucer power"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to convert the 11.1V power provided by the battery to 5V for the
+ servos, a switching DC/DC converter is user together with a capacitor.
 \end_layout
 
 \begin_layout Standard
@@ -984,31 +1148,89 @@ ROV Neptunus
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Float figure
+wide false
+sideways false
 status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
 
 \begin_layout Plain Layout
 
 
 \backslash
-todo{
+centering
 \end_layout
 
 \end_inset
 
-Klipp og lim Jostein et.
- al
-\begin_inset ERT
-status open
+ 
+\begin_inset Graphics
+	filename ROVNeptunus_1.png
+	width 40text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: ROV Neptunus"
 
-}
+\end_inset
+
+ROV Neptunus
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Neptunus is a small, low-cost ROV prototype.
+ The design is based on OpenROV, and the instrumentation is directly adapted
+ thence.
+\end_layout
+
+\begin_layout Subsubsection
+Hull
+\end_layout
+
+\begin_layout Standard
+Neptunus is designed with a foil shaped body, in order to induce low drag
+ forces in the longitudinal direction.
+ The prototype consists of several blocks, made of acrylonitrile butadiene
+ styrene (ABS) - plastic, 3D printed at NTNU.
+\end_layout
+
+\begin_layout Subsubsection
+Actuators
+\end_layout
+
+\begin_layout Standard
+There are three thrusters on Neptunus: two in the longitudinal direction,
+ and one in the vertical.
+\end_layout
+
+\begin_layout Subsubsection
+Control system
+\end_layout
+
+\begin_layout Standard
+The main processes are driven by a BeagleBone computer, and an Arduino control
+ board.
+ It is equipped with an inertial measurement unit (IMU) and a high definition
+ (HD) web camera.
 \end_layout
 
 \begin_layout Standard
@@ -1104,6 +1326,14 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The vessel CS Enterprise I was constructed as a model ship available to
+ master and PhD students at NTNU [Skatun, 2011].
+ The work performed on CS Enterprise I include, but is not limited to, dynamic
+ positioning systems, maneuvering systems and path following, and navigation
+ with virtual reality [Valle, 2015].
 \end_layout
 
 \begin_layout Subsubsection
@@ -1391,6 +1621,65 @@ reference "fig: CSE1 power"
 
 \end_layout
 
+\begin_layout Subsection
+Cybership III
+\end_layout
+
+\begin_layout Standard
+1:30 scale model of a supply vessel.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cybership II
+\end_layout
+
+\begin_layout Standard
+2001.
+ 1:70 scaled model of a supply vessel.
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cybership I
+\end_layout
+
+\begin_layout Standard
+1:70 scaled model of a supply vessel.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+CyberRig
+\end_layout
+
+\begin_layout Standard
+The CyberRig is a semi submersible 1:100 scaled model drilling rig used
+ in student projects and research [Bjrneset, 2014].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Control system development philosophy
 \end_layout
@@ -1411,7 +1700,7 @@ Through steps-wise verification and validation at different levels of fidelity,
 \end_layout
 
 \begin_layout Standard
-In the case of the MC lab, users qualify their experimental setups before
+In the case of the MC Lab, users qualify their experimental setups before
  the assigned laboratory time.
  This reduces debugging time, improves tuning of parameters and test scenarios,
  thereby increasing efficiency and maximizing the outcome of the experimental
@@ -1765,7 +2054,7 @@ Development steps overview
 \begin_layout Standard
 Marine cybernetics deals with control engineering for the vessel mechatronic
  systems which again interact with the environment.
- In this text, 
+ In this section, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1876,7 +2165,7 @@ Iteration time
 \end_layout
 
 \begin_layout Standard
-higher, regenerate and deploy code for each run
+Higher, due to the need to regenerate and deploy code for each run.
 \end_layout
 
 \begin_layout Subsection
@@ -1914,8 +2203,16 @@ Ensure a high level of robustness and quality.
 Scale test
 \end_layout
 
+\begin_layout Standard
+-
+\end_layout
+
 \begin_layout Subsection
 Full scale
+\end_layout
+
+\begin_layout Standard
+-
 \end_layout
 
 \begin_layout Standard
@@ -1926,7 +2223,7 @@ Full scale
 \end_layout
 
 \begin_layout Section
-Control Modes
+Recommended Control Modes
 \end_layout
 
 \begin_layout Standard
@@ -1954,7 +2251,7 @@ Operations
 \end_layout
 
 \begin_layout Standard
-In addition, sub-modes allow more functionality.
+In addition, sub-modes may allow more functionality.
  
 \end_layout
 
@@ -1984,7 +2281,7 @@ centering
  
 \begin_inset Graphics
 	filename ctrl_u.png
-	scale 35
+	scale 45
 
 \end_inset
 
@@ -2078,7 +2375,7 @@ centering
  
 \begin_inset Graphics
 	filename ctrl_tau.png
-	scale 35
+	scale 45
 
 \end_inset
 
@@ -2238,7 +2535,7 @@ centering
  
 \begin_inset Graphics
 	filename ctrl_setpoint.png
-	scale 35
+	scale 45
 
 \end_inset
 
@@ -2811,7 +3108,7 @@ centering
  
 \begin_inset Graphics
 	filename ctrl_operations.png
-	scale 35
+	scale 45
 
 \end_inset
 
@@ -3596,6 +3893,160 @@ Laboratory user guide
 \end_layout
 
 \begin_layout Chapter
+Safety
+\end_layout
+
+\begin_layout Section
+Hazards and measures
+\end_layout
+
+\begin_layout Subsection
+Personnel injury
+\end_layout
+
+\begin_layout Paragraph
+Drowning
+\end_layout
+
+\begin_layout Standard
+It is required to have two or more persons present when using the basin.
+\end_layout
+
+\begin_layout Paragraph
+Electric shock
+\end_layout
+
+\begin_layout Standard
+The towing catenary should not be approached or touched.
+\end_layout
+
+\begin_layout Paragraph
+Carriage collision
+\end_layout
+
+\begin_layout Standard
+It is forbidden to run the towing carriage when there are people alongside
+ the basin.
+\end_layout
+
+\begin_layout Paragraph
+Thruster blade cuts
+\end_layout
+
+\begin_layout Standard
+Vessels must stay in the water as long as actuators are active.
+ Before removing the vessels from the water, the control system must be
+ stopped and disabled, for instance by undeploying in the VeriStand project.
+\end_layout
+
+\begin_layout Subsection
+Material damage
+\end_layout
+
+\begin_layout Paragraph
+Cybership Enterprise 1
+\end_layout
+
+\begin_layout Description
+Water
+\begin_inset space ~
+\end_inset
+
+damage: CSE1 is not waterproof and has excessive thrust capability which
+ can inflict large roll angles.
+ The risk of water on deck is reduced through thrust limitation and HIL
+ testing before application of new control algorithms.
+ 
+\end_layout
+
+\begin_layout Description
+Propeller
+\begin_inset space ~
+\end_inset
+
+dry
+\begin_inset space ~
+\end_inset
+
+running: BT must only be run in water.
+ Before removing the vessel from the water, the control system must be stopped
+ and the VeriStand project undeployed.
+\end_layout
+
+\begin_layout Description
+Loss
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+laptop
+\begin_inset space ~
+\end_inset
+
+control: Wireless network instability may result in loss of connection between
+ the laptop user interface and the cRIO.
+ In this event, fall back to manual thruster control, by pushing 
+\begin_inset Graphics
+	filename sixaxis_triangle.png
+	scale 40
+
+\end_inset
+
+ on the Sixaxis.
+\end_layout
+
+\begin_layout Description
+Loss
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+position
+\begin_inset space ~
+\end_inset
+
+measurement: -
+\end_layout
+
+\begin_layout Description
+Total
+\begin_inset space ~
+\end_inset
+
+loss
+\begin_inset space ~
+\end_inset
+
+of
+\begin_inset space ~
+\end_inset
+
+control: Pull the vessel with a boat hook.
+ Keep the CSE1 in water while disconnecting batteries.
+\end_layout
+
+\begin_layout Paragraph
+Towing carriage
+\end_layout
+
+\begin_layout Standard
+Stop before automatic stop at high speeds.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
 Qualisys motion capture system
 \end_layout
 
@@ -3611,10 +4062,37 @@ Towing carriage
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Update with current control system
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -3658,24 +4136,10 @@ Towing wagon in the MC-lab.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-In figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: Towing 01"
-
-\end_inset
-
-, a picture of the towing wagon is presented.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -3721,26 +4185,22 @@ Computer to operate the towing wagon
 \end_layout
 
 \begin_layout Standard
-Control of the wagon is done on board; see the red circle in figure 
+In Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig: Towing 01"
 
 \end_inset
 
-.
- For our purposes, to perform towing tests of CS Enterprise 1, only a certain
- computer commands are used.
- Further, in figure 
+, a picture of the towing wagon is presented.
+ Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig: Towing 02"
 
 \end_inset
 
-, a close up of the computer is shown.
- An explanation of the different commands, used for our purposes, is presented
- below.
+ is a close up of the computer.
 \end_layout
 
 \begin_layout Section
@@ -3748,12 +4208,11 @@ Movement of towing wagon
 \end_layout
 
 \begin_layout Standard
-The towing wagon can be moved approximately 20 meters in total.
- The end is located closest to the MC-laboratory.
+The towing wagon range is approximately 20 meters in total.
 \end_layout
 
 \begin_layout Itemize
-Move forwards: Press the button marked as move forwards (see figure 2).
+Move forwards: Press the button marked as move forwards.
 \end_layout
 
 \begin_layout Itemize
@@ -3826,8 +4285,7 @@ todo{
 
 \end_inset
 
-Kanskje kan Astrid skrive om grunnleggende bruk, og om hvordan hun hacker
- bølgeserier
+Get basic information from Astrid, including hacking of wave series
 \begin_inset ERT
 status open
 
@@ -3854,6 +4312,33 @@ CS Inocean Cat I Arctic Drillship
 
 \begin_layout Section
 Mathematical model
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Add material from Jon
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3910,7 +4395,7 @@ respectively.
 \begin_inset Formula $\psi$
 \end_inset
 
- the yaw angle or heading in the marine cybernetics (MC) basin frame.
+ the yaw angle or heading in the basin frame.
  
 \begin_inset Formula $\left(u,v\right)$
 \end_inset
@@ -5837,132 +6322,6 @@ reference "sub:Create-FPGA-target"
 
 \end_layout
 
-\begin_layout Section
-Basin testing
-\end_layout
-
-\begin_layout Subsection
-Safety - hazards and measures
-\end_layout
-
-\begin_layout Subsubsection
-Personnel injury
-\end_layout
-
-\begin_layout Paragraph
-Drowning
-\end_layout
-
-\begin_layout Standard
-It is required to have two or more persons present when using the basin.
-\end_layout
-
-\begin_layout Paragraph
-Electric shock
-\end_layout
-
-\begin_layout Standard
-The towing catenary should not be approached or touched.
-\end_layout
-
-\begin_layout Paragraph
-Carriage collision
-\end_layout
-
-\begin_layout Standard
-It is forbidden to run the towing carriage when there are people alongside
- the basin.
-\end_layout
-
-\begin_layout Paragraph
-Thruster blade cuts
-\end_layout
-
-\begin_layout Standard
-CSE1 must stay in the water as long as actuators are active.
- Before removing the vessel from the water, the control system must be stopped
- and the VeriStand project undeployed.
-\end_layout
-
-\begin_layout Subsubsection
-Material damage
-\end_layout
-
-\begin_layout Paragraph
-Cybership Enterprise 1
-\end_layout
-
-\begin_layout Subparagraph
-Water damage
-\end_layout
-
-\begin_layout Standard
-CSE1 is not waterproof and has excessive thrust capability which can inflict
- large roll angles.
- The risk of water on deck is reduced through thrust limitation and HIL
- testing before application of new control algorithms.
- 
-\end_layout
-
-\begin_layout Subparagraph
-Propeller dry running
-\end_layout
-
-\begin_layout Standard
-BT must only be run in water.
- Before removing the vessel from the water, the control system must be stopped
- and the VeriStand project undeployed.
-\end_layout
-
-\begin_layout Subparagraph
-Loss of laptop control 
-\end_layout
-
-\begin_layout Standard
-Wireless network instability may result in loss of connection between the
- laptop user interface and the cRIO.
- In this event, fall back to manual thruster control, by pushing 
-\begin_inset Graphics
-	filename sixaxis_triangle.png
-	scale 40
-
-\end_inset
-
- on the Sixaxis.
-\end_layout
-
-\begin_layout Subparagraph
-Loss of position measurement
-\end_layout
-
-\begin_layout Standard
--
-\end_layout
-
-\begin_layout Subparagraph
-Total loss of control
-\end_layout
-
-\begin_layout Standard
-Pull the vessel with a boat hook.
- Keep the CSE1 in water while disconnecting batteries.
-\end_layout
-
-\begin_layout Paragraph
-Towing carriage
-\end_layout
-
-\begin_layout Standard
-Stop before automatic stop at high speeds.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -6937,7 +7296,15 @@ Required Software
 \end_layout
 
 \begin_layout Standard
-NI LabVIEW software required to run the project "CyberShip Saucer":
+NI LabVIEW software required to run the project 
+\begin_inset Quotes eld
+\end_inset
+
+CyberShip Saucer
+\begin_inset Quotes erd
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Enumerate
@@ -6966,11 +7333,27 @@ When the power source is connected and the Wi indicator lights up, the vessel
 \end_layout
 
 \begin_layout Itemize
-Run the host application "mainHost.vi".
+Run the host application 
+\begin_inset Quotes eld
+\end_inset
+
+mainHost.vi
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
-Deploy the target application "main.vi".
+Deploy the target application 
+\begin_inset Quotes eld
+\end_inset
+
+main.vi
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -7044,8 +7427,24 @@ Tap a control to connect it to its corresponding shared variable node on
 
 \begin_layout Itemize
 The shared variable nodes for the manual thruster control are located in
- the library "libctrlMaualThruster".
- Be careful to only use the variables with the label "DSH".
+ the library 
+\begin_inset Quotes eld
+\end_inset
+
+libctrlMaualThruster
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Be careful to only use the variables with the label 
+\begin_inset Quotes eld
+\end_inset
+
+DSH
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -7094,8 +7493,24 @@ Tap a control to connect it to its corresponding shared variable node on
 
 \begin_layout Itemize
 The shared variable nodes for the manual force control are located in the
- library "libctrlMaualForce".
- Be careful to only use the variables with the label "DSH".
+ library 
+\begin_inset Quotes eld
+\end_inset
+
+libctrlMaualForce
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Be careful to only use the variables with the label 
+\begin_inset Quotes eld
+\end_inset
+
+DSH
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -7253,24 +7668,62 @@ The log les are saved in the tmp folder on the myRIO
 
 \begin_layout Standard
 Continuous data logging has been implemented in the main target application.
- On initialization, a ".csv" le is created for each of the control modes.
+ On initialization, a 
+\begin_inset Quotes eld
+\end_inset
+
+.csv
+\begin_inset Quotes erd
+\end_inset
+
+ le is created for each of the control modes.
  The log le for a control mode will only be populated when that particular
  control mode is active.
  Each log le is created with a control mode identier and a time stamp, e.g.
- "dp114700".
- The log le format ".csv" (comma separated values) is highly compatible with
- MATLAB and enables easy import and post processing of the data in MATLAB.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+dp114700
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The log le format 
+\begin_inset Quotes eld
+\end_inset
+
+.csv
+\begin_inset Quotes erd
+\end_inset
+
+ (comma separated values) is highly compatible with MATLAB and enables easy
+ import and post processing of the data in MATLAB.
  The import code in the script is easily created using MATLAB's import le
  wizard which generates code for le import for a specic le.
 \end_layout
 
 \begin_layout Standard
-The log les on the myRIO are stored in the "les/tmp" folder which is a temporary
- folder that is cleared on reboot.
+The log les on the myRIO are stored in the 
+\begin_inset Quotes eld
+\end_inset
+
+les/tmp
+\begin_inset Quotes erd
+\end_inset
+
+ folder which is a temporary folder that is cleared on reboot.
  Saving the log les in this directory ensures that the target does not use
  all of its storage memory to store old log les.
- A log le can be easily exported from the target by using the "Map network
- drive" feature in Windows.
+ A log le can be easily exported from the target by using the 
+\begin_inset Quotes eld
+\end_inset
+
+Map network drive
+\begin_inset Quotes erd
+\end_inset
+
+ feature in Windows.
  Simply map to the static ip of the target as shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7279,9 +7732,24 @@ reference "fig: Saucer map network"
 \end_inset
 
 .
- Remember to check the "Connect using dierent credentials" box.
- When prompted for a password, type in "admin" as the user and leave the
- password blank as shown in Figure 
+ Remember to check the 
+\begin_inset Quotes eld
+\end_inset
+
+Connect using dierent credentials
+\begin_inset Quotes erd
+\end_inset
+
+ box.
+ When prompted for a password, type in 
+\begin_inset Quotes eld
+\end_inset
+
+admin
+\begin_inset Quotes erd
+\end_inset
+
+ as the user and leave the password blank as shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig: Saucer credentials"
@@ -7289,8 +7757,16 @@ reference "fig: Saucer credentials"
 \end_inset
 
 .
- The "les/tmp" directory of the target is now available in the windows le
- explorer as seen in Figure 
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+les/tmp
+\begin_inset Quotes erd
+\end_inset
+
+ directory of the target is now available in the windows le explorer as
+ seen in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig: Saucer log files"
@@ -7323,8 +7799,15 @@ Discharging the battery lower than 9V can destroy it or lead to reduced
  cells can be measured from three remaining wires in the plug.
  If the LiPo battery is discharged below 9V it will not charge in LiPo mode.
  It is therefor wise to stay well above this limit.
- Should this happen, the battery can be charged in "NIMh" mode for maximum
- 10 seconds.
+ Should this happen, the battery can be charged in 
+\begin_inset Quotes eld
+\end_inset
+
+NIMh
+\begin_inset Quotes erd
+\end_inset
+
+ mode for maximum 10 seconds.
  This has proved to be eective for getting the voltage above 9V and able
  to charge in LiPo mode again.
  However it should be stressed that this measure be used with extremea caution
