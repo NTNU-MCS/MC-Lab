@@ -458,26 +458,6 @@ description "Voith Schneider propeller"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "VI"
-description "virtual instrument, a LabVIEW program"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -6322,6 +6302,10 @@ reference "sub:Create-FPGA-target"
 
 \end_layout
 
+\begin_layout Section
+Basin testing
+\end_layout
+
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -7827,1765 +7811,6 @@ ROV Neptunus
 
 \begin_layout Standard
 k
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-Simulation and control with cRIO
-\end_layout
-
-\begin_layout Section
-Simulink model adaptation and compilation
-\end_layout
-
-\begin_layout Standard
-Complete the following steps to convert your model you created in Simulink
- into a compiled model that runs on RT targets.
-\end_layout
-
-\begin_layout Standard
-Version compatibility is an issue for VeriStand-Simulink interaction.
- Mostly
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-It has been experience that MATLAB function blocks are not compatible across
- versions.
- This results in build error message 
-\begin_inset Quotes eld
-\end_inset
-
-invalid object ID
-\begin_inset Quotes erd
-\end_inset
-
-.
- The MATLAB function block code must then be copied and pasted into a new
- MATLAB function block from the compatible version Simulink Library Browser.
-\end_layout
-
-\end_inset
-
- Simulink code may be programmed in any version of the MATLAB, compilation,
- on the other hand, can only be done in version compatible with the intended
- VeriStand version.
- See Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Laptop software"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub: Simulink modeling"
-
-\end_inset
-
-Modeling
-\end_layout
-
-\begin_layout Subsubsection
-Input and output
-\end_layout
-
-\begin_layout Standard
-In order for the model to interact with VeriStand, special input and output
- blocks must be added to the block diagram
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Ordinary input/source and output/sink blocks could be used at the diagram
- top level.
- However, subsystem ports are only available when using the VeriStand blocks.
-\end_layout
-
-\end_inset
-
-.
- These are found in the Simulink Library Browser under NI VeriStand Blocks.
-\end_layout
-
-\begin_layout Subsubsection
-Initial conditions
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename simulink_integrator.jpg
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Integrator function block parameters
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: simulink integrator function block parameters"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-If the simulation is to be run with different initial conditions, one possible
- method is to allow external reset of the integrators.
- This is done right-click the integrator and selecting Block Parameters
- (Integrator) in the drop-down menu.
- Here, the reset condition is set.
- The initial condition source should be external, as in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: simulink integrator function block parameters"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:Real-time-data-logging"
-
-\end_inset
-
-Real-time data logging
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename simulink_tofile.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-To File block parameters
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: simulink to file"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Model output can be saved to the cRIO, for later retrieval through FTP,
- during simulation through a To File block.
- This block is found in the Simulink Library Browser under Sinks.
- The output file name is specified under the block parameters, as in Figure
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: simulink to file"
-
-\end_inset
-
-.
- The format should be set to Array, since the cRIO does not support the
- Timeseries format.
-\end_layout
-
-\begin_layout Paragraph
-Example:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename simulink_before.jpg
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Simulink model for offline simulation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Simulink pendulum model"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename simulink_after.jpg
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Simulink model for adjusted for compilation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: simulink pendulum model for compilation"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For a simple pendulum, 
-\begin_inset Formula $\dot{\omega}=-\frac{g}{l}\sin\left(\theta\right)-\frac{k}{ml^{2}}\omega+\frac{F_{\text{fan}}}{ml}\cos\left(\theta\right)$
-\end_inset
-
-, the offline simulation block diagram could look as Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: Simulink pendulum model"
-
-\end_inset
-
-.
- Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: simulink pendulum model for compilation"
-
-\end_inset
-
- shows the same system adapted for VeriStand input, including reset and
- initial conditions, and output.
- The VeriStand blocks are yellow.
- omega_0 and theta_0 are ports corresponding to the initial conditions 
-\begin_inset Formula $\left(\omega\left(0\right),\theta\left(0\right)\right)$
-\end_inset
-
-.
- The integrators take these values whenever reset is rising or falling.
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub: Simulink model configuration"
-
-\end_inset
-
-Model configuration
-\end_layout
-
-\begin_layout Standard
-The code generation toolbox compiles the Simulink diagram to an output shared
- library in *.out format
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-The *.out format is for targets running Wind River VxWorks real-time operating
- system (RTOS) such as cRIO-9024, while dynamic link libraries in *.dll format
- are for targets running IntervalZero Phar Lap ETS RTOS such as cRIO-9081.
-\end_layout
-
-\end_inset
-
-.
- Model configuration parameters must be adjusted before generating, or building,
- the code.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename simulink_settings_solver.jpg
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Simulink configuration parameters - solver
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: simulink solver"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The solver stop time should be 
-\family typewriter
-inf
-\family default
- (infinity) if the model is supposed to run until it is otherwise interrupted.
- The solver type must be fixed step.
- If your model only performs arithmetical operations, such as a mapping
- or transformation module would, the discrete solver should be used.
- If the model contains continuous states, i.e.
- if you have integrators, choose some differential equation solver such
- as ode3 or ode4.
- See Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: simulink solver"
-
-\end_inset
-
-.
- Finally, the step size can be set: for a target running at 100 Hz, such
- as the cRIO-9024 default, a 0.01 step size results in the model running
- in simulating 1 second pr.
- second
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-This can also be achieved by use of decimation, as described in Section
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Veristand System-setup"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename simulink_settings_codegeneration.jpg
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Simulink configuration parameters - target selection
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: simulink target selection"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The correct target file should be selected depending on the target device.
- Select 
-\family typewriter
-NIVeriStand_VxWorks.tlc
-\family default
- for VxWorks targets
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-For PharLap targets, select 
-\family typewriter
-NIVeriStand.tlc
-\family default
-.
-\end_layout
-
-\end_inset
-
-, such as cRIO-9024, as in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: simulink target selection"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename simulink_settings_ni.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Simulink model configuration - NI configuration
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: simulink NI configuration"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The WindRiver GNU Toolchain must be present in the folder specified under
- NI Configuration, as in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: simulink NI configuration"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub: Simulink model build"
-
-\end_inset
-
-Build
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename matlab_command.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-MATLAB console
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: matlab console"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The build output is placed in a subfolder in the MATLAB Current Folder.
- The desired folder must therefore be active in the MATLAB main window,
- as in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: matlab console"
-
-\end_inset
-
-, before compiling.
- The build subfolder name is [simulink model name]_niVeriStand_VxWorks_rtw.
-\end_layout
-
-\begin_layout Standard
-The build is done in in Simulink, either with the Build button in the configurat
-ion window, by clicking the 
-\begin_inset Graphics
-	filename simulink_build.jpg
-	scale 50
-
-\end_inset
-
- button, by the key combination 
-\noun on
-Ctrl+B
-\noun default
-, through the menu Code 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textgreater 
-\end_layout
-
-\end_inset
-
- C/C++ Code 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textgreater 
-\end_layout
-
-\end_inset
-
- Build model, or by pushing the icon button.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Simulation configuration
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-VeriStand start screen
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Simulations are set up, deployed and interfaced through VeriStand.
- Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand"
-
-\end_inset
-
- shows the start screen.
- Already configured projects can be run directly from here, or reconfigured.
-\end_layout
-
-\begin_layout Subsection
-Project creation
-\end_layout
-
-\begin_layout Standard
-To deploy model for the first time, click New NI VeriStand Project.
- Give your new project a suitable name and location.
- 
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand_projectexplorer.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-VeriStand Project Explorer
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand project explorer"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- Clicking OK creates the project files in given location and opens the Project
- Explorer, as in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand project explorer"
-
-\end_inset
-
-.
- In this section, the example project name is multiply.
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub: Veristand System-setup"
-
-\end_inset
-
-System setup
-\end_layout
-
-\begin_layout Standard
-To configure the setup which will run on the cRIO, open the System Explorer
- by double-clicking the system definition file [project name].nivssdf.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand_systemexplorer_ip.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-VeriStand - System Explorer - Controller
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand system explorer ip"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- Set the correct controller operating system and IP address, as in Figure
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand system explorer ip"
-
-\end_inset
-
-.
- All HIL and MC lab IP addresses are given in Table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "tab: IP addresses"
-
-\end_inset
-
-.
- Also, note the target rate.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand_systemexplorer.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-VeriStand - System Explorer - Models
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand system explorer model"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- Click Add a Simulation Model, as seen at the top of Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand system explorer model"
-
-\end_inset
-
-.
- 
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand_systemexplorer_model.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-VeriStand - System Explorer Model
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand system explorer model 2"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- Browse to the output of the Simulink compilation, as seen in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand system explorer model 2"
-
-\end_inset
-
-.
- Finally, click Auto Select Decimation to make sure the model runs at the
- intended rate.
-\begin_inset Newline newline
-\end_inset
-
-Repeat if several models should run simultaneously.
-\end_layout
-
-\begin_layout Enumerate
-Add custom devices, such as network input, by right clicking the custom
- device pane and choosing the required device
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-If the required device is not present, refer to the device driver installation
- instructions in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Installing custom device driver"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-.
- 
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand custom driver select.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Custom device selection
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand system explorer custom device selection-1"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand system explorer custom device selection-1"
-
-\end_inset
-
- shows an example with the Sixaxis (WL_Joystick) device.
- Upon selection, a subfolder with the device name appears in the tree with
- signals listed inside it.
-\end_layout
-
-\begin_layout Enumerate
-Configure mappings, by pushing the 
-\begin_inset Graphics
-	filename veristand_sysex_mappingbtn.png
-	scale 80
-
-\end_inset
-
- icon at the top of the window, to connect signals between custom devices,
- FPGA and models.
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand mapping2.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-VeriStand System Configuration Mappings
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand mappings-1"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
- Expand the trees to find the desired signals and click Connect, as in Figure
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand mappings-1"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Save and close to return to the Project Explorer.
-\end_layout
-
-\begin_layout Subsection
-\begin_inset CommandInset label
-LatexCommand label
-name "sub: Create computer interface"
-
-\end_inset
-
-Create computer interface
-\end_layout
-
-\begin_layout Standard
-To configure the computer interface, open the Workspace editor by double-clickin
-g the workspace file [project name].nivsscreen.
- The blank workspace pops up.
-\end_layout
-
-\begin_layout Enumerate
-Enter Edit mode by 
-\noun on
-Ctrl+M
-\noun default
- or Screen 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textgreater 
-\end_layout
-
-\end_inset
-
- Edit Mode.
-\end_layout
-
-\begin_layout Enumerate
-Click the Workspace Control pane on the left side to access indicators,
- controls and such.
-\end_layout
-
-\begin_layout Enumerate
-Drag and drop the desired item to the desired position in the workspace.
- Select the corresponding signal in the pop-up dialog.
-\end_layout
-
-\begin_layout Enumerate
-Close the Workspace editor.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Deployment and simulation
-\end_layout
-
-\begin_layout Subsection
-Run
-\end_layout
-
-\begin_layout Standard
-Deploy by tapping the F6 key, or 
-\begin_inset Graphics
-	filename veristand_deploy.jpg
-	scale 80
-
-\end_inset
-
- button, or Operate 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textgreater 
-\end_layout
-
-\end_inset
-
- Deploy.
- A dialog box appears.
- Upon successful deployment, the workspace pops up.
-\end_layout
-
-\begin_layout Subsection
-User interface side data logging
-\end_layout
-
-\begin_layout Standard
-For reliability, it is recommended to log data directly on the cRIO during
- simulation, as described in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Real-time-data-logging"
-
-\end_inset
-
-.
- It is also possible to log via the laptop user interface.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand_ws_logging.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Logging Control
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand workspace logging control"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A Logging Control, as seen in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand workspace logging control"
-
-\end_inset
-
-, must be added to the workspace to export data from the simulation.
- The control is added as described in Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Create computer interface"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand_ws_logging_file.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Logging Control file settings
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand workspace logging file"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename veristand_ws_logging_add_ch.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Logging Control add channel
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: veristand workspace logging channels"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Once the control is added, a pop-up window allows to edit the settings.
- The log file path is specified under File Settings, see Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand workspace logging file"
-
-\end_inset
-
-.
- Under Channels, the desired channels can be selected and added, as in Figure
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: veristand workspace logging channels"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Stop
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename veristand_undeploy.jpg
-	scale 80
-
-\end_inset
-
- button
-\end_layout
-
-\begin_layout Subsection
-FTP data retrieval
-\end_layout
-
-\begin_layout Standard
-Data logged on the cRIO through To File blocks can be retrieved after simulation
- over FTP with software such as WinSCP.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename WinSCP_login.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: WinSCP login"
-
-\end_inset
-
-WinSCP login
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-To connect to the cRIO, the correct IP must be specified, as in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: WinSCP login"
-
-\end_inset
-
-.
- For the standard HIL setup, the user name and password are blank.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename WinSCP.png
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: WinSCP"
-
-\end_inset
-
-WinSCP
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Logged data with file names corresponding to the To File block names are
- located on the cRIO root, as seen in the right pane of Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: WinSCP"
-
-\end_inset
-
-.
- Data is transferred to the laptop by drag and drop to the desired location
- in the left pane.
 \end_layout
 
 \begin_layout Standard
@@ -14893,7 +13118,7 @@ name "sub: Laptop software"
 
 \end_inset
 
-Laptop
+Software running on the virtual machine
 \end_layout
 
 \begin_layout Standard
@@ -15046,9 +13271,344 @@ NI-RIO driver
 
 \begin_layout Itemize
 VeriStand
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: virtualmachine"
+
+\end_inset
+
+Deploying the virtual machine
 \end_layout
 
 \begin_layout Standard
+To ease the administration of the student computers, a virtual machine has
+ been created that contains all the necessary software specified in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Laptop software"
+
+\end_inset
+
+.
+ The virtual machine (the guest guest, VM) can be run on any computer (the
+ host machine) and on any operating system, that is supported by 
+\emph on
+VirtualBox
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Virtual Box
+\end_layout
+
+\begin_layout Standard
+Virtual Box is a Virtual Machine envoirnment from Oracle and under the GNU
+ license.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex Flex:URL
+status open
+
+\begin_layout Plain Layout
+
+ https://www.virtualbox.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ After installation any number of virtual machines can be added to the system.
+\end_layout
+
+\begin_layout Subsubsection
+MCLab Virtual Machine
+\end_layout
+
+\begin_layout Standard
+The virtual machine can be found on Roger's ArcticDP server 
+\backslash
+
+\backslash
+129.241.140.194
+\backslash
+MC-Lab.
+ After unzipping on the host computers harddrive, the following steps have
+ to be conducted in VirtualBox:
+\end_layout
+
+\begin_layout Enumerate
+Add the virtual machine image to VirtualBox, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: VMBoxadd"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Adjust the settings of the virtual machine, such that it fits the host machine.
+ The virtual machine is set up to run on the student lab computers.
+ It will claim 2 processor cores and 10 GB of memory.
+\end_layout
+
+\begin_layout Enumerate
+Start the virtual machine, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: VMBoxstart"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename VMBox1.jpg
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename VMBox2.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adding a virtual machine to VirtualBox 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: VMBoxadd"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename VMBox3.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Start a virtual machine 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: VMBoxstart"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Common known problems
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+VM's Matlab cannot find the license server
+\emph default
+: Make sure that the host computer is connected to the universities network.
+ Make sure to use Eduroam on the host computer.
+ Do not use the ntnuguest network.
+ The network connections are 
+\begin_inset Quotes eld
+\end_inset
+
+bridged
+\begin_inset Quotes erd
+\end_inset
+
+ into the virtual machine.
+ In case you cannot find the problem or in case Euduroam of NTNU is not
+ available, you can use the Cisco VPN client installed on the VM.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+The VM cannot find the cRio
+\emph default
+: Go to the settings of the virtual machine (move your mouse down to the
+ middle section of the bottom of the screen inside the VM).
+ Go to the network settings and check out 
+\begin_inset Quotes eld
+\end_inset
+
+Network adapter 2
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Is it 
+\begin_inset Quotes eld
+\end_inset
+
+bridged
+\begin_inset Quotes erd
+\end_inset
+
+ to the correct network adapter of the host machine? Sometimes, after a
+ driver update on the host machine, you have to set that right again.
+ Second thing is that if you use the Cisco VPN client to connect to NTNU,
+ you have to tick 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Allow local (LAN) access when using VPN
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, as shown in Figure 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: VPNtick"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename VMVPNProb.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cisco VPN client LAN option
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -15072,7 +13632,7 @@ Hystersis on motors
 placement !h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -18260,6 +16820,1758 @@ name "fig: fpga2-1"
 \begin_layout Part
 \start_of_appendix
 Miscellaneous 
+\end_layout
+
+\begin_layout Chapter
+Simulation and control with cRIO
+\end_layout
+
+\begin_layout Section
+Simulink model adaptation and compilation
+\end_layout
+
+\begin_layout Standard
+Complete the following steps to convert your model you created in Simulink
+ into a compiled model that runs on RT targets.
+\end_layout
+
+\begin_layout Standard
+Version compatibility is an issue for VeriStand-Simulink interaction.
+ Mostly
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+It has been experience that MATLAB function blocks are not compatible across
+ versions.
+ This results in build error message 
+\begin_inset Quotes eld
+\end_inset
+
+invalid object ID
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The MATLAB function block code must then be copied and pasted into a new
+ MATLAB function block from the compatible version Simulink Library Browser.
+\end_layout
+
+\end_inset
+
+ Simulink code may be programmed in any version of the MATLAB, compilation,
+ on the other hand, can only be done in version compatible with the intended
+ VeriStand version.
+ See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Laptop software"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: Simulink modeling"
+
+\end_inset
+
+Modeling
+\end_layout
+
+\begin_layout Subsubsection
+Input and output
+\end_layout
+
+\begin_layout Standard
+In order for the model to interact with VeriStand, special input and output
+ blocks must be added to the block diagram
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Ordinary input/source and output/sink blocks could be used at the diagram
+ top level.
+ However, subsystem ports are only available when using the VeriStand blocks.
+\end_layout
+
+\end_inset
+
+.
+ These are found in the Simulink Library Browser under NI VeriStand Blocks.
+\end_layout
+
+\begin_layout Subsubsection
+Initial conditions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename simulink_integrator.jpg
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Integrator function block parameters
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: simulink integrator function block parameters"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the simulation is to be run with different initial conditions, one possible
+ method is to allow external reset of the integrators.
+ This is done right-click the integrator and selecting Block Parameters
+ (Integrator) in the drop-down menu.
+ Here, the reset condition is set.
+ The initial condition source should be external, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: simulink integrator function block parameters"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Real-time-data-logging"
+
+\end_inset
+
+Real-time data logging
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename simulink_tofile.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+To File block parameters
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: simulink to file"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Model output can be saved to the cRIO, for later retrieval through FTP,
+ during simulation through a To File block.
+ This block is found in the Simulink Library Browser under Sinks.
+ The output file name is specified under the block parameters, as in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: simulink to file"
+
+\end_inset
+
+.
+ The format should be set to Array, since the cRIO does not support the
+ Timeseries format.
+\end_layout
+
+\begin_layout Paragraph
+Example:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename simulink_before.jpg
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulink model for offline simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Simulink pendulum model"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename simulink_after.jpg
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulink model for adjusted for compilation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: simulink pendulum model for compilation"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For a simple pendulum, 
+\begin_inset Formula $\dot{\omega}=-\frac{g}{l}\sin\left(\theta\right)-\frac{k}{ml^{2}}\omega+\frac{F_{\text{fan}}}{ml}\cos\left(\theta\right)$
+\end_inset
+
+, the offline simulation block diagram could look as Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Simulink pendulum model"
+
+\end_inset
+
+.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: simulink pendulum model for compilation"
+
+\end_inset
+
+ shows the same system adapted for VeriStand input, including reset and
+ initial conditions, and output.
+ The VeriStand blocks are yellow.
+ omega_0 and theta_0 are ports corresponding to the initial conditions 
+\begin_inset Formula $\left(\omega\left(0\right),\theta\left(0\right)\right)$
+\end_inset
+
+.
+ The integrators take these values whenever reset is rising or falling.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: Simulink model configuration"
+
+\end_inset
+
+Model configuration
+\end_layout
+
+\begin_layout Standard
+The code generation toolbox compiles the Simulink diagram to an output shared
+ library in *.out format
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The *.out format is for targets running Wind River VxWorks real-time operating
+ system (RTOS) such as cRIO-9024, while dynamic link libraries in *.dll format
+ are for targets running IntervalZero Phar Lap ETS RTOS such as cRIO-9081.
+\end_layout
+
+\end_inset
+
+.
+ Model configuration parameters must be adjusted before generating, or building,
+ the code.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename simulink_settings_solver.jpg
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulink configuration parameters - solver
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: simulink solver"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The solver stop time should be 
+\family typewriter
+inf
+\family default
+ (infinity) if the model is supposed to run until it is otherwise interrupted.
+ The solver type must be fixed step.
+ If your model only performs arithmetical operations, such as a mapping
+ or transformation module would, the discrete solver should be used.
+ If the model contains continuous states, i.e.
+ if you have integrators, choose some differential equation solver such
+ as ode3 or ode4.
+ See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: simulink solver"
+
+\end_inset
+
+.
+ Finally, the step size can be set: for a target running at 100 Hz, such
+ as the cRIO-9024 default, a 0.01 step size results in the model running
+ in simulating 1 second pr.
+ second
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+This can also be achieved by use of decimation, as described in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Veristand System-setup"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename simulink_settings_codegeneration.jpg
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulink configuration parameters - target selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: simulink target selection"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The correct target file should be selected depending on the target device.
+ Select 
+\family typewriter
+NIVeriStand_VxWorks.tlc
+\family default
+ for VxWorks targets
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+For PharLap targets, select 
+\family typewriter
+NIVeriStand.tlc
+\family default
+.
+\end_layout
+
+\end_inset
+
+, such as cRIO-9024, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: simulink target selection"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename simulink_settings_ni.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulink model configuration - NI configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: simulink NI configuration"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The WindRiver GNU Toolchain must be present in the folder specified under
+ NI Configuration, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: simulink NI configuration"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: Simulink model build"
+
+\end_inset
+
+Build
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename matlab_command.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+MATLAB console
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: matlab console"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The build output is placed in a subfolder in the MATLAB Current Folder.
+ The desired folder must therefore be active in the MATLAB main window,
+ as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: matlab console"
+
+\end_inset
+
+, before compiling.
+ The build subfolder name is [simulink model name]_niVeriStand_VxWorks_rtw.
+\end_layout
+
+\begin_layout Standard
+The build is done in in Simulink, either with the Build button in the configurat
+ion window, by clicking the 
+\begin_inset Graphics
+	filename simulink_build.jpg
+	scale 50
+
+\end_inset
+
+ button, by the key combination 
+\noun on
+Ctrl+B
+\noun default
+, through the menu Code 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textgreater 
+\end_layout
+
+\end_inset
+
+ C/C++ Code 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textgreater 
+\end_layout
+
+\end_inset
+
+ Build model, or by pushing the icon button.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Simulation configuration
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VeriStand start screen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Simulations are set up, deployed and interfaced through VeriStand.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand"
+
+\end_inset
+
+ shows the start screen.
+ Already configured projects can be run directly from here, or reconfigured.
+\end_layout
+
+\begin_layout Subsection
+Project creation
+\end_layout
+
+\begin_layout Standard
+To deploy model for the first time, click New NI VeriStand Project.
+ Give your new project a suitable name and location.
+ 
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand_projectexplorer.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VeriStand Project Explorer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand project explorer"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ Clicking OK creates the project files in given location and opens the Project
+ Explorer, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand project explorer"
+
+\end_inset
+
+.
+ In this section, the example project name is multiply.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: Veristand System-setup"
+
+\end_inset
+
+System setup
+\end_layout
+
+\begin_layout Standard
+To configure the setup which will run on the cRIO, open the System Explorer
+ by double-clicking the system definition file [project name].nivssdf.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand_systemexplorer_ip.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VeriStand - System Explorer - Controller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand system explorer ip"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ Set the correct controller operating system and IP address, as in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand system explorer ip"
+
+\end_inset
+
+.
+ All HIL and MC lab IP addresses are given in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: IP addresses"
+
+\end_inset
+
+.
+ Also, note the target rate.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand_systemexplorer.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VeriStand - System Explorer - Models
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand system explorer model"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ Click Add a Simulation Model, as seen at the top of Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand system explorer model"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand_systemexplorer_model.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VeriStand - System Explorer Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand system explorer model 2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ Browse to the output of the Simulink compilation, as seen in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand system explorer model 2"
+
+\end_inset
+
+.
+ Finally, click Auto Select Decimation to make sure the model runs at the
+ intended rate.
+\begin_inset Newline newline
+\end_inset
+
+Repeat if several models should run simultaneously.
+\end_layout
+
+\begin_layout Enumerate
+Add custom devices, such as network input, by right clicking the custom
+ device pane and choosing the required device
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+If the required device is not present, refer to the device driver installation
+ instructions in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Installing custom device driver"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand custom driver select.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Custom device selection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand system explorer custom device selection-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand system explorer custom device selection-1"
+
+\end_inset
+
+ shows an example with the Sixaxis (WL_Joystick) device.
+ Upon selection, a subfolder with the device name appears in the tree with
+ signals listed inside it.
+\end_layout
+
+\begin_layout Enumerate
+Configure mappings, by pushing the 
+\begin_inset Graphics
+	filename veristand_sysex_mappingbtn.png
+	scale 80
+
+\end_inset
+
+ icon at the top of the window, to connect signals between custom devices,
+ FPGA and models.
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand mapping2.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+VeriStand System Configuration Mappings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand mappings-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ Expand the trees to find the desired signals and click Connect, as in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand mappings-1"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Save and close to return to the Project Explorer.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: Create computer interface"
+
+\end_inset
+
+Create computer interface
+\end_layout
+
+\begin_layout Standard
+To configure the computer interface, open the Workspace editor by double-clickin
+g the workspace file [project name].nivsscreen.
+ The blank workspace pops up.
+\end_layout
+
+\begin_layout Enumerate
+Enter Edit mode by 
+\noun on
+Ctrl+M
+\noun default
+ or Screen 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textgreater 
+\end_layout
+
+\end_inset
+
+ Edit Mode.
+\end_layout
+
+\begin_layout Enumerate
+Click the Workspace Control pane on the left side to access indicators,
+ controls and such.
+\end_layout
+
+\begin_layout Enumerate
+Drag and drop the desired item to the desired position in the workspace.
+ Select the corresponding signal in the pop-up dialog.
+\end_layout
+
+\begin_layout Enumerate
+Close the Workspace editor.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Deployment and simulation
+\end_layout
+
+\begin_layout Subsection
+Run
+\end_layout
+
+\begin_layout Standard
+Deploy by tapping the F6 key, or 
+\begin_inset Graphics
+	filename veristand_deploy.jpg
+	scale 80
+
+\end_inset
+
+ button, or Operate 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textgreater 
+\end_layout
+
+\end_inset
+
+ Deploy.
+ A dialog box appears.
+ Upon successful deployment, the workspace pops up.
+\end_layout
+
+\begin_layout Subsection
+User interface side data logging
+\end_layout
+
+\begin_layout Standard
+For reliability, it is recommended to log data directly on the cRIO during
+ simulation, as described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Real-time-data-logging"
+
+\end_inset
+
+.
+ It is also possible to log via the laptop user interface.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand_ws_logging.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logging Control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand workspace logging control"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A Logging Control, as seen in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand workspace logging control"
+
+\end_inset
+
+, must be added to the workspace to export data from the simulation.
+ The control is added as described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Create computer interface"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand_ws_logging_file.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logging Control file settings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand workspace logging file"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename veristand_ws_logging_add_ch.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Logging Control add channel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: veristand workspace logging channels"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once the control is added, a pop-up window allows to edit the settings.
+ The log file path is specified under File Settings, see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand workspace logging file"
+
+\end_inset
+
+.
+ Under Channels, the desired channels can be selected and added, as in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: veristand workspace logging channels"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Stop
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename veristand_undeploy.jpg
+	scale 80
+
+\end_inset
+
+ button
+\end_layout
+
+\begin_layout Subsection
+FTP data retrieval
+\end_layout
+
+\begin_layout Standard
+Data logged on the cRIO through To File blocks can be retrieved after simulation
+ over FTP with software such as WinSCP.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename WinSCP_login.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: WinSCP login"
+
+\end_inset
+
+WinSCP login
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To connect to the cRIO, the correct IP must be specified, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: WinSCP login"
+
+\end_inset
+
+.
+ For the standard HIL setup, the user name and password are blank.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename WinSCP.png
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: WinSCP"
+
+\end_inset
+
+WinSCP
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Logged data with file names corresponding to the To File block names are
+ located on the cRIO root, as seen in the right pane of Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: WinSCP"
+
+\end_inset
+
+.
+ Data is transferred to the laptop by drag and drop to the desired location
+ in the left pane.
 \end_layout
 
 \begin_layout Chapter

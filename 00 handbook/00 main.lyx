@@ -13138,7 +13138,7 @@ name "sub: Laptop software"
 
 \end_inset
 
-Laptop
+Software running on the virtual machine
 \end_layout
 
 \begin_layout Standard
@@ -13291,9 +13291,344 @@ NI-RIO driver
 
 \begin_layout Itemize
 VeriStand
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: virtualmachine"
+
+\end_inset
+
+Deploying the virtual machine
 \end_layout
 
 \begin_layout Standard
+To ease the administration of the student computers, a virtual machine has
+ been created that contains all the necessary software specified in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Laptop software"
+
+\end_inset
+
+.
+ The virtual machine (the guest guest, VM) can be run on any computer (the
+ host machine) and on any operating system, that is supported by 
+\emph on
+VirtualBox
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Virtual Box
+\end_layout
+
+\begin_layout Standard
+Virtual Box is a Virtual Machine envoirnment from Oracle and under the GNU
+ license.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex Flex:URL
+status open
+
+\begin_layout Plain Layout
+
+ https://www.virtualbox.org
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ After installation any number of virtual machines can be added to the system.
+\end_layout
+
+\begin_layout Subsubsection
+MCLab Virtual Machine
+\end_layout
+
+\begin_layout Standard
+The virtual machine can be found on Roger's ArcticDP server 
+\backslash
+
+\backslash
+129.241.140.194
+\backslash
+MC-Lab.
+ After unzipping on the host computers harddrive, the following steps have
+ to be conducted in VirtualBox:
+\end_layout
+
+\begin_layout Enumerate
+Add the virtual machine image to VirtualBox, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: VMBoxadd"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Adjust the settings of the virtual machine, such that it fits the host machine.
+ The virtual machine is set up to run on the student lab computers.
+ It will claim 2 processor cores and 10 GB of memory.
+\end_layout
+
+\begin_layout Enumerate
+Start the virtual machine, as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: VMBoxstart"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename VMBox1.jpg
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename VMBox2.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adding a virtual machine to VirtualBox 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: VMBoxadd"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename VMBox3.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Start a virtual machine 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: VMBoxstart"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Common known problems
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+VM's Matlab cannot find the license server
+\emph default
+: Make sure that the host computer is connected to the universities network.
+ Make sure to use Eduroam on the host computer.
+ Do not use the ntnuguest network.
+ The network connections are 
+\begin_inset Quotes eld
+\end_inset
+
+bridged
+\begin_inset Quotes erd
+\end_inset
+
+ into the virtual machine.
+ In case you cannot find the problem or in case Euduroam of NTNU is not
+ available, you can use the Cisco VPN client installed on the VM.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+The VM cannot find the cRio
+\emph default
+: Go to the settings of the virtual machine (move your mouse down to the
+ middle section of the bottom of the screen inside the VM).
+ Go to the network settings and check out 
+\begin_inset Quotes eld
+\end_inset
+
+Network adapter 2
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Is it 
+\begin_inset Quotes eld
+\end_inset
+
+bridged
+\begin_inset Quotes erd
+\end_inset
+
+ to the correct network adapter of the host machine? Sometimes, after a
+ driver update on the host machine, you have to set that right again.
+ Second thing is that if you use the Cisco VPN client to connect to NTNU,
+ you have to tick 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Allow local (LAN) access when using VPN
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+, as shown in Figure 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: VPNtick"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename VMVPNProb.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cisco VPN client LAN option
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -13317,7 +13652,7 @@ Hystersis on motors
 placement !h
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
