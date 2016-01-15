@@ -13327,7 +13327,7 @@ VirtualBox
  
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Virtual Box
 \end_layout
 
@@ -13357,7 +13357,7 @@ status open
  After installation any number of virtual machines can be added to the system.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 MCLab Virtual Machine
 \end_layout
 
@@ -13517,7 +13517,7 @@ name "fig: VMBoxstart"
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Common known problems
 \end_layout
 
@@ -13628,7 +13628,7 @@ Cisco VPN client LAN option
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
