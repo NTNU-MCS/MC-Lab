@@ -76,9 +76,9 @@
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style harvard
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -1136,6 +1136,33 @@ In order to convert the 11.1V power provided by the battery to 5V for the
  servos, a switching DC/DC converter is user together with a capacitor.
 \end_layout
 
+\begin_layout Subsubsection
+Literature
+\end_layout
+
+\begin_layout Paragraph
+Specialization projects and master theses
+\end_layout
+
+\begin_layout Itemize
+Marine Cybernetics Vessel CS Saucer: Design, construction and control 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Idland2015"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rotem Sharoni, 2016
+\end_layout
+
+\begin_layout Itemize
+Einar Skiftestad Ueland, 2016
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
@@ -1231,6 +1258,37 @@ The main processes are driven by a BeagleBone computer, and an Arduino control
  board.
  It is equipped with an inertial measurement unit (IMU) and a high definition
  (HD) web camera.
+\end_layout
+
+\begin_layout Subsubsection
+Literature
+\end_layout
+
+\begin_layout Paragraph
+Specialization projects and master theses
+\end_layout
+
+\begin_layout Itemize
+Design and Implementation of Software for the ROV Neptunus 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Munz2015"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Remote Control and Automatic Path-following for C/S Enterprise I and ROV
+ Neptunus 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Sandved2015"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1559,6 +1617,139 @@ The VSP blade pitches are controlled by servos.
  The servos also receive their setpoint as PWM signals.
 \end_layout
 
+\begin_layout Paragraph
+Software
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename CSE1_ctrl_software.gif
+	height 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: CSE1 software"
+
+\end_inset
+
+CSE1 control software
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The software supports four different control modes, as seen in the middle
+ of Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: CSE1 software"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+Individual actuator control allows controlling the force 
+\begin_inset Formula $u$
+\end_inset
+
+, angular velocity 
+\begin_inset Formula $\omega$
+\end_inset
+
+ and angle 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ each thruster
+\end_layout
+
+\begin_layout Itemize
+Generalized force control facilitates inputting desired surge and sway forces
+ and yaw moment, 
+\begin_inset Formula $X$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+, 
+\begin_inset Formula $N$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_layout Itemize
+The user defined custom control
+\end_layout
+
+\begin_layout Itemize
+Stationkeeping.
+\end_layout
+
+\begin_layout Standard
+The two first modes only take the joystick signal as input.
+\end_layout
+
+\begin_layout Standard
+The two latter modes take the position measurement 
+\begin_inset Formula $\eta_{\text{QTM}}$
+\end_inset
+
+ from QTM.
+ This signal is in turn converted meters and radians.
+ Finally, measurement noise may be added to get the measured signal 
+\begin_inset Formula $\eta_{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The control modes output the desired output vector 
+\begin_inset Formula $u_{d}$
+\end_inset
+
+.
+ The actual output 
+\begin_inset Formula $u$
+\end_inset
+
+ may differ due to mechanical and electrical dynamics.
+\end_layout
+
+\begin_layout Standard
+Finally, the output is converted to pwm signals outputted through the digital
+ input/output (DIO) port.
+\end_layout
+
 \begin_layout Subsubsection
 Power
 \end_layout
@@ -1612,6 +1803,130 @@ reference "fig: CSE1 power"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsubsection
+Literature
+\end_layout
+
+\begin_layout Paragraph
+Publications
+\end_layout
+
+\begin_layout Itemize
+LOS guidance for towing an iceberg along a straight-line path 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "OrstenNorgrenSkjetne2014"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Specialization projects and master theses
+\end_layout
+
+\begin_layout Itemize
+Development of a DP system for CS Enterprise I with Voith Schneider thrusters.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Skaatun2011"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Development of a modularized control architecture for CS Enterprise I for
+ path-following based on LOS and maneuvering theory 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Tran2013"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Automatic Reliability-based Control of Iceberg Towing in Open Waters 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Orsten2014"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Line-Of-Sight-based maneuvering control design, implementation, and experimental
+ testing for the model ship C/S Enterprise I.
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Tran2014"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Remote Control and Automatic Path-following for C/S Enterprise I and ROV
+ Neptunus 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Sandved2015"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Marine Telepresence System 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Valle2015"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Elias Bjørne, 2016
+\end_layout
+
+\begin_layout Paragraph
+Other
+\end_layout
+
+\begin_layout Itemize
+YouTube video 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Skaatun2014"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Further development
+\end_layout
+
+\begin_layout Itemize
+Implement “fail to zero” for communication breakdown
+\end_layout
+
+\begin_layout Itemize
+Add IMU or gyro
 \end_layout
 
 \begin_layout Standard
@@ -4050,6 +4365,129 @@ Stop before automatic stop at high speeds.
 Qualisys motion capture system
 \end_layout
 
+\begin_layout Section
+Start server
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename qualisys_waiting_to_connect.JPG
+	scale 45
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matlab console
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: matlab console-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Aquire body
+\end_layout
+
+\begin_layout Standard
+leverer med 50Hz på nettet
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename NIMAX_install.jpg
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+FPGA2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: fpga2-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
@@ -4297,6 +4735,21 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Current generator
+\end_layout
+
+\begin_layout Standard
+-
 \end_layout
 
 \begin_layout Standard
@@ -7239,12 +7692,23 @@ Connect the Sixaxis gamepad to the laptop for charging.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+\begin_inset Newpage clearpage
+\end_inset
 
-\begin_layout Section
+
+\end_layout
+
+\begin_layout Subsection
 Troubleshooting
 \end_layout
+
+\begin_layout Standard
+-
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
 typiske feil
@@ -7261,6 +7725,26 @@ nettverk
 \begin_layout Plain Layout
 Sixaxis will sometimes only charge through PC USB-port.
  Not RPi nor USB charger.
+\end_layout
+
+\begin_layout Chapter
+Checklist
+\end_layout
+
+\begin_layout Plain Layout
+Device driver in place
+\end_layout
+
+\begin_layout Plain Layout
+Custom indicators in place
+\end_layout
+
+\begin_layout Plain Layout
+PC and cRIO IP correct
+\end_layout
+
+\begin_layout Plain Layout
+Sixaxis charged
 \end_layout
 
 \end_inset
@@ -13403,24 +13887,57 @@ reference "fig: VMBoxstart"
 
 \begin_layout Standard
 \begin_inset Float figure
+placement h!
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename VMBox1.jpg
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
 
 \end_inset
 
-
+ 
 \begin_inset Graphics
-	filename VMBox2.jpg
+	filename VMBox1.jpg
+	width 80text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adding a virtual machine to VirtualBox 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: VMBoxadd-1"
 
 \end_inset
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -13432,6 +13949,13 @@ status open
 \backslash
 centering
 \end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename VMBox2.jpg
+	width 80text%
 
 \end_inset
 
@@ -13469,15 +13993,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename VMBox3.jpg
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status open
 
@@ -13487,6 +14002,13 @@ status open
 \backslash
 centering
 \end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename VMBox3.jpg
+	width 80text%
 
 \end_inset
 
@@ -13601,6 +14123,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename VMVPNProb.jpg
+	width 80text%
 
 \end_inset
 
@@ -13636,7 +14159,7 @@ Cisco VPN client LAN option
 \end_layout
 
 \begin_layout Chapter
-Cybership Enterprise 1
+CS Enterprise I
 \end_layout
 
 \begin_layout Standard
@@ -16710,127 +17233,11 @@ name "fig: matlab console-1-1"
 
 \end_layout
 
-\begin_layout Chapter
-Qualisys motion capture system
-\end_layout
-
-\begin_layout Section
-Start server
-\end_layout
-
 \begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename qualisys_waiting_to_connect.JPG
-	scale 45
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Matlab console
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: matlab console-1"
-
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Aquire body
-\end_layout
-
-\begin_layout Standard
-leverer med 50Hz på nettet
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename NIMAX_install.jpg
-	scale 45
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-FPGA2
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: fpga2-1"
-
-\end_inset
-
-
-\end_layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "00 referencesl"
+options "elsarticle-harv"
 
 \end_inset
 
@@ -18877,49 +19284,6 @@ FloatBarrier
 \end_layout
 
 \begin_layout Chapter
-Checklist
-\end_layout
-
-\begin_layout Standard
-Device driver in place
-\end_layout
-
-\begin_layout Standard
-Custom indicators in place
-\end_layout
-
-\begin_layout Standard
-PC and cRIO IP correct
-\end_layout
-
-\begin_layout Standard
-Sixaxis charged
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-FloatBarrier
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
 ROV control modes
 \end_layout
 
@@ -20437,119 +20801,6 @@ Trond
 Innset Trond.Innset@marintek.sintef.no, cut out the CSS hull foam
 \end_layout
 
-\begin_layout Section
-Publications
-\end_layout
-
-\begin_layout Description
-2014
-\end_layout
-
-\begin_layout Description
-Andreas
-\begin_inset space ~
-\end_inset
-
-Orsten, Petter Norgren, Roger Skjetne, LOS guidance for towing an iceberg
- along a straight-line path.
- Proceedings of the 22nd IAHR International Symposium on ICE 2014 (IAHR-ICE
- 2014).
-\end_layout
-
-\begin_layout Section
-Specialization projects and master theses
-\end_layout
-
-\begin_layout Description
-2011
-\end_layout
-
-\begin_layout Description
-Håkon
-\begin_inset space ~
-\end_inset
-
-Nødset
-\begin_inset space ~
-\end_inset
-
-Skåtun Development of a DP system for CS Enterprise I with Voith Schneider
- thrusters.
- Master thesis.
-\end_layout
-
-\begin_layout Description
-2013
-\end_layout
-
-\begin_layout Description
-Nam
-\begin_inset space ~
-\end_inset
-
-Dinh
-\begin_inset space ~
-\end_inset
-
-Tran Development of a modularized control architecture for CS Enterprise
- I for path-following based on LOS and maneuvering theory.
- Specialization project.
-\end_layout
-
-\begin_layout Description
-2014
-\end_layout
-
-\begin_layout Description
-Andreas
-\begin_inset space ~
-\end_inset
-
-Orsten Automatic Reliability-based Control of Iceberg Towing in Open Waters.
- Master thesis and poster.
-\end_layout
-
-\begin_layout Description
-Nam
-\begin_inset space ~
-\end_inset
-
-Dinh
-\begin_inset space ~
-\end_inset
-
-Tran Line-Of-Sight-based maneuvering control design, implementation, and
- experimental testing for the model ship C/S Enterprise I.
- Master thesis.
-\end_layout
-
-\begin_layout Section
-Other
-\end_layout
-
-\begin_layout Description
-Håkon
-\begin_inset space ~
-\end_inset
-
-Nødset
-\begin_inset space ~
-\end_inset
-
-Skåtun 
-\begin_inset Flex Flex:URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.youtube.com/watch?v=MiESJsIZO04
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -20716,60 +20967,6 @@ status open
 FloatBarrier
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-To do list
-\end_layout
-
-\begin_layout Itemize
-Etablere fargekoder for simulinkblokker (spesielt “ikke røre”-farge)
-\end_layout
-
-\begin_layout Itemize
-Konsekvent notasjon: CS Enterprise 1 eventuelt CSE1
-\end_layout
-
-\begin_layout Itemize
-Troubleshooting-prosedyrer for de vanligste feilene
-\end_layout
-
-\begin_layout Itemize
-Implementere “fail to zero” for når kommunikasjonen avbrytes.
-\end_layout
-
-\begin_layout Itemize
-legge til IMU/gyro på båten
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-FloatBarrier
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 

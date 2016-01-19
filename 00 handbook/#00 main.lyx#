@@ -1737,17 +1737,7 @@ The control modes output the desired output vector
 \begin_inset Formula $u_{d}$
 \end_inset
 
-.
- The actual output 
-\begin_inset Formula $u$
-\end_inset
 
- may differ due to mechanical and electrical dynamics.
-\end_layout
-
-\begin_layout Standard
-Finnally, the output is converted to pwm signals outputted through the digital
- input/output (DIO) port.
 \end_layout
 
 \begin_layout Subsubsection
