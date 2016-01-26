@@ -329,7 +329,7 @@ description "compact reconfigurable input/output real-time embedded industrial c
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "CS"
-description "cyber ship"
+description "cybership ship prefix"
 
 \end_inset
 
@@ -1269,6 +1269,17 @@ Specialization projects and master theses
 \end_layout
 
 \begin_layout Itemize
+Low cost ROV design, based on testing, simulations and analysis of OpenROV
+\begin_inset CommandInset citation
+LatexCommand citep
+key "FollestadSandvedValle2014"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 Design and Implementation of Software for the ROV Neptunus 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -1810,7 +1821,7 @@ Literature
 \end_layout
 
 \begin_layout Paragraph
-Publications
+Journals and conferences
 \end_layout
 
 \begin_layout Itemize
@@ -1986,6 +1997,90 @@ CyberRig
 \begin_layout Standard
 The CyberRig is a semi submersible 1:100 scaled model drilling rig used
  in student projects and research [Bjrneset, 2014].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Our Lass II model
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename ourlass.png
+	width 95text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Our Lass II"
+
+\end_inset
+
+Our Lass II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+1:24 scaled model of a fishing vessel
+\end_layout
+
+\begin_layout Subsubsection
+Literature
+\end_layout
+
+\begin_layout Paragraph
+Journals and conferences
+\end_layout
+
+\begin_layout Itemize
+Online Estimation of Ship’s Mass and Center of Mass Using Inertial Measurements
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "LinderEnqvistFossenJohansenGustafsson2015"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -1,6 +1,37 @@
 % This file was created with JabRef 2.9.2.
 % Encoding: Cp1252
 
+@MISC{FollestadSandvedValle2014,
+  author = {Jostein Follestad and Fredrik Sandved and Eirik Valle},
+  title = {Low cost ROV design, based on testing, simulations and analysis of
+	{OpenROV}},
+  year = {2014},
+  note = {Specialization project},
+  owner = {andrdahl},
+  timestamp = {2016.01.19}
+}
+
+@MASTERSTHESIS{Idland2015,
+  author = {Tor Kvestad Idland},
+  title = {Marine Cybernetics Vessel {CS} {S}aucer: Design, construction and
+	control},
+  school = {Norwegian University of Science and Technology},
+  year = {2015},
+  owner = {andrdahl},
+  timestamp = {2016.01.19}
+}
+
+@CONFERENCE{LinderEnqvistFossenJohansenGustafsson2015,
+  author = {Jonas Linder and Martin Enqvist and Thor Inge Fossen and Tor Arne
+	Johansen and Fredrik Gustafsson},
+  title = {Online Estimation of Ship{\'}s Mass and Center of Mass Using Inertial
+	Measurements},
+  booktitle = {10th Conference on Manoeuvring and Control of Marine Craft},
+  year = {2015},
+  owner = {andrdahl},
+  timestamp = {2016.01.20}
+}
+
 @MASTERSTHESIS{Munz2015,
   author = {Jostein Munz},
   title = {Design and Implementation of Software for the {ROV} {N}eptunus},
@@ -84,13 +115,6 @@
   title = {Marine Telepresence System},
   school = {Norwegian University of Science and Technology},
   year = {2015},
-  owner = {andrdahl},
-  timestamp = {2016.01.19}
-}
-
-@MASTERSTHESIS{,
-  title = {Marine Cybernetics Vessel {CS} {S}aucer: Design, construction and
-	control},
   owner = {andrdahl},
   timestamp = {2016.01.19}
 }
