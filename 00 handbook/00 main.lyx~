@@ -329,7 +329,7 @@ description "compact reconfigurable input/output real-time embedded industrial c
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "CS"
-description "cyber ship"
+description "cybership ship prefix"
 
 \end_inset
 
@@ -9339,7 +9339,7 @@ Laboratory Staff Guide
 \end_layout
 
 \begin_layout Chapter
-HIL lab setup
+cRIO-based control system setup
 \end_layout
 
 \begin_layout Section
@@ -13717,7 +13717,31 @@ name "sub: Laptop software"
 
 \end_inset
 
-Software running on the virtual machine
+Laptop
+\end_layout
+
+\begin_layout Standard
+To ease the administration of the student computers, a virtual machine has
+ been created that contains all the necessary software specified in Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub: Laptop software"
+
+\end_inset
+
+.
+ The virtual machine (the guest guest, VM) can be run on any computer (the
+ host machine) and on any operating system, that is supported by 
+\emph on
+VirtualBox
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Virtual machine image creation
 \end_layout
 
 \begin_layout Standard
@@ -13840,43 +13864,14 @@ The MathWorks, Inc.
 
 \end_deeper
 \end_deeper
-\begin_layout Subsubsection
-needed
-\end_layout
-
-\begin_layout Itemize
-Matlab
-\end_layout
-
-\begin_layout Itemize
-Labview
-\end_layout
-
-\begin_layout Itemize
-LabVIEW development system
-\end_layout
-
-\begin_layout Itemize
-LabVIEW Real-Time Module
-\end_layout
-
-\begin_layout Itemize
-LabVIEW FPGA Module (recommended)
-\end_layout
-
-\begin_layout Itemize
-NI-RIO driver
-\end_layout
-
-\begin_layout Itemize
-VeriStand
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "sub: virtualmachine"
@@ -13886,32 +13881,42 @@ name "sub: virtualmachine"
 Deploying the virtual machine
 \end_layout
 
-\begin_layout Standard
-To ease the administration of the student computers, a virtual machine has
- been created that contains all the necessary software specified in Section
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub: Laptop software"
-
-\end_inset
-
-.
- The virtual machine (the guest guest, VM) can be run on any computer (the
- host machine) and on any operating system, that is supported by 
-\emph on
-VirtualBox
-\emph default
-.
- 
+\begin_layout Subsubsection
+Free disk space
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+The image is over 70 GB large.
+ Sufficient space must be available on the harddisk.
+\end_layout
+
+\begin_layout Standard
+Space may be freed by
+\end_layout
+
+\begin_layout Itemize
+turning off Windows power settings Hibernate and Hybrid-sleep, and deleting
+ the Hibernate file,
+\end_layout
+
+\begin_layout Itemize
+reducing the size of the system virtual memory, and
+\end_layout
+
+\begin_layout Itemize
+deleting unnecessary files.
+\end_layout
+
+\begin_layout Standard
+See tutorials on how to do this.
+\end_layout
+
+\begin_layout Subsubsection
 Virtual Box
 \end_layout
 
 \begin_layout Standard
-Virtual Box is a Virtual Machine envoirnment from Oracle and under the GNU
+Virtual Box is a Virtual Machine environment from Oracle and under the GNU
  license.
  
 \begin_inset Foot
@@ -13936,12 +13941,18 @@ status open
  After installation any number of virtual machines can be added to the system.
 \end_layout
 
-\begin_layout Subsection
-MCLab Virtual Machine
+\begin_layout Subsubsection
+MC Lab Virtual Machine
 \end_layout
 
 \begin_layout Standard
-The virtual machine can be found on Roger's ArcticDP server 
+The virtual machine can be found on the ArcticDP server at 
+\backslash
+
+\backslash
+ArcticDPStation
+\backslash
+MC-Lab or 
 \backslash
 
 \backslash
@@ -14134,7 +14145,7 @@ name "fig: VMBoxstart"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Common known problems
 \end_layout
 
