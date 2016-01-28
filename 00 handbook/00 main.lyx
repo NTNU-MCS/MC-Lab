@@ -13711,12 +13711,6 @@ n-raspbian
 \end_layout
 
 \begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sub: Laptop software"
-
-\end_inset
-
 Laptop
 \end_layout
 
@@ -13741,6 +13735,12 @@ VirtualBox
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub: Laptop software"
+
+\end_inset
+
 Virtual machine image creation
 \end_layout
 
@@ -13908,7 +13908,7 @@ deleting unnecessary files.
 \end_layout
 
 \begin_layout Standard
-See tutorials on how to do this.
+See online tutorials on how to do this.
 \end_layout
 
 \begin_layout Subsubsection
@@ -13946,7 +13946,8 @@ MC Lab Virtual Machine
 \end_layout
 
 \begin_layout Standard
-The virtual machine can be found on the ArcticDP server at 
+The virtual machine can be found on the ArcticDP server.
+ Access at 
 \begin_inset ERT
 status open
 
@@ -14002,8 +14003,11 @@ status open
 
 \end_inset
 
-.
- After unzipping on the host computers harddrive, the following steps have
+, when connected to the ivt.ntnu.no network.
+\end_layout
+
+\begin_layout Standard
+After unzipping on the host computers harddrive, the following steps have
  to be conducted in VirtualBox:
 \end_layout
 
@@ -19152,7 +19156,7 @@ reference "fig: WinSCP"
 \end_layout
 
 \begin_layout Chapter
-HIL lab and MC lab device network addresses
+Device network addresses
 \end_layout
 
 \begin_layout Standard
@@ -19165,7 +19169,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
+<lyxtabular version="3" rows="6" columns="3">
 <features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="none" valignment="top" special=">{\bfseries}l">
 <column alignment="left" valignment="top" width="2.4cm">
@@ -19175,12 +19179,49 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-RPi
+Qualisys PCs
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+192.168.1.10
+\end_layout
+
+\begin_layout Plain Layout
+192.168.1.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+surface
+\end_layout
+
+\begin_layout Plain Layout
+underwater
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RPi
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -19189,36 +19230,7 @@ RPi
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-for all
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="none" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-cRIO secondary ethernet
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-192.168.1.21
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -19282,21 +19294,46 @@ CSE1
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cRIO secondary ethernet
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+192.168.1.21
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+for all
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
 <cell alignment="none" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Computer
+Laptops
 \end_layout
 
 \end_inset
 </cell>
 <cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
-
-\begin_layout Plain Layout
-192.168.0.10
-\end_layout
 
 \begin_layout Plain Layout
 192.168.0.41
@@ -19320,7 +19357,7 @@ Computer
 \begin_inset Text
 
 \begin_layout Plain Layout
-Qualisys PC iimt-HILlab1-PC
+iimt-HILlab1-PC
 \end_layout
 
 \begin_layout Plain Layout
