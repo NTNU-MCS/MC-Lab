@@ -5594,8 +5594,8 @@ Power
 \end_inset
 
  button.
- If the error keeps reoccurring, please look at the Troubleshooting section
- of this document or contact responsible MC Lab personnel.
+ If the error keep on reoccurs, please look at the Troubleshooting section
+ of this document or contact the responsible McLab personnel.
 \end_layout
 
 \begin_layout Standard
@@ -5668,20 +5668,20 @@ The Trajectory Input File
 \end_layout
 
 \begin_layout Standard
-All trajectories must be defined in a .mcl input file.
- The format of the file is slightly more general than allowed here and is
+All trajectories must be defined in a input file on a .mcl format.
+ The format of the file is slightly more general than allowed hare and is
  the same as for the sloshing rig input.
- The entries in the file are
+ The entries in the file are,
 \end_layout
 
 \begin_layout Enumerate
 Time Step in ms, double precision integer (int32).
- Must be set to 10.
+ Must be set to 10 for mclab
 \end_layout
 
 \begin_layout Enumerate
 Number of channels, double precision integer (int32).
- Must be 6.
+ Must be 6 for mclab.
 \end_layout
 
 \begin_layout Enumerate
@@ -5690,8 +5690,8 @@ Position references in sequence: X(1),Y(1),U(1),C(1),Z(1),W(1), X(2),Y(2),…
 \end_layout
 
 \begin_layout Standard
-The following MTALAB lines write the matrix body (6xN) to file on the correct
- format:
+The following matlab lines writes the matrix body (6xN) to file filename
+ on the correct format:
 \end_layout
 
 \begin_layout Standard
@@ -5745,7 +5745,7 @@ end{verbatim}
 \begin_layout Standard
 The resulting input file must be transferred to the realtime computer at
  /home/ntuser/inputpos.mcl.
- Normally this is done automatically when the Load button on the LabVIEW
+ Normally this is done automatically when the Load button on the Labview
  GUI is pressed.
  
 \end_layout

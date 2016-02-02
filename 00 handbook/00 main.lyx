@@ -4595,6 +4595,1247 @@ Towing carriage
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing_carriage.jpg
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Towing carriage"
+
+\end_inset
+
+Towing carriage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The scope of this section is to explain how to safely operate the carriage
+ without any damage towards humans or equipment.
+ 
+\end_layout
+
+\begin_layout Section
+Preparation before startup
+\end_layout
+
+\begin_layout Standard
+To start with, you must make sure that any items mounted or fixed to the
+ carriage are securely fitted, so they don't prevent the operation of the
+ carriage.
+ All personnel must stay on the operation platform during the travel of
+ any axis.
+\end_layout
+
+\begin_layout Standard
+Locate the Emergency Button and place it so that you can easily reach it
+ from where you are sited.
+ DO NOT USE THE EMERGENCY BUTTOM AS A BRAKE.
+ YOU MUST ONLY OPERATE IT WHEN YOU ARE IN REAL EMERGENCY SITUATIONS.
+\end_layout
+
+\begin_layout Subsection
+Operation console
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing_console.jpg
+	width 80text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Towing console"
+
+\end_inset
+
+Towing console
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The operation console is an All-in-one PC.
+ The Power button is on the bottom right side of the screen.
+ If the operation panel is not on the desktop, you can start it by double
+ clicking on desktop Icon, shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Towing console"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Manual Operation of the Carriage
+\end_layout
+
+\begin_layout Subsection
+Setup
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing_coordinate_sketch.jpg
+	width 80text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Towing carriage-1"
+
+\end_inset
+
+Coordinate system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing_coordinate_photo.jpg
+	width 80text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Coordinate system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Forward/Backward
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acceleration
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Position
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Axis
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Speed
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Deceleration
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pos./Neg.
+ Limit
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 2.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m/s] 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of 0 - 0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{m/s^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 22
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m/s] 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of 0 - 1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{m/\ensuremath{s^{2}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 4.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+U
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m/s] 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of 0 - 1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{m/s^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 10 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[deg/s]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of 0 - 20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{deg/s^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 255
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[deg]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Z
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m/s] 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of 0 - 2.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{m/s^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+W
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m/s] 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% of 0 - 2.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{m/s^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0 - 0.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[m]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab: Operation Limit"
+
+\end_inset
+
+Operation Limit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing_parameteres.jpg
+	width 80text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Towing parameters"
+
+\end_inset
+
+Setup
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is very important to select the Setup tab first before you start any
+ operation of the carriage.
+ As you can see in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Towing parameters"
+
+\end_inset
+
+, it is possible to change the travel parameters for all available axes.
+ In principle, all axis parameters have different range limits.
+ These are listed in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: Operation Limit"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+All axes can be activated or deactivate by using the ON button.
+\end_layout
+
+\begin_layout Standard
+For the X axis it is possible to activate a list of predefined Forward speeds.
+ You will then have the ability to automatically change to a different speed
+ on the next run.
+ The list can be edited in the Main Tab Window.
+\end_layout
+
+\begin_layout Standard
+By selecting the 
+\begin_inset Quotes eld
+\end_inset
+
+Lock Z-W
+\begin_inset Quotes erd
+\end_inset
+
+ button the Z-W axis will operate in parallel.
+ They will use the Z-axis parameter setup.
+\end_layout
+
+\begin_layout Subsection
+Main/Standard Operation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing_main.jpg
+	width 80text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Towing main"
+
+\end_inset
+
+Main
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All the activated axes will operate within the limits set in the Setup.
+ Only one axis can operate at a time.
+ If you hit the button for another axis than the running one, it will instantly
+ stop and new one will start running.
+ To stop the running axis, simply hit the stop button.
+ If no buttons are operated carriage axis will run it hit limit position
+ of the current axis.
+\end_layout
+
+\begin_layout Standard
+If an error occurs, for some reason, it can be cleared by hitting the 
+\begin_inset Quotes eld
+\end_inset
+
+Power
+\begin_inset Quotes erd
+\end_inset
+
+ button.
+ If the error keeps reoccurring, please look at the Troubleshooting section
+ of this document or contact responsible MC Lab personnel.
+\end_layout
+
+\begin_layout Standard
+The current speed and position of the active axis are displayed referred
+ to the selected limits.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Operation Controlled automatically from PC
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing_runfromfile.jpg
+	width 80text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Towing main-1"
+
+\end_inset
+
+Run From File
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The Trajectory Input File
+\end_layout
+
+\begin_layout Standard
+All trajectories must be defined in a .mcl input file.
+ The format of the file is slightly more general than allowed here and is
+ the same as for the sloshing rig input.
+ The entries in the file are
+\end_layout
+
+\begin_layout Enumerate
+Time Step in ms, double precision integer (int32).
+ Must be set to 10.
+\end_layout
+
+\begin_layout Enumerate
+Number of channels, double precision integer (int32).
+ Must be 6.
+\end_layout
+
+\begin_layout Enumerate
+Position references in sequence: X(1),Y(1),U(1),C(1),Z(1),W(1), X(2),Y(2),…
+ double precision real (float32).
+\end_layout
+
+\begin_layout Standard
+The following MTALAB lines write the matrix body (6xN) to file on the correct
+ format:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{verbatim}
+\end_layout
+
+\begin_layout Plain Layout
+
+fid=fopen(filename,'wb');
+\end_layout
+
+\begin_layout Plain Layout
+
+head=[10;6];
+\end_layout
+
+\begin_layout Plain Layout
+
+count=fwrite(fid,head,'int32');
+\end_layout
+
+\begin_layout Plain Layout
+
+count=count+fwrite(fid,body,'float32');
+\end_layout
+
+\begin_layout Plain Layout
+
+fclose(fid); 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{verbatim}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The resulting input file must be transferred to the realtime computer at
+ /home/ntuser/inputpos.mcl.
+ Normally this is done automatically when the Load button on the LabVIEW
+ GUI is pressed.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename towing_ampvsfreq.jpg
+	width 80text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Towing main-1-1"
+
+\end_inset
+
+Operation Limit Amplitude vs.
+ Frequency
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Troubleshooting
+\end_layout
+
+\begin_layout Standard
+-
+\end_layout
+
+\begin_layout Section
+Note
+\end_layout
+
+\begin_layout Standard
+When the wagon is moving, no one is allowed to move on the sides of the
+ basin.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Basic parameter identification
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -4607,7 +5848,7 @@ todo{
 
 \end_inset
 
-Update with current control system
+Jon master
 \begin_inset ERT
 status open
 
@@ -4619,179 +5860,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename towing01.png
-	width 80text%
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Towing 01"
-
-\end_inset
-
-Towing wagon in the MC-lab.
- Control of the wagon is done using the computer marked in red.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename towing02.png
-	width 100text%
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: Towing 02"
-
-\end_inset
-
-Computer to operate the towing wagon
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: Towing 01"
-
-\end_inset
-
-, a picture of the towing wagon is presented.
- Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig: Towing 02"
-
-\end_inset
-
- is a close up of the computer.
-\end_layout
-
-\begin_layout Section
-Movement of towing wagon
-\end_layout
-
-\begin_layout Standard
-The towing wagon range is approximately 20 meters in total.
-\end_layout
-
-\begin_layout Itemize
-Move forwards: Press the button marked as move forwards.
-\end_layout
-
-\begin_layout Itemize
-Move backwards: Press the button marked move backwards.
-\end_layout
-
-\begin_layout Itemize
-Stop: If forwards, press backwards button.
-\end_layout
-
-\begin_layout Standard
-If backwards, press forwards button.
- In both forwards and backwards direction, the velocity can be set between
- 0 m/s and 2 m/s.
- In addition, the acceleration can be changed between 0 and 0.5 m/s2.
- How aggressive the wagon is stopping can be regulated to a value between
- 0 % and 100 %, where 100 % is the most aggressive.
-\end_layout
-
-\begin_layout Standard
-Moreover, it is possible to limit the distance covered by the wagon.
- Consequently, it can be stopped before it reaches the end of the basin.
- This is necessary for example when the wagon has a high velocity.
- The limit can be set between 0 mm and 20 000 mm.
-\end_layout
-
-\begin_layout Section
-Typical settings
-\end_layout
-
-\begin_layout Standard
-For a typical towing run, the wagon has a velocity in forwards and backwards
- between 0 m/s and 1 m/s, depending on the towed object.
- The acceleration is set to 0.3 m/s2.
- The stopping smoothness is set to 30 %.
- Finally, the distance for the wagon to cover is between 0 mm and 19 000
- mm.
-\end_layout
-
-\begin_layout Section
-Note
-\end_layout
-
-\begin_layout Standard
-When the wagon is moving, no one is allowed to move on the sides of the
- basin.
 \end_layout
 
 \begin_layout Standard
