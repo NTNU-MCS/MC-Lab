@@ -5831,6 +5831,44 @@ When the wagon is moving, no one is allowed to move on the sides of the
 
 \end_layout
 
+\begin_layout Section
+Basic parameter identification
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{
+\end_layout
+
+\end_inset
+
+Jon master
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Wave generator
 \end_layout
@@ -5939,7 +5977,7 @@ The proposed control design model is
 \begin_inset Formula 
 \begin{eqnarray}
 \dot{\eta} & = & R\left(\psi\right)\nu\label{eq: CSE1 kinematics}\\
-\dot{\nu} & = & M^{-1}\left(-C\left(\nu\right)\nu-D\left(\nu\right)\nu+\tau\right)\label{eq: CSE1 kinetics}
+M\dot{\nu} & = & -C\left(\nu\right)\nu-D\left(\nu\right)\nu+\tau\label{eq: CSE1 kinetics}
 \end{eqnarray}
 
 \end_inset

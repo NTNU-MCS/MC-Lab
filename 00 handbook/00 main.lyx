@@ -5977,7 +5977,7 @@ The proposed control design model is
 \begin_inset Formula 
 \begin{eqnarray}
 \dot{\eta} & = & R\left(\psi\right)\nu\label{eq: CSE1 kinematics}\\
-\dot{\nu} & = & M^{-1}\left(-C\left(\nu\right)\nu-D\left(\nu\right)\nu+\tau\right)\label{eq: CSE1 kinetics}
+M\dot{\nu} & = & -C\left(\nu\right)\nu-D\left(\nu\right)\nu+\tau\label{eq: CSE1 kinetics}
 \end{eqnarray}
 
 \end_inset
@@ -6489,6 +6489,10 @@ reference "tab: CSE1-rigid-body"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Float table
 wide false
 sideways false
@@ -6903,6 +6907,11 @@ name "tab: CSE1 damping parameters 1"
 \end_inset
 
 CSE1 damping parameters
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
