@@ -4461,6 +4461,471 @@ Qualisys motion capture system
 \end_layout
 
 \begin_layout Section
+Start Qualisys Track Manager
+\end_layout
+
+\begin_layout Enumerate
+Execute the program.
+ The first displayed window is as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Qualisys Track Manager start window"
+
+\end_inset
+
+.
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename qualisys_new.PNG
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Qualisys Track Manager start window"
+
+\end_inset
+
+Qualisys Track Manager start window
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Push the white sheet icon to start a new measurement.
+ The main window should then display the 2D view, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: Qualisys Track Manager 2D view"
+
+\end_inset
+
+.
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename qualisys_3cams.PNG
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: Qualisys Track Manager 2D view"
+
+\end_inset
+
+Qualisys Track Manager 2D view
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ The squares numbered #1, #2 and #3 are show the basin as seen from the
+ respective cameras.
+ The white dots are the vessel reflectors.
+ A minimum of three reflectors must be visible in each camera.
+ 
+\end_layout
+
+\begin_layout Section
+Aquire body
+\end_layout
+
+\begin_layout Enumerate
+Push the gear icon to access Project Options.
+ Navigate to 6DOF Tracking, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Qualisys-Track-Manager6DOF"
+
+\end_inset
+
+.
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename qualisys_6dof.PNG
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Qualisys-Track-Manager6DOF"
+
+\end_inset
+
+Qualisys Track Manager 6 DOF Tracking
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Remove previous bodies, if any.
+\end_layout
+
+\begin_layout Enumerate
+Align the vessel with desired heading 0 and push 
+\begin_inset Quotes eld
+\end_inset
+
+Acquire Body
+\begin_inset Quotes erd
+\end_inset
+
+ to get the position of the reflectors.
+ A list appears, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Qualisys-Track-ManagerAquiredBody"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename qualisys_orientating.PNG
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Qualisys-Track-ManagerAquiredBody"
+
+\end_inset
+
+Qualisys Track Manager aquired body
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To redefine the body fixed coordinate frame 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Chose a reference reflector.
+ As highlighted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Qualisys-Track-ManagerAquiredBody"
+
+\end_inset
+
+, it may be practical to choose the highest-most, in this case reflector
+ 3.
+\end_layout
+
+\begin_layout Enumerate
+Push 
+\begin_inset Quotes eld
+\end_inset
+
+Translate
+\begin_inset Quotes erd
+\end_inset
+
+ and enter the coordinates of the chosen reflector in the desired frame.
+ In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Qualisys-Track-Managertranslate"
+
+\end_inset
+
+, reflector 3 is set at 
+\begin_inset Formula $x,y,z=\left(0.550,0,-0.500\right)$
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename qualisys_orientating2.PNG
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Qualisys-Track-Managertranslate"
+
+\end_inset
+
+Qualisys Track Manager translate body
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Qualisys-Track-Managertranslated"
+
+\end_inset
+
+ shows the resulting coordinates after translation.
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename qualisys_orientating3.PNG
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Qualisys-Track-Managertranslated"
+
+\end_inset
+
+Qualisys Track Manager translated body
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Finally, select 3D view to confirm that the body-fixed frame is indeed located
+ as desired, as in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Qualisys-Track-Managerr3D"
+
+\end_inset
+
+.
+\begin_inset Float figure
+placement !h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename qualisys_3d.PNG
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Qualisys-Track-Managerr3D"
+
+\end_inset
+
+Qualisys Track Manager 3D view
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Start server
 \end_layout
 
@@ -4524,63 +4989,6 @@ Aquire body
 
 \begin_layout Standard
 leverer med 50Hz på nettet
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement !h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename NIMAX_install.jpg
-	scale 45
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-FPGA2
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig: fpga2-1"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -20246,7 +20654,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="3">
+<lyxtabular version="3" rows="8" columns="3">
 <features rotate="0" booktabs="true" tabularvalignment="middle">
 <column alignment="none" valignment="top" special=">{\bfseries}l">
 <column alignment="left" valignment="top" width="2.4cm">
@@ -20265,11 +20673,11 @@ Qualisys PCs
 \begin_inset Text
 
 \begin_layout Plain Layout
-192.168.1.10
+192.168.0.10
 \end_layout
 
 \begin_layout Plain Layout
-192.168.1.20
+192.168.0.20
 \end_layout
 
 \end_inset
@@ -20283,6 +20691,88 @@ surface
 
 \begin_layout Plain Layout
 underwater
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Laptops
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+192.168.0.41
+\end_layout
+
+\begin_layout Plain Layout
+192.168.0.42
+\end_layout
+
+\begin_layout Plain Layout
+192.168.0.43
+\end_layout
+
+\begin_layout Plain Layout
+192.168.0.47
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+iimt-HILlab1-PC
+\end_layout
+
+\begin_layout Plain Layout
+iimt-HILlab2-PC
+\end_layout
+
+\begin_layout Plain Layout
+iimt-HILlab3-PC
+\end_layout
+
+\begin_layout Plain Layout
+MClab
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MC Lab router
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+192.168.0.50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SSID: MC Lab
 \end_layout
 
 \end_inset
@@ -20400,53 +20890,41 @@ for all
 </cell>
 </row>
 <row>
-<cell alignment="none" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Laptops
+Assigned by DHCP
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-192.168.0.41
+From
 \end_layout
 
 \begin_layout Plain Layout
-192.168.0.42
+192.168.0.100
 \end_layout
 
 \begin_layout Plain Layout
-192.168.0.43
+to
 \end_layout
 
 \begin_layout Plain Layout
-192.168.0.47
+192.168.0.254
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-iimt-HILlab1-PC
-\end_layout
 
-\begin_layout Plain Layout
-iimt-HILlab2-PC
-\end_layout
-
-\begin_layout Plain Layout
-iimt-HILlab3-PC
-\end_layout
-
-\begin_layout Plain Layout
-MClab
 \end_layout
 
 \end_inset
