@@ -1,0 +1,39 @@
+\part{User Manual}\label{part2}
+It is assumed that the reader has studied the MCLab Handbook before using CSAD, and has knowledge about Lab equipment, procedures and Safety precautions. In addition, the following is important to keep in mind when using CSAD:
+\begin{description}
+	\item [{Water~damage:}] CSAD is watertight when the hatches on the top are closed properly.  
+	\item [{Propeller~dry~running:}] The thruster gears are lubricated with water, and thus the propellers always has to be in the water when running. Hence, always keep the vessel in the basin when the power is connected. 
+	\item [{Total~loss~of~control:}] Pull CSAD with a boat hook, and keep the vessel in water while disconnecting batteries.
+	\item [{Launching}] CSAD is a large model, and care must be taken when launching the vessel to the basin. Always be two persons, and make sure the vessel does not hit the basin wall when launching or removing it from the basin. When launching, remove all weights(batteries and ballast). Still, the vessel is heavy, and the lifting up and down to the basin might be harder than expected. 
+\end{description}
+\chapter{Launching}
+
+\section{Vessel and lab preparations}
+Follow these vessel-specific instructions when preparing for experiments with CSAD: 
+\begin{enumerate}
+	\item Make sure all batteries and weights are removed from the vessel when lifting it. Launch the vessel in the basin. 
+	\item Place all 6 batteries(12V 12Ah, marked CSAD) in the vessel, at their dedicated places. 3 in front of the moonpool, 3 behind it. Connect the batteries, positive/7red first then negative/black. 
+	\item Place the ballast weights. 20 kg in the aft, and 27.5 in the front. Manually adjust their position, such that the vessel does not have any heel (slagside). Check with the design draft indicated on the outside of the hull. 
+	\item run /launch necessary rosnodes for controlling the ship.( The setMotorPower method should be called at least once with 0 as power for each motor.) All motors should beep one note followed by three rising notes, indicating that they are ready to control the motors.
+	\item Press the PS-button on the ps4 controller and wait until the indicator light on the controller stops blinking and turns a solid purple colour.
+	\item Place the vessel inside the region of sight for Qualisys (check on the Qualisys computer that all 4 reflectors are visible for all cameras). Align the vessel with 0\degree heading in the basin frame, i.e. with the bow pointing towards the command center. 
+	\item On the Qualisys computer, aqcuire the body. This process is described in MC-Lab Handbook, with information on debugging. In the body frame, the highest marker has position $(x,y,z)=(960,-190,-575)[mm]$. 
+	\item Go to 3D Visualization in QTM, and verify that the body is correct. The body x-axis should be parallel to the lines between the markers on starboard and port side.
+\end{enumerate}
+CSAD and the lab is now set up for experiments. 
+
+\chapter{Demolition}
+When the experiments are finished, follow the procedure given here to shut down. 
+\begin{enumerate}
+	\item Navigate CSAD near the basin wall
+	\item Terminate all rosnodes
+	\item Turn of the power switch, and disconnect the batteries
+	\item Remove the ballast weights
+	\item Remove the batteries from the vessel
+	\item Lift CSAD from the basin, and put it in its rack in the storage
+	\item Leave the ds4 controller in the vessel
+	\item On the Qualisys computer, quit Qualisys Track Manager
+	\item If you recorded any videos with the Camera System, export these videos to a memory stick, quit the software and turn of the TV-monitor
+	\item Do a general clean up, bring all your personal belongings with you when you leave
+\end{enumerate}
+NOTE on charging the batteries: When charging the batteries in CSAD, the WiFi bridge must be disconnected. Unplug the power wire from the WiFi bridge(connected on the side of the Ethernet cable). All batteries must be placed in the vessel when charing, and connected, but with the power switch turned off. Connect the charger to the charging wire located in the aft hatch. The charger is located in the shelf in the storage, marked CSAD. Set the charging mode to the motorcycle symbol. 
