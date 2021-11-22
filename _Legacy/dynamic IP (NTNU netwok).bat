@@ -1,1 +1,0 @@
-netsh interface ip set address name="Local Area Connection" dhcp
