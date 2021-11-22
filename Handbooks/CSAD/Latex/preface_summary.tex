@@ -1,0 +1,46 @@
+\addcontentsline{toc}{section}{Preface}
+\section*{Preface}
+The purpose of this document is to provide a manual that ease the process of using CyberShip Arctic Drillship(CSAD), and concerns only software and hardware of CSAD specifically. For information about the Marine Cybernetics Laboratory(MCLab) and how to implement custom control systems on the vessel, the reader is referred to the CSAD ROS repo, which can be found on GitHub: \url{https://github.com/NTNU-MCS/}
+
+\addcontentsline{toc}{section}{Structure of document}
+\section*{Structure of document}
+This User Manual is divided in three parts: 
+\begin{itemize}
+	\item Technical description(hardware, software, mathematical models etc.)
+	\item Operation manual(launching, operation and demolition instructions)
+	\item In the Appendix, a description of the extended IMU system is given(4 IMUs)
+\end{itemize}
+
+\addcontentsline{toc}{section}{CSAD main data}
+\begin{table*}[htb!]
+	\centering
+	\caption{CSAD main data}
+	\begin{tabular}{ll}
+		\hline
+		\textbf{Parameter} & \textbf{Value} \\ \hline
+		Length over all & 2.578 [m] \\
+		Beam & 0.440 [m] \\
+		Depth & 0.211 [m]\\
+		Design draft & 0.133 [m]\\
+		Weight & 127.92 [kg] \\
+		Scale & 1:90\\
+		RPi IP-address & 192.168.0.123 \\
+		Qualisys body\footnotetext{Body-coordinate of highest marker} & (960, -190, -575) [mm]\\ 
+		MATLAB Version & 2016b\\
+		LabVIEW Version & 2017\\
+		VeriStand Version & 2017\\
+		\hline
+	\end{tabular}
+\end{table*}
+
+\addcontentsline{toc}{section}{Lnown errors and further work}
+\section*{Known errors and further work}
+There are some known errors and weaknesses on CSAD: 
+\begin{itemize}
+	\item Due to a lack of any indexing feature on the belt-wheels on the servos , the wheels can slide around while the servos are stationary. This means the offset angle can change and the software can loose track of the actual position of the thruster.
+	All bolts attaching the belt wheels to the servos have been tightened on the 1.july.2021. However servo nr.4 has loosened only 7 days later, causing it to loose the offset angle.
+	\item The power is currently not connected to the power-switch, meaning that the boat will turn on as soon as a battery is connected.
+	\item The fixture holding servo 3(front left) is not deep enough, making the screw holding the belt-wheel press against the bottom of the fixture causing the servo to stall. This problem is circumvented by installing two washers in-between the servo and the fixture.
+	\item There are new constraints on maximum thrust. From the towing test carried out in Juny 2017, a bollard pull test was performed. It is suggested to implement this new maximum thrust values in the thrust allocation. 
+	\item The weight of the vessel is not correct, as it does not take the moon pool into account. 
+\end{itemize}
