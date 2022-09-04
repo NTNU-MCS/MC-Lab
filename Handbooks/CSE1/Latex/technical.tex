@@ -185,31 +185,14 @@ To activate the actuators on the vessel, first SSH to the onboard RPi 4 and laun
   nodelet_manager __name:=cse_actuator_driver
 \end{lstlisting}
 You should hear a beeping sound if the nodes are succesfully run. 
+
 \subsection{Qualisys drivers}
-Next is to launch the Qualisys drivers. These are written in ROS2 rather than ROS1 and  must be activated from the ROS2 workspace it is installed to, either from the onboard RPi, or from another computer connected to the MCLab network: 
-\begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ ros2 run ros2_qualisys_driver qualisys_driver_exe 
-  --ros-args --params-file src/ros2_qualisys_driver/params/params.yaml
-  $ ros2 lifecycle set /qualisys_driver configure
-  $ ros2 lifecycle set /qualisys_driver activate
-\end{lstlisting}
 
-To source ROS2 or ROS1 in the workspace, use:
+Next is to launch the Qualisys drivers. These can be found in the Github repository for the MC-Lab. After downloading the package, you can choose to run it from a external computer or on the onboard RPi. To activate it source your workspace, and run the command
+
 
 \begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ . /opt/ros/$ROS_DISTRO/setup.zsh
-\end{lstlisting}\footnote{\$ROS\_DISTRO may vary, but is most likely \textbf{foxy} for ROS2 and \textbf{noetic} for ROS1}
-Then you have to run the ROS2 bridge that allows the qualisys driver to properly communicate with the ROS1 drivers. 
-
-\begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ ros2 run ros1_bridge dynamic_bridge --bridge-all-2to1-topics
-\end{lstlisting}
-
-Since the \textbf{roscore} is likely running on the raspberry, you will also have to export the IP of the Pi and Rosmaster: 
-
-\begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ export ROS_MASTER_URI=http://192.168.0.171:11311 
-  $ export ROS_IP=192.168.0.104
+  $ roslaunch mocap_qualisys qualisys.launch
 \end{lstlisting}
 
 \subsection{IMU-drivers}
@@ -226,7 +209,7 @@ The driver publishes the measurements to the topic \textbf{/imu}.
 
 \section{ROS with Python}
 
-The python based software for CSEI consists of 5 premade packages; \textbf{controller}, \textbf{observer}, \textbf{messages}, \textbf{gain\_server}, \textbf{simulator} and \textbf{tf\_publisher}. This section will document each package. 
+A number of base python-packages have been made to help build control-system for the CSE1. These can all be found on the \href{https://github.com/NTNU-MCS}{NTNU-MCS} Github repository. Simply download the packages you needed for your own project. This section will provide an outline of different packages, the overall architecture of a ROS workspace as well as the basic knowledge required to run a ROS control system. 
 
 \subsection{Prerequisites and recommended software}
 
@@ -239,6 +222,7 @@ The python based software for CSEI consists of 5 premade packages; \textbf{contr
     \item Visual Studio Code with the \textbf{Remote SSH} extension. This enables you to SSH directly in to raspberry via VS Code, allowing you to edit files on the pi in the text-editor.
     \item A computer running linux. This is not required as most software will run on the Raspberry Pi, but can be beneficial for testing and visualizing.
 \end{itemize}
+
 \subsection{Sourcing your ROS-distribution}
 
 Before you do anything with ROS, you need to source the installation. On the RP this is done automatically, but in case you are working on your own computer the following steps are necessary: 
@@ -272,162 +256,131 @@ Then, to run the package use
   $ rosrun <package-name> <node-script>.py
 \end{lstlisting}
 
-where <package-name> is the name of the package you want to run, e.g "controller", and the <node-script>.py is the python script that initialisez the rosnode, e.g "ctrl\_node.py". 
+where <package-name> is the name of the package you want to run, e.g "controller", and the <node-script>.py is the python script that initialisez the rosnode, e.g "controller.py". 
 
+\subsection{Template workspace}
 
-\subsection{The controller package}
-The first ROS-package is the \textit{controller}-package. It contains relevant tools and scripts to build guidance systems, regulators and thrust-allocation. In total, the package contains six scripts.
-
-\subsubsection{math\_tools.py}
-As the name implies, \lstinline{math_tools.py} contains functions related to math-operations. For example computing Rotation-matrices, converting quaternions, etc. The user should add to this file according to their needs, and import the functions in other relevant files. 
-
-\subsubsection{lib.py}
-\lstinline{lib.py} contains the tools related to extracting and publishing the data from the different ROS-nodes in the system, as well as the functions for initializing and destroying the controller node. The tools are class-based, with one object for every relevant parameter in the control system. Each object contains methods for publishing new information, retrieving information from other nodes. In total there are five classes:
-\begin{itemize}
-    \item \textbf{PS4}: This object subscribes to the topic \textbf{/joy} and is automatically updated with inputs from the DualShock4 controller. Each button input is mapped to a corresponding variable, which can be called by in the pattern of \lstinline{<object.variable>}. I.e \lstinline{ps4.R2} returns the current signal from the R2 button.
-    \item \textbf{UVector}:
-    The UVector object publishes the inputs to the vessel actuators. After computing $u$, call the function \lstinline{UVector.publish(u)} to publish the array.
-    \item \textbf{Observer\_Converser}:
-    The Observer\_Converser subscribes to the topic \textbf{/CSEI/observer} and automatically updates every time a observer estimations are published. The estimates can be called by 
-    \begin{lstlisting}[language=python,basicstyle=\mlttfamily, breaklines=true]
-    eta_hat, nu_hat, bias_hat = observer.get_observer_data()
-    \end{lstlisting}
-    \item \textbf{Reference\_Converser}:
-    Similar to the observer\_converser, except that it subscribes to the /CSEI/ref topic and contains methods for publishing as well. References are extracted and published by
-     \begin{lstlisting}[language=python,basicstyle=\mlttfamily, breaklines=true]
-    eta_d, nu_d, nu_d_dot = reference.get_ref() # Call reference
-    refrence.publish_ref(eta_d, nu_d, nu_d_dot) # Publish new reference
-    \end{lstlisting}
-    \item \textbf{Controller\_Gains}:
-    The Controller\_Gains object is updated every time the user re-configures the controller-gains. To extract the new gains, call:
-     \begin{lstlisting}[language=python,basicstyle=\mlttfamily, breaklines=true]
-    Kp, Kd, Ki, mu, Uref = gains.get_data()
-    \end{lstlisting}
-\end{itemize}
-
-All objects are declared in the script, and can be imported in custom scripts at the users behest: 
-    \begin{lstlisting}[language=python,basicstyle=\mlttfamily, breaklines=true]
-    from lib import ps4, Uvector, observer, reference, Gains
-    \end{lstlisting}
-    
-\subsubsection{ctrl\_joy.py}
-
-\lstinline{ctrl_joy.py} is the default control-software for the CSE1. It enables manual control of the vessel thrusters  using the DS4 controller.
-
-% \subsubsubsection{Bow thruster}
-
-% The bow tunnel thruster is controlled by the L2 and R2 sticks. Both stick provide an output in the intervall $[0, 1]$. The thruster input  
-
-% \begin{equation}
-%     u_1 = -\frac{L2 - R2}{2}
-% \end{equation}
-
-% maps to the intervall $u_1 \in [-1, 1]$ with positiv direction towards starboard.
-
-% \subsubsubsection{Voith Schneider Propellers}
-
-% The left and right joysticks, respectively, give the VSP deflections, $u_1$ and $u_2$, and angles, $\alpha_1$ and $\alpha_2$. The joystick coordinates PosX and PosY axes point right and down, as seen in Figure \ref{fig:sixaxis coordinate system}. The deflection is 
-
-
-% \begin{equation}
-%     u_i = min\left(\sqrt{(posX)^2 + (posY)^2}, 1  \right)
-% \end{equation}
-
-% where the $min(\cdot)$ ensures the deflection is constrained on $u_i \in [0,1]$. The angle is 
-
-% \begin{equation}
-%     \alpha_i = \arctan2(PosX, -PosY)
-% \end{equation}
-
-
-\subsubsection{ctrl\_stud.py}
-
-This is a skeleton file, where custom control systems are to be implemented. It contains a \lstinline{loop()} function, which operates similar to a main function. All function-calls should be handled inside this function.
-
-
-\subsubsection{ctrl\_node.py/ctrl\_joy\_node.py}
-These are the scripts that initialize and launch the ROS nodes, and are generally not meant to be reconfigured. They initialize the nodes at 100 Hz and call the \lstinline{loop()}-function from either \lstinline{ctrl_joy} or \lstinline{ctrl_stud}.
-
-To manually run the package using either \lstinline{ctrl_joy} or \lstinline{ctrl_stud} use:
-
- \begin{lstlisting}[language=python,basicstyle=\mlttfamily, breaklines=true]
- rosrun controller ctrl_joy_node.py # For ctrl_joy
- rosrun controller ctrl_node        # For ctrl_stud
- \end{lstlisting}
-
-\subsection{The observer package}
-
-The observer package handles everything related to observer implementation, and is very similar in structure to the controller package. It has a total of four scripts, one being a \lstinline{math_tools.py} identical to the one in controller.
-
-\subsubsection{lib.py}
-
-\lstinline{lib.py} contains the tools related extracting and publishing the data from the different ROS-nodes in the system, as well as the functions for initializing and destroying the observer node. Like with the controller package, The tools are class-based, with one object for every relevant parameter in the control system. Each object contains methods for publishing new information, retrieving information from other nodes. The observer package utilizes the same UVector-class as the controller, along with a couple new.
+A template workspace consisting of several packages is provided to make developing control systems simpler. The workspace, denoted \textbf{ws\_templates} in the Git-repository, consists of a total of five ROS-packages corresponding two traditional modules in a maneuvering DP-system. These are named:
 
 \begin{itemize}
-    \item \lstinline{qualisys}: This object subscribes to the \textbf{/qualisys} topic, and retrieves the position the system captures of the vessel. To retrive the data call on the method: 
-    
-    \begin{lstlisting}[language=python,basicstyle=\mlttfamily, breaklines=true]
-    eta_hat = qualisys.getQualisysOdometry()
-    \end{lstlisting}
-    
-    \item \lstinline{Observer_Converser}: Identical to the object described in the controller package. Also contains methods for publishing the observer data: 
-     \begin{lstlisting}[language=python,basicstyle=\mlttfamily, breaklines=true]
-    eta_hat, nu_hat, bias_hat = observer.get_data()           # Return newest estimate
-    observer.publish_observer_data(eta_hat, nu_hat, bias_hat) # Publish computed estimate
-    \end{lstlisting}
-    
-    \item \lstinline{Observer_Gains}
-    Retrieves the injection gains for the observer in a similar manner as Controller\_Gains. 
-    \begin{lstlisting}[language=python,basicstyle=\mlttfamily, breaklines=true]
-    L1, L2, L3 = Gains.get_observer_gains()           # NB! These are np.arrays with n=3 
-    \end{lstlisting}
+    \item controller
+    \item guidance
+    \item observer
+    \item thrust\_allocation
+    \item simulator 
 \end{itemize}
 
-\subsubsection{obs\_stud.py}
-Skeleton file for implementation of observer. All user-defined functions must be called in the right order in the \lstinline{loop()} function. 
+Additionally, there are three packages that provide supporting tools and conventions: 
 
-\subsubsection{obs\_node.py}
-Initializes the observer node
+\begin{itemize}
+    \item gain\_server
+    \item messages
+    \item common\_tools
+\end{itemize}
+
+\subsection{Node-structure}
+
+The first four nodes; \textit{controller}, \textit{guidance}, \textit{observer} and \textit{thrust\_allocation} are generic, skeleton packages. Their purpose is to provide a base to build a control-system on, so they only contain the necessary functionality to execute ROS-nodes. The main functionality is left to the user to implement. All the packages follow the exact same structure.
+
+Within every package there is a \textit{src}-directory where a single python script is placed. This is where you will write and call your code. Listing \ref{listing:node} shows an example of a ROS-node that maps the inputs from a PS4 controller to forces in each of CSE1 thrusters. 
+
+
+\begin{listing}[h]
+\inputminted{python}{feedback_ctrl.py}
+\caption{Example of a node-file}
+\label{listing:node}
+\end{listing}
+
+Quickly summarized, you write your functions above the 
+
+\begin{lstlisting}[language=python]
+    if__name__ == 'main'
+\end{lstlisting}
+
+statement. These functions should then be called in the while loop located inside. The two statements before the while loop are functions for initiating the node, and setting the refresh rate, or frequency, that we want to run the node at. This is predefined in all templates so that you only have to worry about writing the functions and calling them inside the while loop.
+
+Fully fleshed out packages are also available on Github, if one just needs a working control system for experiments without any implementation. These can be found in the folders of \textit{DP\_Lab} and \textit{DP\_Nom} and consist of a backstepping manuevering regulator, a DP-observer, thrust allocation schemes as well as a path-parameterization guidance function. 
+
+\subsection{Simulator}
+
+The simulator package contains a full Model-in-the-loop ROS implementation of the CSE1. It is based of the low-speed dynamics, and can be used for testing the implemented control systems outside of the MC-lab.
+
+The simulator subscribes tp feedback from the topic \textbf{CSEI/u}, to model the signal flow on board the vessel itself. Upon receiving a signal from the topic, it will compute the generalized forces and new position of the vessel.
+
+Note that the model is very simple, and does not take in to account  environmental forces such as current or wind. 
+
+
+\subsection{Common\_tools package}
+
+As seen in Listing \ref{listing:node}, the templates import from a module called \textbf{common\_tools}. This is where you can find all the tools for publishing and subscribing to the relevant signals in your system, as well as the functions that initialize nodes. The tools are object-oriented, with every relevant signal pertaining to an object in the library. Each object contains methods called publish, and callback. 
+
+Every time a subscriber detects that a new signal is published to its topic, it calls the callback function in our  object, and updates its class variables. You can then retrieve these by using a get-method, or just calling the variable directly through the object.
+
+\begin{lstlisting}[language=python]
+  u = u_data.get_data() # Retrieve actuator commands 
+  u = u_data.Udata      # Retrieve acutator commands
+\end{lstlisting}
+
+The publish method takes an input, and publishes it to the relevant topic.
+
+
+\begin{lstlisting}[language=python]
+
+ u_data.publish(u) # Publish actuator commands 
+\end{lstlisting}
+
+All objects are declared and imported into the relevant code-templates from the \textbf{lib} submodule . Subscriptions to the different topics are all handled inside these classes and the initialization nodes.
+
+It is important that you at any time keep the common\_tools package inside your workspace. The package also contains a submodule called \textbf{math\_tools}. This contains some predefined mathematical functions that may be useful for the project. Rotation matrices and conversions between euler-angles and quaternions are examples of tool you can find here. Feel free to add more functions here as you please, and import them to your nodes. This makes for cleaner and more structured code. 
+
+\subsection{Messages}
+
+While ROS provides many different messaging formats, some times these may be unsuitable to the needs of the system. One might, for example, wish to store the 9 estimated states of the DP observer in a better format than a generic array. That is where custom messages enter. Custom message templates are all stored in the message-package, and can be imported to any other module in the workspace. 
 
 \subsection{The gain\_server package}
 
-gain\_server utilizes another ROS-package called dynamic reconfiguration. This enables the user to reconfigure parameters in a ROS-node during runtime. For the Enterprise, this allows for dynamic tuning of the control-system gains. To run the package: 
+To make tuning your controller and observer more effective, tools for dynamic tuning are provided in the form of the ROS-package gain\_server. This allows you to change the gains in real time, rather than having to hard-code the gains and then stopping and starting your simulation every time you want to change them. To activate the node, and GUI use the following steps: 
 
-\begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ rosrun gain_server server.py
-\end{lstlisting}
-
-To tune parameters from the command-line use: 
-
-\begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ rosrun dynamic_reconfigure dynparam set gain_server parameter_name value
-\end{lstlisting}
-
-Alternatively, it is possible to create a .yaml file with all parameters which can be edited and subsequently uploaded to the node. To create the file, and load the new parameters run: 
-
-\begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ rosrun dynamic_reconfigure dynparam dump gain_server gains.yaml
-  $ rosrun dynamic_reconfigure dynparam load gain_server gains.yaml
-\end{lstlisting}
+\begin{itemize}
+    \item Make sure you have imported the Gains object from lib.py. It is built like most other objects and contais get-methods for extracting gains, along with callback-functions.
+    \item In the \textbf{observerInitNode()} or \textbf{controllerInitNode} uncomment the line starting with \textit{gain\_client}.
+    \item To run the node use the command:
+    \begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
+    $ rosrun gain_server server.py
+    \end{lstlisting}
+    \textbf{NOTE!} If you use the dynamic tuning, you should always activate this node \textbf{first} or you may experience errors. This is because the observer and controller nodes will expect values to be there when they are not. When the node is activated, the initial gains should be printed to your terminal
+    \item In another terminal, activate the GUI: 
+     \begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
+    $ rosrun rqt_gui rqt_gui -s reconfigure
+    \end{lstlisting}
+    
+    This should open a program that looks like this: 
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{fig/dynamic-reconfigure(1).png}
+        \caption{Tuning GUI}
+        \label{fig:tuner}
+    \end{figure}
+    
+    Each field or slider here corresponds to a gain in either the observer or controller. Not all the variables are relevant either. The last to are single float values, while the first six are meant to represent the elements on the diagonal of a $3\times3$-matrix. Change these to tune you controller. 
+\end{itemize}
 
 \subsubsection{Parameters}
 
 Currently, the package supports a fixed set of parameters. These are observer injection gains $L1, L2, L3$ as well as the controller gains $Kp, Kd, Ki$, $\mu$ and $Uref$. If other parameters are needed these must be added to the \textbf{gains.cfg} file in the cfg-directory. 
 
-\subsubsection{GUI-Setup}
-
-If using the GUI-laptop in the MC-Lab, the gains can be tuned via a GUI. To open it, run the following command from the terminal: 
-\begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ rosrun rqt_gui rqt_gui -s reconfigure
-\end{lstlisting}
-
 \subsection{Launch files}
 
-Instead of manually activating each node, you can initialize several at the same time using a launch file. These can be found in the folder \textbf{launch} in each package. 
+As a project progresses, more and more nodes are typically added. The process of activating nodes can therefore become more tedious as the complexity increases. To avoid having to open new command-line windows for every node, we can instead use \textit{launch-files} to activate multiple nodes simultaneously. A launch file is easy to create, and is placed in the \textit{launch} directory of a package.
+
+To run a launch file we use the following command: 
 
 \begin{lstlisting}[language=bash,basicstyle=\mlttfamily, breaklines=true]
-  $ roslaunch package_name launch_file
-\end{lstlisting}
+  $ roslaunch <package_name> my_launchfile.launch  
+\end{lstlisting} 
+
+Replace package\_name with the name of the package you placed your launch file in. All launch files have the .launch ending (e.g DP-system.launch). 
 
 \subsection{Usefull ROS-commands}
 
