@@ -1,0 +1,56 @@
+\documentclass[11pt, openright]{report}
+\makeatletter\@twosidetrue\makeatother
+\usepackage{setup}
+
+
+\makeatletter
+\newcommand\frontmatter{%
+    \cleardoublepage
+    \setcounter{secnumdepth}{0}
+  %\@mainmatterfalse
+  \pagenumbering{roman}}
+
+\newcommand\mainmatter{%
+    \cleardoublepage
+    \setcounter{secnumdepth}{3}
+ % \@mainmattertrue
+  \pagenumbering{arabic}}
+\makeatother
+
+\newcommand\backmatter{%
+    \cleardoublepage
+    \setcounter{secnumdepth}{3}
+ % \@mainmattertrue
+  \pagenumbering{Roman}}
+\makeatother
+
+
+\DeclareMathOperator{\atantwo}{atan2}
+
+\begin{document}
+\setlength{\headheight}{14pt}
+
+\input{./Sections/title}
+% \includepdf[pages=-]{./FrontMatter/defintion}
+
+% Inserting table of contents, list of figures and list of tables
+\phantomsection
+\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+
+\mainmatter 
+
+\input{./Sections/Introduction}
+\input{./Sections/ROS}
+\input{./Appendix/System-Procedures}
+\input{./Appendix/Calibration-Procedures}
+
+\newpage
+\printbibliography[heading = bibintoc, title = References] 
+
+\end{document}
+
+

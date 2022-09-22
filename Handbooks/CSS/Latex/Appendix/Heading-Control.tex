@@ -1,0 +1,55 @@
+\chapter{Heading priority allocation}
+\label{sec:heading-priority}
+As part of this thesis, a second thrust allocation method was developed in an effort to stabilize the heading measurements. The method is proposed by \cite{millan2008thrust} and consists of a priority system for allocation, where heading is considered the most critical mode of control.. This method requires that the vessel's azimuth angles vary, so the thruster configuration matrix must be augmented so angles can be determined from the allocated forces rather than manually set. To this end, each thruster is decomposed into Cartesian coordinates:
+
+\begin{equation}
+    u_{i,x} = \begin{bmatrix}1 & 0 & l_{1,y} \end{bmatrix}^T \ \textrm{and} \  u_{i,y} = \begin{bmatrix}0 & 1 & l_{1,x}\end{bmatrix}^T.
+\end{equation}
+
+This means the control input vector is extended to $\mathbf{u}_{ext} \in \mathbb{R}^6$ 
+
+\begin{equation}
+    \boldsymbol{u}_{ext} = \begin{bmatrix} u_{1,x} & u_{1,y} & u_{2,x} & u_{2,y} & u_{3,x} & u_{3,y} \end{bmatrix}^T.
+\end{equation}
+
+Accordingly the \textit{extended thruster configuration} matrix then becomes: 
+
+\begin{equation}
+    \mathbf{B}_{ext} = \begin{bmatrix} 1 & 0 & 1 & 0  & 1 & 0  \\ 
+    0 & 1 &  0 & 1 &  0 & 1 \\
+    0 & r & r\sin{-\frac{2\pi}{3}} & -r\cos{-\frac{2\pi}{3}}  & r\sin{\frac{2\pi}{3}} & -r\cos{\frac{2\pi}{3}}\end{bmatrix}.
+\end{equation}
+
+After solving \eqref{eq:thrust-mapping}, but substituting for $\mathbf{B}_{ext}$ and $\mathbf{u}_{ext}$, the azimuth angle and thruster force of each respective actuator can be computed by simple trigonometry: 
+
+\begin{subequations}
+\begin{align}
+    \label{eq:forceandangles}
+    u_i &= \sqrt{u_{i,x}^2 + u_{i,y}^2} \\
+    \alpha_i &= \atantwo{\frac{u_{i,y}}{u_{i,x}}}.
+\end{align}
+\end{subequations}
+
+
+For the heading priority scheme, \eqref{eq:thrust-mapping} is solved with respect to only the yaw moment, i.e,
+
+\begin{equation}
+    \boldsymbol{\tau} = \begin{bmatrix}0 & 0 & N \end{bmatrix}^T.
+\end{equation}
+
+In this way, an unconstrained optimization problem is solved to satisfy yaw demand. The resulting force vector and azimuth angles are computed using \eqref{eq:forceandangles} and then locked. The actuators are then checked for saturation. If none of the thrusters are saturated, the reserve thrust capacity can be used to satisfy the demand in surge and sway. A new configuration matrix must be defined for this purpose, using the optimal azimuth angles computed for heading. 
+
+Let 
+
+\begin{equation}
+    \mathbf{B}_{XY}(\boldsymbol{\alpha}) = \begin{bmatrix} \cos{\alpha_{1}} & \cos{\alpha_{2}} & \cos{\alpha_{3}} \\
+    \sin{\alpha_{1}} & \sin{\alpha_{2}} & \sin{\alpha_{3}}\end{bmatrix}
+\end{equation}
+
+be the thruster configuration matrix for allocating forces in surge and sway. To allocate, a \textit{median search approach} is utilized. This basic procedure will attempt to distribute some percentage of the demand in surge and sway given by
+
+\begin{equation}
+    \boldsymbol{\tau}_{XY}p_{ss} = \mathbf{B}_{XY}(\boldsymbol{\alpha})\hat{\mathbf{u}},
+\end{equation}
+
+where $\hat{\mathbf{u}}$ is the component of thrust for each thruster that will satisfy the remaining surge-sway demand, given the existing azimuth angles for heading priority. The variable $0 \leq p_{ss} \leq 1$ is the percentage of surge-sway demand to be allocated. The computed thrust components for $sda$ are then summed with the ones for satisfying yaw, and thrusters are again checked for saturation. If one of the thrusters is saturated, the thrust components for surge-sway are rejected, and $p_{ss}$ is decreased by $50\%$. Then the thrust components for satisfying surge-sway are recomputed with the new $p_{ss}$. This process is repeated until none of the thrusters are saturated.

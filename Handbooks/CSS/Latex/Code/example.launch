@@ -1,0 +1,6 @@
+<launch>
+    <node name="simulator"  pkg = "simulator" type="CSS.py" />
+    <node name="observer"   pkg = "observer"  type="observer.py" />
+    <node name="guidance"   pkg = "guidance"  type="guidance_CBF.py" />
+    <node name="controller" pkg="feedback_controller"  type="cascade_backstepping.py" />
+</launch>

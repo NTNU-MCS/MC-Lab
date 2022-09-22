@@ -1,0 +1,194 @@
+\chapter{Getting started with ROS}
+
+This manual is intended to provide an introduction to the basic ROS procedures necessary to operate the CS Saucer in the Marine Cybernetics Library. It is intended for the use of future students at NTNU, whom to utilize the vessel for projects. The procedures presented in this manual are also generic enough that they apply to the other vessels of the cybership fleet. 
+
+The author of this manual has spent countless hours troubleshooting software, and setting up an environment suitable for operation on the Raspberry Pi. The hope is that the provided procedures will shorten the time future students will have to use by providing better documentation. 
+
+\section{Raspberry Pi Image}
+
+Currently, all the vessels in the MC Lab  run a Raspberry Pi 4B as their embedded computer. The CSE1 and CSE1 run the same raspberry pi image with Raspbian Buster as the OS and Melodic as their ROS-distribution. 
+
+For this thesis, the Raspbian Buster installation was insufficient, so a new image was created for this thesis. The main problem was that Raspbian Buster contained a fatal bug that prevents it from connecting to enterprise networks such as eduroam. Considering that much of the work is done on campus ground, and the Saucer required downloading a lot of software, a new operating system was installed for the Saucer. At the time of writing it runs Ubuntu 20.04 LTS Server edition, and ROS Noetic. Everything needed to run basic ros is installed, along with the computer vision library Open CV, Tensorflow and scipy as well. 
+
+The student can choose which OS suits their needs and make an image of the memory card on either the CS Saucer or CS Enterprise for their own use. More information about this can be found \href{https://www.raspberrypi.com/software/}{here}. It is recommended to copy one of the memory cards rather than attempting a install from scratch. 
+
+
+\section{Communicating with the Raspberry Pi}
+\label{sec:commwithpi}
+To communicate with the Raspberry Pi on the vessel, one needs to be connected to the 'MC lab' local network. After connecting to the network, open up a terminal and see if the vessel is also connected by running the command: 
+
+\begin{lstlisting}[language=bash]
+$ ping 192.168.0.108
+\end{lstlisting}
+
+Here the number-sequence is the IP of the Saucer. If  the RPi responds you can SSH onto it and run files via the terminal. Simply run the command
+
+\begin{lstlisting}[language=bash]
+$ ssh ubuntu@192.168.0.108
+\end{lstlisting}
+
+Most likely you will then be prompted for a password. All the RPi's have \textbf{\textit{marin33}} as the designated password. You are now ready to run commands on the raspberry pi remotely. 
+
+\section{How to ROS: A step by step guide}
+
+This section covers the basic ROS-commands you need to properly run scripts on either the RPi or your Ubuntu PC. 
+
+\subsection{Sourcing ROS}
+
+ROS-programs are generally run using command-line tools. Thus, we have to source our installation when we open a terminal. To source the installation run the command
+\begin{lstlisting}[language=bash]
+$ source /opt/ros/$ROS_DISTRIBUTION$/setup.bash
+\end{lstlisting}
+
+The ROS-distribution will either be called \textit{melodic} or \textit{noetic}, depending on which vessel you use. On the provided hardware ROS is sourced automatically via a bash-script every time you open the terminal, but if you are using your own computer you will have to do this for ROS commands to function.
+
+\subsection{Creating a workspace}
+
+Next, we need to create a designated workspace for our project. Navigate to the desired location on your computer (/documents, for example) and create a new folder for your project by running the following command
+
+\begin{lstlisting}[language=bash,]
+$ mkdir -p my_folder/src
+\end{lstlisting}
+
+This creates a folder with a sub-directory called \textit{src}. You can replace \textit{my\_folder} with any name you want, but \textit{src} must be kept the same. Standard ROS-convention is prefixing your workspace folder with \textit{ws}, e.g \textit{ws\_dplab}.
+
+Next, navigate to the workspace folder, and run the command
+
+\begin{lstlisting}[language=bash]
+$ catkin_make
+\end{lstlisting}
+
+This will build your workspace environment with the proper ROS dependencies. After running this command, you should be left with a directory structure that looks like this: 
+
+\dirtree{%
+.1 my$\_$folder.
+.2 build.
+.2 devel.
+.2 src.
+}
+
+You are now ready to run ROS-files. As you add more packages to your project, it is good to rebuild your project. This is done by running the \textit{catkin\_make} again.
+
+\subsection{The src-directory}
+\label{sec:src}
+This is the folder you will be working the most in, and were you will be putting all your ROS-packages. Each of these packages contain its own \textit{src}-directory where the scripts you will be using are located. A typical project folder can look something like this: 
+
+\dirtree{%
+.1 my\_folder.
+.2 build.
+.2 devel.
+.2 src.
+.3 simulator.
+.4 launch.
+.4 src.
+.5 CSS.py.
+.3 feedback\_controller.
+.4 launch.
+.4 src.
+.5 ctrl\_joy.py.
+}
+
+\subsection{Running ROS nodes}
+\label{sec:run-nodes}
+After your code is written it is time two activate your ROS-nodes.
+
+\subsubsection{The ROS-master}
+
+First we need to make sure the ROS-master is running. On the raspberry-pi, this should be activated automatically. If you are running on the Ubuntu-computer you will have to enable it manually. Open a new command-line window and run the command: 
+
+\begin{lstlisting}[language=bash]
+$ roscore
+\end{lstlisting}
+
+Now the ROS-master is running, and you can start activating nodes.
+
+If you are running nodes on separate computers, you need to make sure the computer not running the master knows were to find it. This is done by exporting the url for the ROS master. Before running any nodes, use the following command: 
+
+\begin{lstlisting}[language=bash]
+ $ export ROS_MASTER_URI=http://192.168.0.108:11311
+\end{lstlisting}
+
+ It is also smart to export the ROS\_IP. This tells the master were the signals are coming from. You can determine your IP by running the command \texttt{ifconfig} and then 
+ 
+ \begin{lstlisting}[language=bash]
+ $ export ROS_IP=YOUR IP
+\end{lstlisting}
+
+
+
+\subsubsection{Activating nodes}
+In a separate command-line window, navigate to your project folder. Then source the setup.bash file in \textit{devel}. 
+
+\begin{lstlisting}[language=bash]
+$ source devel/setup.bash
+\end{lstlisting}
+
+To activate a node, we first need to make sure that the script is executable. To make a file executable, navigate to the relevant directory and run the following command: 
+
+\begin{lstlisting}[language=bash]
+  $ chmod +x <node-script>.py
+\end{lstlisting}
+
+If the script has become executable, the file-name should be green the next time you run \textbf{ls} inside the directory. Then, to activate a node run navigate to the base directory of your workspace and run 
+
+\begin{lstlisting}[language=bash]
+$ rosrun <package-name> <node-script>.py
+\end{lstlisting}
+
+where $<$package-name$>$ is the name of the package you want to run, e.g "controller", and the $<$node-script$>$.py is the python script that initializes the rosnode, e.g "ctrl\textunderscore joy.py".
+
+\subsection{Launch files}
+
+As a project progresses, more and more nodes are typically added. The process of activating nodes can therefore become more tedious as the complexity increases. To avoid having to open new command-line windows for every node, we can instead use \textit{launch-files} to activate multiple nodes simultaneously. A launch file is easy to create, and is placed in the \textit{launch} directory of a package, as illustrated in the directory-tree in section \ref{sec:src}.
+
+\begin{listing}[h]
+\inputminted{octave}{Code/example.launch}
+\caption{Example of a launch-file}
+\label{listing:launch}
+\end{listing}
+
+Listing \ref{listing:launch} shows the basic setup of a launch file. This example launches four separate nodes, the simulator, an observer, the guidance module and the controller module. 
+
+To run a launch file we use the following command: 
+
+\begin{lstlisting}[language=bash]
+$ roslaunch <package_name> my_launchfile.launch  
+\end{lstlisting} 
+
+Replace package\textunderscore name with the name of the package you placed your launch file in. All launch files have the .launch ending (e.g DP-system.launch) . 
+
+\subsection{Topics}
+
+When nodes are activated, they will start to either \textit{publish} or \textit{subscribe} to \textit{topics}. Topics are named buses over which nodes exchange messages. We can any topics that are being published/subscribed to in a ROS-system by using the command: 
+
+\begin{lstlisting}[language=bash]
+$ rostopic list 
+\end{lstlisting} 
+
+This will display all the active topics in a list in your terminal. In a DP-system we might, for example, have a thrust allocation algorithm that publishes actuator commands $u$ to a topic that a the driver of the thrusters subscribes too. This topic is called something like \textbf{CSS/u}. If we wish to display the signals from this topic in real time we can run the command
+
+\begin{lstlisting}[language=bash]
+$ rostopic echo CSEI/u
+\end{lstlisting}
+This will print every message that is sent to the given topic, and can be a useful tool when debugging.
+
+\subsection{Storing data}
+
+It is desirable to store the message-signals in the system in some format so that we can later analyze and plot the data. ROS provides its own tools and file-format for this, called a \textit{bag} file. After we have launched some nodes we run the command 
+\begin{lstlisting}[language=bash]
+$ rosbag record <topic>
+\end{lstlisting}
+
+$<$Topic$>$ is replaced with the names of the topics we wish to save. Multiple topics can be recorded at the same time, in the same bag file. You just have to list the topic names with a space. If i for example wanted to record the commanded force signal from our control law and the resulting actuator commands form the thrust allication i would use 
+
+\begin{lstlisting}[language=bash]
+$ rosbag record CSS/u CSS/tau
+\end{lstlisting}
+
+When you have collected sufficient data, simply use CTRL+C to abort the operation. The data will be saved in a bag-file in your workspace.
+
+\subsection{Other usefull ROS-commands}
+\begin{lstlisting}[language=bash]
+$ rosnode list
+\end{lstlisting}
+Shows a list of all active ROS-nodes
