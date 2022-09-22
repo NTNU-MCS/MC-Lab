@@ -1,0 +1,5 @@
+<launch>
+    <node name="simulator"  pkg = "simulator" type="CSEI.py" />
+    <node name="observer"   pkg = "observer"  type="observer.py" />
+    <node name="controller" pkg="controller"  type="feedback_ctrl.py" />
+</launch>
