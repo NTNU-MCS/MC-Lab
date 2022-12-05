@@ -89,10 +89,13 @@ Department of Marine Technology
 	\caption*{\huge{\textbf{Device network addresses}}}
 	\begin{tabular}{lll}
 		\hline
-		\textbf{Qualisys PC} & 192.168.0.10 & surface\\
+		\textbf{Qualisys PC} & 192.168.1.10 & surface\\
 		& 192.168.0.20 & underwater\\ \hline
-		\textbf{MCLab router} & 192.168.0.50 & SSID: MC Lab\\ \hline
-		\textbf{RPi} & 192.168.1.22:51717 & for all\\ \hline
+		\textbf{MCLab router} & 192.168.1.254 & SSID: MC Lab\\ \hline
+		\textbf{RPi} & 192.168.1.171 & CSE1-RPi\\
+		& 192.168.1.2 & CSAD-RPi\\
+		& 192.168.0.108 & CSS-RPi\\
+		& 192.168.1.22:51717 & for all others\\ \hline
 		\textbf{cRIO primary port} & 192.168.0.71 & IIMT-HILLAB1-cRIO\\
 		& 192.168.0.72 & IIMT-HILLAB2-cRIO\\
 		& 192.168.0.73 & IIMT-HILLAB3-cRIO\\
@@ -563,6 +566,6 @@ Logging channels/parameters from Workspace is done with a Data Logging Controlle
 In the Simulink model, it is possible to add "Write to File" blocks linked to the different parameters. By using this method, the cRIO logs the parameters continuously after deployment, until the VeriStand project is undeployed. The data is logged as binary numbers, and if the code is not undeployed correctly(e.g. some error/loss of power etc.), the data log becomes corrupted. However, if this method still is chosen, the data files must be copied from the cRIO to the laptop. Open NI MAX, in the left pane, browse to CSE1, right click on it and choose File Transfer. Copy the logged files to the laptop, which can then be loaded in MATLAB. 
 \clearpage
 \bibliographystyle{elsarticle-harv}
-\bibliography{referencesl}
+\bibliography{referencesl.bib}
 \include{appendix}
 \end{document}
